@@ -30,3 +30,4 @@ replay_pid*
 .settings
 *DS_STORE*
 ../.DS_Store*
+.DS_Store
