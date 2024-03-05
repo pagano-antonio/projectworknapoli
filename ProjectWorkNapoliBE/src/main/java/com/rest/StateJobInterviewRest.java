@@ -11,37 +11,38 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.dao.WorkExperienceRepository;
-import com.model.WorkExperience;
+import com.dao.StateJobInterviewRepository;
+import com.model.StateJobInterview;
 
 @RestController
-@RequestMapping("/work_experience")
-public class WorkExperienceRest {
+@RequestMapping("/stateJobInterview")
+public class StateJobInterviewRest {
+	
     @Autowired
-    private WorkExperienceRepository workExperienceRep;
+    private StateJobInterviewRepository stateJobIntRep;
     
     @GetMapping("findById/{id}")
     @ResponseBody
-    public WorkExperience findById(@PathVariable("id") int id) {
+    public StateJobInterview findById(@PathVariable("id") int id) {
     
-    	WorkExperience res = workExperienceRep.findById(id).get();
+    	StateJobInterview res = stateJobIntRep.findById(id).get();
     	
     	return res;
     	
     }
     
     @PostMapping
-    public String add(@RequestBody WorkExperience w) {
+    public String add(@RequestBody StateJobInterview s) {
 
-    	workExperienceRep.save(w);
-        System.out.println("Inserito nel db:"+w.getId());
+    	stateJobIntRep.save(s);
+        System.out.println("Inserito nel db:"+s.getId());
         return "OK";
     }
     
     @PutMapping
-    public String update(@RequestBody WorkExperience w) {
+    public String update(@RequestBody StateJobInterview s) {
 
-    	workExperienceRep.save(w);
+    	stateJobIntRep.save(s);
         System.out.println("Aggiornato nel db");
         return "OK";
     }
@@ -49,11 +50,11 @@ public class WorkExperienceRest {
     @DeleteMapping("deleteById/{id}")
     public void delete(@PathVariable("id") Integer id) {
 
-    	workExperienceRep.deleteById(id);
+    	stateJobIntRep.deleteById(id);
         System.out.println("Eliminato dal db");
-        
         
     }
     
     
+
 }
