@@ -21,9 +21,9 @@ public class CandidateRest {
 	@Autowired
 	private CandidateRepository candidateRep;
 	
-	@GetMapping("findById/{id}")
-	public Candidate findById(@PathVariable ("id") Integer id) {
-		Candidate c = candidateRep.findById(id).get();
+	@GetMapping("findById/{idCandidate}")
+	public Candidate findById(@PathVariable ("idCandidate") Integer idCandidate) {
+		Candidate c = candidateRep.findById(idCandidate).get();
 		return c;
 	}
 	
@@ -39,9 +39,9 @@ public class CandidateRest {
 	    	return "Ok, aggiornata";
 	  }
 	  
-	  @DeleteMapping("deleteCandidate/{id}")
-	  public String deleteCandidate (@PathVariable("id") Integer id) {
-	    	candidateRep.deleteById(id);
+	  @DeleteMapping("deleteCandidate/{idCandidate}")
+	  public String deleteCandidate (@PathVariable("idCandidate") Integer idCandidate) {
+	    	candidateRep.deleteById(idCandidate);
 	    	return "Ok, eliminata";
 	  }
 }

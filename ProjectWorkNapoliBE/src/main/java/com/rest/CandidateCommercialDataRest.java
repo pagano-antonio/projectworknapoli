@@ -23,9 +23,9 @@ public class CandidateCommercialDataRest {
 		@Autowired
 		private CandidateCommercialDataRepository candidateCommercialDataRep;
 		
-		@GetMapping("findById/{id}")
-		public CandidateCommercialData findById(@PathVariable ("id") Integer id) {
-			CandidateCommercialData ccd = candidateCommercialDataRep.findById(id).get();
+		@GetMapping("findById/{idCandidateCommercial}")
+		public CandidateCommercialData findById(@PathVariable ("idCandidateCommercial") Integer idCandidateCommercial) {
+			CandidateCommercialData ccd = candidateCommercialDataRep.findById(idCandidateCommercial).get();
 			return ccd;
 		}
 		
@@ -41,9 +41,9 @@ public class CandidateCommercialDataRest {
 		    	return "Ok, aggiornato";
 		  }
 		  
-		  @DeleteMapping("deleteCandidateCommercialData/{id}")
-		  public String deleteCandidate (@PathVariable("id") Integer id) {
-		    	candidateCommercialDataRep.deleteById(id);
+		  @DeleteMapping("deleteCandidateCommercialData/{idCandidateCommercial}")
+		  public String deleteCandidate (@PathVariable("idCandidateCommercial}") Integer idCandidateCommercial) {
+		    	candidateCommercialDataRep.deleteById(idCandidateCommercial);
 		    	return "Ok, eliminato";
 		  }
 }
