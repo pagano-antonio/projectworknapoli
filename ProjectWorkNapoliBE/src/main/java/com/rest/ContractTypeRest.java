@@ -1,5 +1,4 @@
 package com.rest;
-package com.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
