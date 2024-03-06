@@ -69,8 +69,3 @@ public ContractType findById(@PathVariable("id") int id) {
 	
 }
 
-
-
-public class ContractTypeRest {
-
-}
