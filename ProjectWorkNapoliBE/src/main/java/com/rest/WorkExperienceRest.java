@@ -17,43 +17,41 @@ import com.model.WorkExperience;
 @RestController
 @RequestMapping("/work_experience")
 public class WorkExperienceRest {
-    @Autowired
-    private WorkExperienceRepository workExperienceRep;
-    
-    @GetMapping("findById/{id}")
-    @ResponseBody
-    public WorkExperience findById(@PathVariable("id") int id) {
-    
-    	WorkExperience res = workExperienceRep.findById(id).get();
-    	
-    	return res;
-    	
-    }
-    
-    @PostMapping
-    public String add(@RequestBody WorkExperience w) {
+	@Autowired
+	private WorkExperienceRepository workExperienceRep;
 
-    	workExperienceRep.save(w);
-        System.out.println("Inserito nel db:"+w.getId());
-        return "OK";
-    }
-    
-    @PutMapping
-    public String update(@RequestBody WorkExperience w) {
+	@GetMapping("findById/{id}")
+	@ResponseBody
+	public WorkExperience findById(@PathVariable("id") int id) {
 
-    	workExperienceRep.save(w);
-        System.out.println("Aggiornato nel db");
-        return "OK";
-    }
-    
-    @DeleteMapping("deleteById/{id}")
-    public void delete(@PathVariable("id") Integer id) {
+		WorkExperience res = workExperienceRep.findById(id).get();
 
-    	workExperienceRep.deleteById(id);
-        System.out.println("Eliminato dal db");
-        
-        
-    }
-    
-    
+		return res;
+
+	}
+
+	@PostMapping
+	public String add(@RequestBody WorkExperience w) {
+
+		workExperienceRep.save(w);
+		System.out.println("Inserito nel db:" + w.getIdWorkExperience());
+		return "OK";
+	}
+
+	@PutMapping
+	public String update(@RequestBody WorkExperience w) {
+
+		workExperienceRep.save(w);
+		System.out.println("Aggiornato nel db");
+		return "OK";
+	}
+
+	@DeleteMapping("deleteById/{id}")
+	public void delete(@PathVariable("id") Integer id) {
+
+		workExperienceRep.deleteById(id);
+		System.out.println("Eliminato dal db");
+
+	}
+
 }
