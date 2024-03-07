@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+.pageContainer {
+	display:flex;
+	align-items:flex-start;
+	justify-content:flex-start;
+	height:100vh;
+	width:100%;
+}
+.navbar {
+	background: #37B8CC;
+	color:white;
+	max-width: 250px;
+	display:flex;
+	flex:1;
+	border-right:1px solid black;
+	height:100vh;
+	overflow-y:hidden;
+}
+.navbar-accordion {
+	height:100%;
+	width:100%;
+	overflow-y:auto;
+}
+.accordion-item {
+	background: #37B8CC;
+}
