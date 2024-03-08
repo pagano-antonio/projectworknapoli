@@ -11,7 +11,7 @@
 	<div class="wrapper">
 		<jsp:include page="../sidebar.jsp" />
 		<div id="content">
-		Sono un template
+		Sono il form del candidato
 		<div class="provacss">Devo essere rosso</div>
 		
 		</div>
