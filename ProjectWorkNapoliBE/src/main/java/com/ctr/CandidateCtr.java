@@ -11,8 +11,7 @@ public class CandidateCtr {
 
 	@GetMapping("/addCandidate")
 	public String addCandidate(Model model) {
-		System.out.println("addCandidate pass");
-		return "candidate/createCandidate";
+		return "candidate/addCandidate";
 	}
 
 }
