@@ -16,7 +16,7 @@ import com.dao.JobOfferSkillRepository;
 import com.model.JobOfferSkill;
 
 @Controller
-@RequestMapping("/JobOfferSkill")
+@RequestMapping("/JobOfferSkillsCtr")
 public class JobOfferSkillsCtr {
 
 	@Autowired

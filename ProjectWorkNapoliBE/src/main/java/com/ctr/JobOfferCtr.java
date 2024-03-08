@@ -15,7 +15,7 @@ import com.dao.JobOfferRepository;
 import com.model.JobOffer;
 
 @Controller
-@RequestMapping("JobOffer")
+@RequestMapping("JobOfferCtr")
 
 public class JobOfferCtr {
 
