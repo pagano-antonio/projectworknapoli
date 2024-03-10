@@ -16,7 +16,7 @@
                 <li>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Candidati</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <li><a href="${pageContext.request.contextPath}/CandidateCtr/addCandidate">Aggiungi candidato</a></li>
+                        <li><a href="${pageContext.request.contextPath}/CandidateCtr/preAddCandidate">Aggiungi candidato</a></li>
                         <li><a href="#">Page 2</a></li>
                         <li><a href="#">Page 3</a></li>
                     </ul>

@@ -1,6 +1,7 @@
 package com.model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 import jakarta.persistence.Entity;
@@ -32,10 +33,10 @@ public class WorkExperience implements Serializable {
 	private String description;
 
 	@Temporal(TemporalType.DATE)
-	private Date endDate;
+	private LocalDate endDate;
 
 	@Temporal(TemporalType.DATE)
-	private Date startDate;
+	private LocalDate startDate;
 
 	private String title;
 
@@ -79,19 +80,19 @@ public class WorkExperience implements Serializable {
 		this.description = description;
 	}
 
-	public Date getEndDate() {
+	public LocalDate getEndDate() {
 		return this.endDate;
 	}
 
-	public void setEndDate(Date endDate) {
+	public void setEndDate(LocalDate endDate) {
 		this.endDate = endDate;
 	}
 
-	public Date getStartDate() {
+	public LocalDate getStartDate() {
 		return this.startDate;
 	}
 
-	public void setStartDate(Date startDate) {
+	public void setStartDate(LocalDate startDate) {
 		this.startDate = startDate;
 	}
 
