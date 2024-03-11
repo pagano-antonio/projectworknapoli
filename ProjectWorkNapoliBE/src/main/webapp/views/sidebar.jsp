@@ -21,6 +21,14 @@
                         <li><a href="#">Page 3</a></li>
                     </ul>
                 </li>
+                <li>
+                    <a href="#jobOffer" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Offerte di lavoro</a>
+                    <ul class="collapse list-unstyled" id="jobOffer">
+                        <li><a href="${pageContext.request.contextPath}/JobOfferCtr/jobOfferForm">Crea offerta di lavoro</a></li>
+                        <li><a href="#">Page 2</a></li>
+                        <li><a href="#">Page 3</a></li>
+                    </ul>
+                </li>
                 <li><a href="#">Sub menu</a></li>
                 <li><a href="#">Sub menu</a></li>
             </ul>

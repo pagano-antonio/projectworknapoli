@@ -103,4 +103,9 @@ public class Skill implements Serializable {
 		return jobOfferSkill;
 	}
 
+	@Override
+	public String toString() {
+		return "Skill [idSkill=" + idSkill + ", description=" + description + "]";
+	}
+
 }

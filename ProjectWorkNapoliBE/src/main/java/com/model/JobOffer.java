@@ -1,10 +1,12 @@
 package com.model;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -25,19 +27,20 @@ public class JobOffer implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idJobOffer;
 
 	private String description;
 
 	@Temporal(TemporalType.DATE)
-	private Date endDate;
+	private LocalDate endDate;
 
 	private int maxRal;
 
 	private int minRal;
 
 	@Temporal(TemporalType.DATE)
-	private Date startDate;
+	private LocalDate startDate;
 
 	private String title;
 
@@ -74,11 +77,11 @@ public class JobOffer implements Serializable {
 		this.description = description;
 	}
 
-	public Date getEndDate() {
+	public LocalDate getEndDate() {
 		return this.endDate;
 	}
 
-	public void setEndDate(Date endDate) {
+	public void setEndDate(LocalDate endDate) {
 		this.endDate = endDate;
 	}
 
@@ -98,11 +101,11 @@ public class JobOffer implements Serializable {
 		this.minRal = minRal;
 	}
 
-	public Date getStartDate() {
+	public LocalDate getStartDate() {
 		return this.startDate;
 	}
 
-	public void setStartDate(Date startDate) {
+	public void setStartDate(LocalDate startDate) {
 		this.startDate = startDate;
 	}
 
@@ -150,6 +153,14 @@ public class JobOffer implements Serializable {
 		jobOfferSkill.setJobOffer(null);
 
 		return jobOfferSkill;
+	}
+
+	@Override
+	public String toString() {
+		return "JobOffer [idJobOffer=" + idJobOffer + ", description=" + description + ", endDate=" + endDate
+				+ ", maxRal=" + maxRal + ", minRal=" + minRal + ", startDate=" + startDate + ", title=" + title
+				+ ", companyClient=" + companyClient + ", contractType=" + contractType + ", jobOfferSkills="
+				+ jobOfferSkills + "]";
 	}
 
 }
