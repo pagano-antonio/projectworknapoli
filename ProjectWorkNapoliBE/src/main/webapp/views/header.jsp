@@ -21,7 +21,6 @@
      </button>
      
     <a class="header-collapse-title" href="${pageContext.request.contextPath}/gestionaleCandidati">Gestionale</a>
-                        
      </h3>
   </div>
   </nav>

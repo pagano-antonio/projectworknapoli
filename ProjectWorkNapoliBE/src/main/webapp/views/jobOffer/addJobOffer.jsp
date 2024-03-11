@@ -17,19 +17,19 @@
             <form action="addJobOffer" method="post">
 
                 <!-- Job Offer Title -->
-                <div class="mb-2">
+                <div class="input-100 mb-2">
                     <label class="form-label" for="title">Title:</label>
                     <input type="text" name="title" required class="form-control">
                 </div>
 
                 <!-- Job Offer Description -->
-                <div class="mb-2">
+                <div class="input-100 mb-2">
                     <label class="form-label" for="description">Description:</label>
                     <textarea required="required" rows="4" cols="50" class="form-control"></textarea>
                 </div>
 
                 <!-- Select Skills  -->
-                <div class="mb-2">
+                <div class="mb-2 input-100">
                     <label class="form-label" for="selectedSkills">Select Skills:</label>
                     <select id="skills" multiple="multiple" name="selectedSkills">
                     <c:forEach var="skill" items="${skills}">
@@ -39,30 +39,30 @@
                 </div>
                 
                <!-- Start Date -->
-                <div class="mb-2">
+                <div class="mb-2 input-50">
                     <label class="form-label" for="startDate">Start Date:</label>
                     <input type="date" name="startDate" class="form-control" required>
                 </div>
 
                 <!-- End Date -->
-                <div class="mb-2">
+                <div class="mb-2 input-50">
                     <label class="form-label" for="endDate">End Date:</label>
                     <input type="date" name="endDate" class="form-control" required>
                </div>
 
                 <!-- Minimum Salary -->
-                <div class="mb-2">
+                <div class="mb-2 input-50">
                     <label class="form-label" for="minRal">Minimum Salary:</label>
                     <input type="number" name="minRal" class="form-control" required>
                 </div>
 
                 <!-- Maximum Salary -->
-                <div class="mb-2">
+                <div class="mb-2 input-50">
                     <label class="form-label" for="maxRal">Maximum Salary:</label>
                     <input type="number" name="maxRal" class="form-control" required>
                 </div>
             <!-- Company Client -->
-            <div class="mb-2">
+            <div class="mb-2 input-50">
                 <label class="form-label" for="CompanyClient">Company Client:</label>
                 <select class="form-control" name="CompanyClient" required>
                     <c:forEach var="client" items="${clients}">
@@ -72,7 +72,7 @@
             </div>
 
             <!-- Contract Type -->
-            <div class="mb-2">
+            <div class="mb-2 input-50">
                 <label class="form-label" for="ContractType">Contract Type:</label>
                 <select class="form-control" name="ContractType" required>
                     <c:forEach var="contract" items="${contractsType}">
