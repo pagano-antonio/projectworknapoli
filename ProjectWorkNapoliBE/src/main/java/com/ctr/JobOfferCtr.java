@@ -1,17 +1,15 @@
 package com.ctr;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -60,6 +58,35 @@ public class JobOfferCtr {
 	}
 
 /////////////////////////////////////////////////////////////////////////   
+
+	@GetMapping("jobOffers")
+	public String jobOffers(Model model) {
+		List<JobOffer> jobOffers = jobOfferRep.findAll();
+		model.addAttribute("jobOffers", jobOffers);
+		return "jobOffer/jobOffers";
+	}
+
+	@GetMapping("updateJobOfferForm")
+	public String updateJobOfferForm(Model model, @RequestParam("id") Integer id) {
+		JobOffer jobOfferToEdit = jobOfferRep.findById(id).get();
+		List<CompanyClient> clients = companyClientRep.findAll();
+		List<ContractType> contractsType = contractTypeRep.findAll();
+		List<Skill> skills = SkillRep.findAll();
+		List<JobOfferSkill> skillsSelected = jobOfferSkillRep.findByJobOfferIdJobOffer(id);
+		List<Integer> idSkillsArray = new ArrayList<>();
+
+		for (JobOfferSkill jobOfferSkill : skillsSelected) {
+			idSkillsArray.add(jobOfferSkill.getSkill().getIdSkill());
+		}
+		model.addAttribute("clients", clients);
+		model.addAttribute("contractsType", contractsType);
+		model.addAttribute("skills", skills);
+		model.addAttribute("idSkillsArray", idSkillsArray);
+		model.addAttribute("jobOfferToEdit", jobOfferToEdit);
+		return "jobOffer/updateJobOffer";
+	}
+
+/////////////////////////////////////////////////////////////////////////   
 	@Transactional
 	@PostMapping("addJobOffer")
 	public String addJobOffer(Model model, @ModelAttribute JobOffer jobOffer,
@@ -88,22 +115,48 @@ public class JobOfferCtr {
 
 /////////////////////////////////////////////////////////////////////////
 
-	@PutMapping("updateJobOffer")
-	public String updateJobOffer(Model model, @RequestBody JobOffer jobOffer) {
-		System.out.println("operation update complete for " + jobOffer);
+	@Transactional
+	@PostMapping("updateJobOffer")
+	public String updateJobOffer(Model model, @ModelAttribute JobOffer jobOffer,
+			@RequestParam("selectedSkills") List<Integer> selectedSkills) {
+
 		jobOfferRep.save(jobOffer);
 
-		return "";
+		jobOfferRep.flush();
+
+		int jobId = jobOffer.getIdJobOffer();
+
+		List<JobOfferSkill> oldSkills = jobOfferSkillRep.findByJobOfferIdJobOffer(jobId);
+		if (selectedSkills != null && !selectedSkills.isEmpty()) {
+			for (JobOfferSkill oldJob : oldSkills) {
+				jobOfferSkillRep.delete(oldJob);
+			}
+		}
+		if (selectedSkills != null && !selectedSkills.isEmpty()) {
+			List<Skill> selectedSkillList = SkillRep.findAllById(selectedSkills);
+			for (Skill skill : selectedSkillList) {
+				JobOfferSkill jb = new JobOfferSkill();
+				jb.setJobOffer(jobOffer);
+				jb.setSkill(skill);
+				jobOfferSkillRep.save(jb);
+			}
+		}
+
+		List<JobOffer> jobOffers = jobOfferRep.findAll();
+		model.addAttribute("jobOffers", jobOffers);
+		return "jobOffer/jobOffers";
 	}
 
 /////////////////////////////////////////////////////////////////////////	
 
-	@DeleteMapping("deleteJobOffer/{id}")
+	@GetMapping("deleteJobOffer/{id}")
 	public String deleteJobOffer(Model model, @PathVariable("id") int id) {
 		System.out.println("operation delete complete for id " + id);
 		jobOfferRep.deleteById(id);
 
-		return "";
+		List<JobOffer> jobOffers = jobOfferRep.findAll();
+		model.addAttribute("jobOffers", jobOffers);
+		return "jobOffer/jobOffers";
 	}
 
 /////////////////////////////////////////////////////////////////////////
