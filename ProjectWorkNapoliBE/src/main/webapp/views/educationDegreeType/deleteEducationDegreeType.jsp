@@ -9,10 +9,10 @@
 <body>
 
 <h2>INSERISCI ID DA ELIMINARE</h2>
-<form action="${pageContext.request.contextPath}/EducationCtr/deleteEducation">
+<form action="${pageContext.request.contextPath}/EducationDegreeTypeCtr/deleteEducationDegreeType">
  
-<label for="Id"> ID EDUCATION </label>
-<br><input type= "number" id="idEducation" name="idEducation"><br>
+<label for="Id"> ID EDUCATION DEGREE TYPE </label>
+<br><input type= "number" id="idEducationDegreeType" name="idEducationDegreeType"><br>
 <label> SUBMIT</label>
 <br><input type ="submit" value="invia"><br>
 

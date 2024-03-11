@@ -22,7 +22,7 @@ public class EducationDegreeTypeCtr {
 	@GetMapping("/preAddEducationDegreeType")
 	public String preAddEducationDegreeType(Model model) {
 
-		return "";
+		return "educationDegreeType/addEducationDegreeType";
 	}
 
 	@GetMapping("/addEducationDegreeType")
@@ -31,7 +31,7 @@ public class EducationDegreeTypeCtr {
 		educationDegreeTypeRep.save(educationDegreeType);
 		System.out.println(educationDegreeType);
 
-		return "";
+		return "educationDegreeType/operationSuccess";
 	}
 
 //////////////////////////////////////////////////////
@@ -46,27 +46,27 @@ public class EducationDegreeTypeCtr {
 		EducationDegreeType educationDegreeType = new EducationDegreeType();
 		educationDegreeType = (EducationDegreeType) educationDegreeTypeRep.findById(idEducationDegreeType).get();
 		model.addAttribute("IdEducationDegreeType", educationDegreeType);
-		return "";
+		return "educationDegreeType/resultsFindById";
 	}
 
 	@PostMapping("/updateEducationDegreeType")
 	public String updateEducationDegreeType(Model model, EducationDegreeType educationDegreeType) {
 		educationDegreeTypeRep.save(educationDegreeType);
-		return "";
+		return "educationDegreeType/operationSuccess";
 	}
 
 //////////////////////////////////////////////////////
 	
 	@GetMapping("/preDeleteEducationDegreeType")
-	public String preRicercaElimina(Model model) {
+	public String preDeleteEducationDegreeType(Model model) {
 
-		return "";
+		return "educationDegreeType/deleteEducation";
 	}
 
 	@GetMapping("/deleteEducationDegreeType")
-	public String eliminaPersona(Model model, int idEducationDegreeType) {
+	public String deleteEducationDegreeType(Model model, int idEducationDegreeType) {
 
 		educationDegreeTypeRep.deleteById(idEducationDegreeType);
-		return "";
+		return "educationDegreeType/operationSuccess";
 	}	
 }

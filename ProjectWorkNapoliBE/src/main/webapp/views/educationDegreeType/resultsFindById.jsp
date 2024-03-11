@@ -15,36 +15,21 @@
 
 <h2> RISULTATI AGGIORNABILI</h2>
 
-<%Education e = (Education) request.getAttribute("idEducationFound"); %>
+<%EducationDegreeType edt = (EducationDegreeType) request.getAttribute("IdEducationDegreeType"); %>
 
 
-<form action= "${pageContext.request.contextPath}/EducationCtr/updateEducation" method= "post">
+<form action= "${pageContext.request.contextPath}/EducationEducationDegreeTypeCtrCtr/updateEducationDegreeType" method= "post">
 
-<%if (e != null){%>
+<%if (edt != null){%>
 
 
-		<br><label>ID EDUCATION</label><br>
+		<br><label>ID EDUCATION DEGREE TYPE</label><br>
 	
-	<input type="text" id="idEducation" name="idEducation" readOnly value="<%=e.getIdEducation() %>">
+	<input type="text" id="idEducationDegreeType" name="idEducationDegreeType" readOnly value="<%=edt.getIdEducationDegreeType() %>">
 
-		<label>ID EDUCATION DEGREE TYPE</label>
+		<label>DESCRIPTION</label>
 		
-	<input type="text" id="educationDegreeType.idEducationDegreeType" name="educationDegreeType.idEducationDegreeType" value="<%=e.getEducationDegreeType().getIdEducationDegreeType() %>">
-	
-		<br><label>SCHOOL NAME</label><br>
-	<input type="text" id="schoolName" name="schoolName" value="<%=e.getSchoolName() %>">
-	
-		<br><label>PLACE</label><br>
-	<input type="text" id="place" name="place" value="<%=e.getPlace() %>">
-	
-		<br><label>DATE</label><br>
-	<input type="date" id="date" name="date" value="<%=e.getDate() %>">
-	
-		<br><label>FINAL GRADE</label><br>
-	<input type="text" id="finalGrade" name="finalGrade" value="<%=e.getFinalGrade() %>">				
-		
-	<br><label>ID CANDIDATE</label><br>
-		<input type="text" id="candidate.idCandidate" name="candidate.idCandidate" value="<%=e.getCandidate().getIdCandidate() %>">
+	<input type="text" id="description" name="description" value="<%=edt.getDescription() %>">
 	
        <input type="submit" value="Aggiorna">
 

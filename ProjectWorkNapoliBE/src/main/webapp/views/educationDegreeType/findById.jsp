@@ -8,10 +8,10 @@
 </head>
 <body>
 
-<form action="${pageContext.request.contextPath}/EducationCtr/findById">
+<form action="${pageContext.request.contextPath}/EducationDegreeTypeCtr/findById">
  
-<label for="Id"> ID EDUCATION </label>
-<br><input type= "number" id="idEducation" name="idEducation"><br>
+<label for="Id"> ID EDUCATION DEGREE TYPE</label>
+<br><input type= "number" id="idEducationDegreeTypeCtr" name="idEducationEducationDegreeTypeCtr"><br>
 <label> SUBMIT</label>
 <br><input type ="submit" value="invia"><br>
 
