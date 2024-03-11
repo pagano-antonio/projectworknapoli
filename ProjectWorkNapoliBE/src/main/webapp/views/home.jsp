@@ -12,7 +12,7 @@
 		<jsp:include page="sidebar.jsp" />
 		<div id="content">
 		Content page
-		<div class="provacss">Devo essere rosso</div>
+		<div class="provacss">Devo essere giallorosso forza magggica</div>
 		
 		</div>
 	</div>
