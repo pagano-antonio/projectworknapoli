@@ -11,9 +11,9 @@
 	<div class="wrapper">
 		<jsp:include page="../sidebar.jsp" />
 		<div id="content">
-			<form action="${pageContext.request.contextPath}/workExpCtr/findById" method="get">
-			  <input type="hidden" id="tipoOp" name="tipoOp" value="update"><br>
-			  <label for="id">Id of the work experience you want to update:</label><br>
+			<form action="${pageContext.request.contextPath}/stateJobIntCtr/findById" method="get">
+			  <label for="id">Id of the state interview:</label><br>
+			  <input type="hidden" id="tipoOp" name="tipoOp" value="search"><br>
 			  <input type="number" id="id" name="id"><br>
 			  <input type="submit" value="Submit">
 			</form>

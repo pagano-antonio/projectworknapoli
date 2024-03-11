@@ -11,15 +11,14 @@
 	<div class="wrapper">
 		<jsp:include page="../sidebar.jsp" />
 		<div id="content">
-			<form action="${pageContext.request.contextPath}/workExpCtr/findById" method="get">
-			  <input type="hidden" id="tipoOp" name="tipoOp" value="update"><br>
-			  <label for="id">Id of the work experience you want to update:</label><br>
-			  <input type="number" id="id" name="id"><br>
+			<form action="${pageContext.request.contextPath}/skillCtr/addSkill" method="get">
+			  <label for="title">title:</label><br>
+			  <input type="text" id="title" name="title"><br>
+			  <label for="description">description:</label><br>
+			  <input type="text" id="description" name="description"><br>
 			  <input type="submit" value="Submit">
 			</form>
-		
-		
-		</div>
+	</div>
 	</div>
 </body>
 </html>

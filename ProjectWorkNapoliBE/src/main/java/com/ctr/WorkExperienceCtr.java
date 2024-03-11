@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.dao.WorkExperienceRepository;
 import com.model.WorkExperience;
@@ -49,15 +50,19 @@ public class WorkExperienceCtr {
 		return "workExperience/researchById";
     }
 	
-	@GetMapping("findById/{id}")
-    public String findById(@PathVariable("id") String id, Model model, HttpServletRequest request) {
-		
-		int i = Integer.parseInt(request.getParameter("id"));
+	@GetMapping("findById")
+    public String findById(@RequestParam("id") Integer id, Model model, @RequestParam("tipoOp") String tipoOp) {
     	
-		WorkExperience workExpFound = workExperienceRep.findById(i).get();
+		WorkExperience workExpFound = workExperienceRep.findById(id).get();
 		model.addAttribute("workExpFound", workExpFound);
+		
+		if (tipoOp.equals("update")) {
+			return "workExperience/updateWorkExp";
+		}
+		else {
+			return "workExperience/resResearchById";
+		}
     	
-    	return "workExperience/resResearchById";
     }
 	
 	//////////////////////////////////////////////////////////////////////////////////
@@ -82,16 +87,6 @@ public class WorkExperienceCtr {
 		return "workExperience/updateById";
     }
 	
-	@GetMapping("findByIdUpdate/{id}")
-    public String findByIdUpdate(@PathVariable("id") String id, Model model, HttpServletRequest request) {
-		
-		int i = Integer.parseInt(request.getParameter("id"));
-    	
-		WorkExperience workExpFound = workExperienceRep.findById(i).get();
-		model.addAttribute("workExpFound", workExpFound);
-    	
-    	return "workExperience/updateWorkExp";
-    }
     
 	@GetMapping("/update")
     public String update(Model model, WorkExperience w) {
