@@ -31,14 +31,14 @@ public class EducationCtr {
 		educationRep.save(education);
 		System.out.println(education);
 
-		return "education/addEducation";
+		return "education/operationSuccess";
 	}
 
 //////////////////////////////////////////////////////
 
 	@GetMapping("/preFindById")
 	public String preFind(Model model) {
-		return "";
+		return "education/findById";
 	}
 
 	@GetMapping("/findById")
@@ -46,13 +46,13 @@ public class EducationCtr {
 		Education education = new Education();
 		education = (Education) educationRep.findById(idEducation).get();
 		model.addAttribute("idEducationFound", education);
-		return "";
+		return "education/resultsFindById";
 	}
 
 	@PostMapping("/updateEducation")
 	public String updateEducation(Model model, Education education) {
 		educationRep.save(education);
-		return "";
+		return "education/operationSuccess";
 	}
 
 //////////////////////////////////////////////////////

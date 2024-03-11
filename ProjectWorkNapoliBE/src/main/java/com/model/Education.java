@@ -1,7 +1,7 @@
 package com.model;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -24,7 +24,7 @@ public class Education implements Serializable {
 	private int idEducation;
 
 	@Temporal(TemporalType.DATE)
-	private Date date;
+	private LocalDate date;
 
 	private String finalGrade;
 
@@ -53,11 +53,12 @@ public class Education implements Serializable {
 		this.idEducation = idEducation;
 	}
 
-	public Date getDate() {
-		return this.date;
+
+	public LocalDate getDate() {
+		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
 	}
 
