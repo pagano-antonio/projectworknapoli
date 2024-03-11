@@ -22,7 +22,7 @@ public class EmployeeCtr {
 	@GetMapping("/preAddIdEmployee")
 	public String preAddIdEmployee(Model model) {
 
-		return "";
+		return "employee/addEmployee";
 	}
 
 	@GetMapping("/addIdEmployee")
@@ -31,14 +31,14 @@ public class EmployeeCtr {
 		idEmployeeRep.save(employee);
 		System.out.println(employee);
 
-		return "";
+		return "employee/operationSuccess";
 	}
 
 //////////////////////////////////////////////////////
 
 	@GetMapping("/preFindById")
 	public String preFindById(Model model) {
-		return "";
+		return "employee/findById";
 	}
 
 	@GetMapping("/findById")
@@ -46,13 +46,13 @@ public class EmployeeCtr {
 		Employee employee = new Employee();
 		employee = (Employee) idEmployeeRep.findById(idEmployee).get();
 		model.addAttribute("IdEmployee", employee);
-		return "";
+		return "employee/resultsFindById";
 	}
 
 	@PostMapping("/updateEmployee")
 	public String updateEmployee(Model model, Employee employee) {
 		idEmployeeRep.save(employee);
-		return "";
+		return "employee/operationSuccess";
 	}
 
 //////////////////////////////////////////////////////
@@ -60,13 +60,13 @@ public class EmployeeCtr {
 	@GetMapping("/preDeleteEmployee")
 	public String preDeleteEmployee(Model model) {
 
-		return "";
+		return "employee/deleteEmployee";
 	}
 
-	@GetMapping("/deleteEducationDegreeType")
-	public String deleteEducationDegreeType(Model model, int idEmployee) {
+	@GetMapping("/deleteEmployee")
+	public String deleteEmployee(Model model, int idEmployee) {
 
 		idEmployeeRep.deleteById(idEmployee);
-		return "";
+		return "employee/operationSuccess";
 	}	
 }
