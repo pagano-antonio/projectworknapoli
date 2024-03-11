@@ -22,7 +22,7 @@ public class EmployeeTypeCtr {
 	@GetMapping("/preAddEmployeeType")
 	public String preAddIdEmployee(Model model) {
 
-		return "";
+		return "employeeType/addEmployeeType";
 	}
 
 	@GetMapping("/addEmployeeType")
@@ -31,14 +31,14 @@ public class EmployeeTypeCtr {
 		employeeTypeRep.save(employeeType);
 		System.out.println(employeeType);
 
-		return "";
+		return "employeeType/operationSuccess";
 	}
 
 //////////////////////////////////////////////////////
 
 	@GetMapping("/preFindById")
 	public String preFindById(Model model) {
-		return "";
+		return "employeeType/findById";
 	}
 
 	@GetMapping("/findById")
@@ -46,13 +46,13 @@ public class EmployeeTypeCtr {
 		EmployeeType employeeType = new EmployeeType();
 		employeeType = (EmployeeType) employeeTypeRep.findById(idEmployeeType).get();
 		model.addAttribute("IdEmployeeType", employeeType);
-		return "";
+		return "employeeType/resultsFindById";
 	}
 
 	@PostMapping("/updateEmployeeType")
 	public String updateEmployeeType(Model model, EmployeeType employeeType) {
 		employeeTypeRep.save(employeeType);
-		return "";
+		return "employeeType/operationSuccess";
 	}
 
 //////////////////////////////////////////////////////
@@ -60,13 +60,13 @@ public class EmployeeTypeCtr {
 	@GetMapping("/preDeleteEmployeeType")
 	public String preDeleteEmployeeType(Model model) {
 
-		return "";
+		return "employeeType/deleteEmployee";
 	}
 
-	@GetMapping("/deleteEducationDegreeType")
-	public String deleteEducationDegreeType(Model model, int idEmployeeType) {
+	@GetMapping("/deleteEmployeeType")
+	public String deleteEmployeeType(Model model, int idEmployeeType) {
 
 		employeeTypeRep.deleteById(idEmployeeType);
-		return "";
+		return "employeeType/operationSuccess";
 	}	
 }
