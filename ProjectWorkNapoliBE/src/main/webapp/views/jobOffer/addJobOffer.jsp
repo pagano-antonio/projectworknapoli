@@ -31,12 +31,13 @@
                 <!-- Select Skills  -->
                 <div class="mb-2 input-100">
                     <label class="form-label" for="selectedSkills">Select Skills:</label>
-                    <select id="skills" multiple="multiple" name="selectedSkills">
+                    <select multiple="multiple" name="selectedSkills" class="multiselect">
                     <c:forEach var="skill" items="${skills}">
                             <option value="${skill.idSkill}">${skill.title}</option>
                         </c:forEach>
                     </select>
                 </div>
+                
                 
                <!-- Start Date -->
                 <div class="mb-2 input-50">
@@ -85,25 +86,5 @@
         </form>
     </div>
 </div>
-
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css">
-
-
-<script type="text/javascript">
-	$(document).ready(function() {
-	    $('#skills').multiselect({
-	      includeSelectAllOption: true,
-	      enableFiltering: true,
-	      enableCaseInsensitiveFiltering: true,
-	      buttonWidth: '100%',
-	      numberDisplayed: 3
-	    });
-	});
-</script>
 </body>
 </html>
