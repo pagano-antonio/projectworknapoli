@@ -51,12 +51,14 @@
                     <td class="align-middle">
                     <div class="actions">
                      <a href="${pageContext.request.contextPath}/JobOfferCtr/updateJobOfferForm?id=${jobOffer.idJobOffer}">
+					       <button> 
 					       <i class="fas fa-edit"></i>
-					       <button> Edit</button>
+					       <span>Edit</span>
+					       </button>
 					 </a>
 					
 	 <a href="${pageContext.request.contextPath}/JobOfferCtr/deleteJobOffer/${jobOffer.idJobOffer}">
-         <button class="fas fa-trash">Delete</button>
+         <button><i class="fas fa-trash"></i> <span>Delete</span></button>
     </a>
 
                   

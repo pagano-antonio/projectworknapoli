@@ -240,6 +240,33 @@ select + .btn-group .btn {
 	align-items:center;
 	border:1px solid;
 }
+.actions  {
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	gap:5px;
+}
+.actions a {
+	display:flex;
+	align-items:center;
+	text-decoration:none;
+}
+.actions a button {
+	background:#7385D5;
+	color:white;
+	outline:0;
+	border:0;
+	padding: 5px 7px;
+}
+.actions a button span{
+	color:white;
+	margin-left:2.5px;
+	text-transform:uppercase;
+	font-size:10px;
+}
+.actions a button svg path{
+	fill:white;
+}
 /* ---------------------------------------------------
     DISMISS STYLE
 ----------------------------------------------------- */
