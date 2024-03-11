@@ -43,7 +43,7 @@ public class CandidateCommercialDataCtr {
 	@GetMapping("/addCandidateCommercial")
 	public String addCandidateCommercial(Model model, CandidateCommercialData ccd) {
 		candidateCommercialRep.save(ccd);
-		return "candidateCommercial/addCandidateCommercialResults";
+		return "candidateCommercial/Ok";
 	}
 	
 	///////////////////////////////////////////////////////////////
@@ -56,13 +56,14 @@ public class CandidateCommercialDataCtr {
 	@GetMapping("findByIdToUpdate")
 	public String findByIdToUpdateCandidateCommercial(Model model, Integer idCandidateCommercial) {
 		CandidateCommercialData ccd = candidateCommercialRep.findById(idCandidateCommercial).get();
+		model.addAttribute("candidatecommercial", ccd);
 		return "candidateCommercial/updateCandidateCommercial";
 	}
 	
-	@GetMapping("updateCandidate")
+	@GetMapping("updateCandidateCommercial")
 	public String updateCandidateCommercial(Model model, CandidateCommercialData ccd) {
 		candidateCommercialRep.save(ccd);
-		return "candidateCommercial/updateCandidateCommercialResults";
+		return "candidateCommercial/Ok";
 	}
 	
 	///////////////////////////////////////////////////////////////////////
@@ -75,6 +76,6 @@ public class CandidateCommercialDataCtr {
 	@GetMapping("deleteCandidateCommercial")
 	public String deleteCandidateCommercial (Model model, Integer idCandidateCommercial) {
 		candidateCommercialRep.deleteById(idCandidateCommercial);
-		return "candidateCommercial/deleteCandidateCommercialResults";
+		return "candidateCommercial/Ok";
 	}
 }
