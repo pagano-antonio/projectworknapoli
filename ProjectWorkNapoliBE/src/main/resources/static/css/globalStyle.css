@@ -142,6 +142,19 @@ a[data-toggle="collapse"] {
     position: relative;
 }
 
+#sidebar ul li a.dropdown-toggle svg {
+	width:20px;
+	height:auto;
+	margin-right:5px;
+}
+
+#sidebar ul li a.dropdown-toggle svg path {
+	fill:white;
+}
+#sidebar ul li a:hover svg path{
+    fill: #fde200;
+}
+
 .dropdown-toggle::after {
     display: block;
     position: absolute;
