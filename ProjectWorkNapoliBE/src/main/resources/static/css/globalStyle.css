@@ -307,3 +307,132 @@ select + .btn-group .btn {
         display: none;
     }
 }
+
+
+
+.my-toast {
+  position: absolute;
+  top: 25px;
+  right: 30px;
+  border-radius: 5px;
+  background: #74d592;
+  color:black;
+  font-weight:500;
+  padding: 20px 35px 20px 25px;
+  box-shadow: 0 6px 20px -5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transform: translateX(calc(100% + 30px));
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
+}
+
+.my-toast.active {
+  transform: translateX(0%);
+}
+
+.my-toast .my-toast-content {
+  display: flex;
+  align-items: center;
+  padding-bottom:10px;
+  position:relative;
+}
+
+.my-toast-content .check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 35px;
+  min-width: 35px;
+  background-color: #2770ff;
+  color: black;
+  font-size: 20px;
+  border-radius: 50%;
+}
+.my-toast-content  .my-toast-ok {
+	width:45px;
+	height:auto;
+}
+.my-toast-close {
+	width:15px;
+	height:auto;
+	position:absolute;
+	top:-10px;
+	right:-18px;
+}
+
+.my-toast-content .message {
+  display: flex;
+  flex-direction: column;
+  margin: 0 20px;
+}
+
+.message .text.text-1 {
+	font-size: 14px;
+	text-align: center;
+  color: #333;
+  font-weight: 400;
+   text-transform:uppercase;
+}
+.message .text.text-2 {
+	font-size: 18px;
+  font-weight: 600;
+  color:black;
+}
+
+.my-toast .my-alert-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  padding: 5px;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.my-toast .my-alert-close {
+  opacity: 1;
+}
+
+.my-toast .progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+
+}
+
+.my-toast .progress:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #7385D5;
+}
+
+.progress.active:before {
+  animation: progress 2.5s linear forwards;
+}
+
+@keyframes progress {
+  100% {
+    right: 100%;
+  }
+}
+
+button {
+  padding: 12px 20px;
+  font-size: 20px;
+  outline: none;
+  border: none;
+  background-color: #2770ff;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #2770ff;
+}
+

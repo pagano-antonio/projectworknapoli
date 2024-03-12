@@ -75,6 +75,7 @@ public class JobOfferCtr {
 	public String jobOffers(Model model) {
 		List<JobOffer> jobOffers = jobOfferRep.findAll();
 		model.addAttribute("jobOffers", jobOffers);
+		model.addAttribute("showToast", false);
 		return "jobOffer/jobOffers";
 	}
 
@@ -123,6 +124,8 @@ public class JobOfferCtr {
 		}
 
 		List<JobOffer> jobOffers = jobOfferRep.findAll();
+		model.addAttribute("toastMessage", "Job Offer created!");
+		model.addAttribute("showToast", true);
 		model.addAttribute("jobOffers", jobOffers);
 		return "jobOffer/jobOffers";
 	}
@@ -158,6 +161,8 @@ public class JobOfferCtr {
 
 		List<JobOffer> jobOffers = jobOfferRep.findAll();
 		model.addAttribute("jobOffers", jobOffers);
+		model.addAttribute("toastMessage", "Job Offer updated!");
+		model.addAttribute("showToast", true);
 		return "jobOffer/jobOffers";
 	}
 
@@ -170,6 +175,8 @@ public class JobOfferCtr {
 
 		List<JobOffer> jobOffers = jobOfferRep.findAll();
 		model.addAttribute("jobOffers", jobOffers);
+		model.addAttribute("toastMessage", "Job Offer deleted!");
+		model.addAttribute("showToast", true);
 		return "jobOffer/jobOffers";
 	}
 
@@ -190,6 +197,13 @@ public class JobOfferCtr {
 				stipendiomin, stipendiomax, selectedSkills != null ? selectedSkills : null);
 
 		System.out.println(searchResults.size());
+		if (searchResults.size() == 1) {
+			model.addAttribute("toastMessage", searchResults.size() + " Job Offer founded!");
+
+		} else {
+			model.addAttribute("toastMessage", searchResults.size() + " Job Offers founded!");
+		}
+		model.addAttribute("showToast", true);
 
 		model.addAttribute("jobOffers", searchResults);
 		return "jobOffer/jobOffers";
