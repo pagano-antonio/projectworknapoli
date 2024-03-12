@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="ISO-8859-1">
-    <title>Create Job Offer</title>
+    <title>Search Job Offer</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   
 </head>
@@ -13,21 +13,16 @@
     <div class="wrapper">
         <jsp:include page="../sidebar.jsp" />
         <div id="content">
-            <h2>Create Job Offer</h2>
-            <form action="addJobOffer" method="post">
+            <h2>Search Job Offer</h2>
+            <form action="searchJobOffer" method="post">
 
                 <!-- Job Offer Title -->
                 <div class="input-100 mb-2">
                     <label class="form-label" for="title">Title:</label>
-                    <input type="text" name="title" required class="form-control">
+                    <input type="text" name="title"  class="form-control">
                 </div>
 
-                <!-- Job Offer Description -->
-                <div class="input-100 mb-2">
-                    <label class="form-label" for="description">Description:</label>
-                    <textarea rows="4" cols="50" class="form-control"></textarea>
-                </div>
-
+                
                 <!-- Select Skills  -->
                 <div class="mb-2 input-100">
                     <label class="form-label" for="selectedSkills">Select Skills:</label>
@@ -42,30 +37,31 @@
                <!-- Start Date -->
                 <div class="mb-2 input-50">
                     <label class="form-label" for="startDate">Start Date:</label>
-                    <input type="date" name="startDate" class="form-control" required>
+                    <input type="date" name="startDate" class="form-control" >
                 </div>
 
                 <!-- End Date -->
                 <div class="mb-2 input-50">
                     <label class="form-label" for="endDate">End Date:</label>
-                    <input type="date" name="endDate" class="form-control" required>
+                    <input type="date" name="endDate" class="form-control" >
                </div>
 
                 <!-- Minimum Salary -->
                 <div class="mb-2 input-50">
-                    <label class="form-label" for="minRal">Minimum Salary:</label>
-                    <input type="number" name="minRal" class="form-control" required>
+                    <label class="form-label" for="stipendiomin">Minimum Salary:</label>
+                    <input type="number" name="stipendiomin" class="form-control" >
                 </div>
 
                 <!-- Maximum Salary -->
                 <div class="mb-2 input-50">
-                    <label class="form-label" for="maxRal">Maximum Salary:</label>
-                    <input type="number" name="maxRal" class="form-control" required>
+                    <label class="form-label" for="stipendiomax">Maximum Salary:</label>
+                    <input type="number" name="stipendiomax" class="form-control" >
                 </div>
             <!-- Company Client -->
             <div class="mb-2 input-50">
                 <label class="form-label" for="CompanyClient">Company Client:</label>
-                <select class="form-control" name="CompanyClient" required>
+                <select class="form-control" name="CompanyClient" >
+                 <option value="">Select Company Client</option>
                     <c:forEach var="client" items="${clients}">
                         <option value="${client.idCompanyClient}">${client.name}</option>
                     </c:forEach>
@@ -75,14 +71,15 @@
             <!-- Contract Type -->
             <div class="mb-2 input-50">
                 <label class="form-label" for="ContractType">Contract Type:</label>
-                <select class="form-control" name="ContractType" required>
-                    <c:forEach var="contract" items="${contractsType}">
+                <select class="form-control" name="ContractType" >
+                     <option value="">Seleziona contratto</option>
+                     <c:forEach var="contract" items="${contractsType}">
                         <option value="${contract.idContractType}">${contract.title}</option>
                     </c:forEach>
                 </select>
             </div>
             <!-- Submit Button -->
-            <input type="submit" value="Create Job Offer">
+            <input type="submit" value="Search Job Offer">
         </form>
     </div>
 </div>

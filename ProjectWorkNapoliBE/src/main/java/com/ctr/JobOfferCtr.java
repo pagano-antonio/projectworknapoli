@@ -57,6 +57,18 @@ public class JobOfferCtr {
 		return "jobOffer/addJobOffer";
 	}
 
+	@GetMapping("searchJobOfferForm")
+	public String searchJobOfferForm(Model model) {
+		List<CompanyClient> clients = companyClientRep.findAll();
+		List<ContractType> contractsType = contractTypeRep.findAll();
+		List<Skill> skills = SkillRep.findAll();
+		model.addAttribute("clients", clients);
+		model.addAttribute("contractsType", contractsType);
+		model.addAttribute("skills", skills);
+		System.out.println("fo to the search form");
+		return "jobOffer/searchJobOffer";
+	}
+
 /////////////////////////////////////////////////////////////////////////   
 
 	@GetMapping("jobOffers")
@@ -110,7 +122,9 @@ public class JobOfferCtr {
 			}
 		}
 
-		return "jobOffer/addJobOffer";
+		List<JobOffer> jobOffers = jobOfferRep.findAll();
+		model.addAttribute("jobOffers", jobOffers);
+		return "jobOffer/jobOffers";
 	}
 
 /////////////////////////////////////////////////////////////////////////
@@ -161,12 +175,24 @@ public class JobOfferCtr {
 
 /////////////////////////////////////////////////////////////////////////
 
-	@GetMapping("findById/{id}")
-	public String findById(Model model, @PathVariable("id") int id) {
+	@PostMapping("searchJobOffer")
+	public String searchJobOffer(Model model, @ModelAttribute JobOffer jobOffer,
+			@RequestParam(name = "stipendiomin", required = false) Integer stipendiomin,
+			@RequestParam(name = "stipendiomax", required = false) Integer stipendiomax,
+			@RequestParam(name = "selectedSkills", required = false) List<Integer> selectedSkills) {
 
-		JobOffer res = jobOfferRep.findById(id).get();
+		System.out.println("selectedSkills: " + selectedSkills);
 
-		return "";
+		List<JobOffer> searchResults = jobOfferRep.findByOptionalCriteria(jobOffer.getIdJobOffer(), jobOffer.getTitle(),
+				jobOffer.getStartDate(), jobOffer.getEndDate(),
+				jobOffer.getCompanyClient() != null ? jobOffer.getCompanyClient().getIdCompanyClient() : null,
+				jobOffer.getContractType() != null ? jobOffer.getContractType().getIdContractType() : null,
+				stipendiomin, stipendiomax, selectedSkills != null ? selectedSkills : null);
+
+		System.out.println(searchResults.size());
+
+		model.addAttribute("jobOffers", searchResults);
+		return "jobOffer/jobOffers";
 	}
 
 /////////////////////////////////////////////////////////////////////////   
