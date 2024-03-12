@@ -11,7 +11,7 @@
 <form action="${pageContext.request.contextPath}/EducationDegreeTypeCtr/findById">
  
 <label for="Id"> ID EDUCATION DEGREE TYPE</label>
-<br><input type= "number" id="idEducationDegreeTypeCtr" name="idEducationEducationDegreeTypeCtr"><br>
+<br><input type= "number" id="idEducationDegreeType" name="idEducationDegreeType"><br>
 <label> SUBMIT</label>
 <br><input type ="submit" value="invia"><br>
 

@@ -60,7 +60,7 @@ public class EmployeeTypeCtr {
 	@GetMapping("/preDeleteEmployeeType")
 	public String preDeleteEmployeeType(Model model) {
 
-		return "employeeType/deleteEmployee";
+		return "employeeType/deleteEmployeeType";
 	}
 
 	@GetMapping("/deleteEmployeeType")

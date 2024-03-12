@@ -11,7 +11,7 @@ import com.dao.EducationDegreeTypeRepository;
 import com.model.EducationDegreeType;
 
 @Controller
-@RequestMapping("EducationDegreTypeCtr")
+@RequestMapping("EducationDegreeTypeCtr")
 public class EducationDegreeTypeCtr {
 
 	@Autowired
@@ -38,11 +38,11 @@ public class EducationDegreeTypeCtr {
 
 	@GetMapping("/preFindById")
 	public String preFindById(Model model) {
-		return "";
+		return "educationDegreeType/findById";
 	}
 
 	@GetMapping("/findById")
-	public String findById(Model model, int idEducationDegreeType) {
+	public String findById(Model model, Integer idEducationDegreeType) {
 		EducationDegreeType educationDegreeType = new EducationDegreeType();
 		educationDegreeType = (EducationDegreeType) educationDegreeTypeRep.findById(idEducationDegreeType).get();
 		model.addAttribute("IdEducationDegreeType", educationDegreeType);
@@ -60,7 +60,7 @@ public class EducationDegreeTypeCtr {
 	@GetMapping("/preDeleteEducationDegreeType")
 	public String preDeleteEducationDegreeType(Model model) {
 
-		return "educationDegreeType/deleteEducation";
+		return "educationDegreeType/deleteEducationDegreeType";
 	}
 
 	@GetMapping("/deleteEducationDegreeType")

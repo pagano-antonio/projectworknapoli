@@ -18,14 +18,14 @@
 <%EducationDegreeType edt = (EducationDegreeType) request.getAttribute("IdEducationDegreeType"); %>
 
 
-<form action= "${pageContext.request.contextPath}/EducationEducationDegreeTypeCtrCtr/updateEducationDegreeType" method= "post">
+<form action= "${pageContext.request.contextPath}/EducationDegreeTypeCtr/updateEducationDegreeType" method= "post">
 
 <%if (edt != null){%>
 
 
 		<br><label>ID EDUCATION DEGREE TYPE</label><br>
 	
-	<input type="text" id="idEducationDegreeType" name="idEducationDegreeType" readOnly value="<%=edt.getIdEducationDegreeType() %>">
+	<input type="number" id="idEducationDegreeType" name="idEducationDegreeType" readOnly value="<%=edt.getIdEducationDegreeType() %>">
 
 		<label>DESCRIPTION</label>
 		
