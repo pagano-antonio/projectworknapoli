@@ -13,18 +13,29 @@
 		<div class="wrapper">
 			<jsp:include page="../sidebar.jsp" />
 			<div id="content">
-				<table>
-					<tr>
-						<th>Address</th> 
-						<th>Birthday</th> 
-						<th>Birthplace</th> 
-					</tr>
-					<tr>  
-						<td>${findById.address}</td> 
-						<td>${findById.birthday}</td> 
-						<td>${findById.birthPlace}</td>
-					</tr>
-				</table>
+				<table class="table table-striped table-sm align-middle table-responsive">
+				    <tr>
+				        <th>Name</th>
+				        <th>Surname</th>
+				        <th>Birthplace</th>
+				        <th>Birthday</th>
+				        <th>Address</th>
+				        <th>City</th>
+				        <th>Email</th>
+				        <th>Phone</th>
+				    </tr>
+				    <tr>  
+				        <td>${findById.name}</td>
+				        <td>${findById.surname}</td>
+				        <td>${findById.birthPlace}</td>
+				        <td>${findById.birthday}</td>
+				        <td>${findById.address}</td>
+				        <td>${findById.city}</td>
+				        <td>${findById.email}</td>
+				        <td>${findById.phone}</td>
+				    </tr>
+</table>
+
 			</div>
 		</div>
 	
