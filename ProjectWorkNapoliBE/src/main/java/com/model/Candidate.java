@@ -2,6 +2,7 @@ package com.model;
 
 import java.io.Serializable;
 import java.math.BigInteger;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -27,7 +28,7 @@ public class Candidate implements Serializable {
 	private String address;
 
 	@Temporal(TemporalType.DATE)
-	private Date birthday;
+	private LocalDate birthday;
 
 	private String birthPlace;
 
@@ -80,11 +81,11 @@ public class Candidate implements Serializable {
 		this.address = address;
 	}
 
-	public Date getBirthday() {
+	public LocalDate getBirthday() {
 		return this.birthday;
 	}
 
-	public void setBirthday(Date birthday) {
+	public void setBirthday(LocalDate birthday) {
 		this.birthday = birthday;
 	}
 

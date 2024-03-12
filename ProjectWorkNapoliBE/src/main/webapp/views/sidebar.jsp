@@ -28,8 +28,7 @@
                     <ul class="collapse list-unstyled" id="jobOffer">
                         <li><a href="${pageContext.request.contextPath}/JobOfferCtr/jobOfferForm">Crea offerta di lavoro</a></li>
                         <li><a href="${pageContext.request.contextPath}/JobOfferCtr/jobOffers">Tutte le offerte di lavoro</a></li>
-                        <li><a href="${pageContext.request.contextPath}/JobOfferCtr/searchJobOfferForm">Cerca offerta di lavoro</a></li>
-                       
+                       <li><a href="#">Page 3</a></li>
                     </ul>
                 </li>
                 <li>

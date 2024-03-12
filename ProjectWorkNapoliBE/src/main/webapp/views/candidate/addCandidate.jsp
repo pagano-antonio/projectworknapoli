@@ -25,8 +25,8 @@
 			  <label for="birthPlace">Luogo di nascita:</label><br>
 			  <input type="text" id="birthPlace" name="birthPlace"><br>
 			  
-			  <!-- <label for="birthday">Data di nascita:</label><br> -->
-<!-- 			  <input type="date" id="birthday" name="birthday"><br> -->
+			  <label for="birthday">Data di nascita:</label><br>
+			  <input type="date" id="birthday" name="birthday"><br>
 			  
 			  <label for="address">Indirizzo:</label><br>
 			  <input type="text" id="address" name="address"><br> 			  

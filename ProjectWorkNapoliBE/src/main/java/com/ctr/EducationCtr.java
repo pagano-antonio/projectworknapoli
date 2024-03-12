@@ -60,14 +60,14 @@ public class EducationCtr {
 	@GetMapping("/preDelete")
 	public String preDelete(Model model) {
 
-		return "";
+		return "education/deleteEducation";
 	}
 
 	@GetMapping("/deleteEducation")
 	public String deleteEducation(Model model, int idEducation) {
 
 		educationRep.deleteById(idEducation);
-		return "";
+		return "education/operationSuccess";
 	}
 
 }

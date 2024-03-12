@@ -11,8 +11,8 @@
 	<div class="wrapper">
 		<jsp:include page="../sidebar.jsp" />
 		<div id="content">
-			<h1>OK</h1>
-			<a href="${pageContext.request.contextPath}/workExpCtr/indexWorkExp">Index</a><br>
+		<h1>OK</h1>
+		<a href="${pageContext.request.contextPath}/workExpCtr/indexWorkExp">Index</a><br>
 		</div>
 		</div>
 </body>

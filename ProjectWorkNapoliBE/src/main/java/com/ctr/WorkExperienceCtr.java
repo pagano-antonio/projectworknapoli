@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.dao.WorkExperienceRepository;
+
 import com.model.WorkExperience;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -16,15 +17,17 @@ import jakarta.servlet.http.HttpServletRequest;
 @Controller
 @RequestMapping("workExpCtr")
 public class WorkExperienceCtr {
-	
+
 	@Autowired
     private WorkExperienceRepository workExperienceRep;
 	
 	@GetMapping("/indexWorkExp")
     public String home(Model model) {
-
+		
         return "workExperience/indexWorkExp";
+        
     }
+	
 	
 	//////////////////////////////////////////////////////////////////////////////////
 	
@@ -95,4 +98,5 @@ public class WorkExperienceCtr {
 		model.addAttribute("workExpUpdated", w);
         return "workExperience/resUpdateWorkExp";
     }
+
 }
