@@ -7,11 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
- <jsp:include page="../header.jsp" />
+<jsp:include page="../header.jsp" />
 	<div class="wrapper">
 		<jsp:include page="../sidebar.jsp" />
 		<div id="content">
-			<p>Operazione effettuata con successo!</p>
+		<p>Operazione effettuata con successo!</p>
 		
 		</div>
 	</div>

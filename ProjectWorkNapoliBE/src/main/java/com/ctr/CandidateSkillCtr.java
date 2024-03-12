@@ -21,7 +21,7 @@ public class CandidateSkillCtr {
 	@GetMapping("/preFindById")
 	public String preFindById() {
 		
-		return "candidateCommercial/findById";
+		return "candidateSkill/findById";
 	}
 	
 	
@@ -43,26 +43,27 @@ public class CandidateSkillCtr {
 	@GetMapping("/addCandidateSkill")
 	public String addCandidateSkill(Model model, CandidateSkill cs) {
 		candidateSkillRep.save(cs);
-		return "candidateSkill/addCandidateSkillResults";
+		return "candidateSkill/Ok";
 	}
 	
 	///////////////////////////////////////////////////////////////
 	
 	@GetMapping("preUpdateCandidateSkill")
 	public String preUpdateCandidateSkill() {
-		return "candidateCommercial/updateById";
+		return "candidateSkill/updateById";
 	}
 	
 	@GetMapping("findByIdToUpdate")
 	public String findByIdToUpdateCandidateSkill(Model model, Integer idCandidateSkill) {
 		CandidateSkill cs = candidateSkillRep.findById(idCandidateSkill).get();
+		model.addAttribute("candidateskill", cs);
 		return "candidateSkill/updateCandidateSkill";
 	}
 	
 	@GetMapping("updateCandidateSkill")
 	public String updateCandidateSkill(Model model, CandidateSkill cs) {
 		candidateSkillRep.save(cs);
-		return "candidateSkill/updateCandidateSkillResults";
+		return "candidateSkill/Ok";
 	}
 	
 	///////////////////////////////////////////////////////////////////////
@@ -75,6 +76,6 @@ public class CandidateSkillCtr {
 	@GetMapping("deleteCandidateSkill")
 	public String deleteCandidateSkill (Model model, Integer idCandidateSkill) {
 		candidateSkillRep.deleteById(idCandidateSkill);
-		return "candidateSkill/deleteCandidateSkillResults";
+		return "candidateSkill/Ok";
 	}
 }

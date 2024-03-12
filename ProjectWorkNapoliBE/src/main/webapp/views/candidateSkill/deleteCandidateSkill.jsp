@@ -7,14 +7,19 @@
 <title>Insert title here</title>
 </head>
 <body>
- <jsp:include page="../header.jsp" />
+	 <jsp:include page="../header.jsp" />
 	<div class="wrapper">
 		<jsp:include page="../sidebar.jsp" />
 		<div id="content">
-			<p>Operazione effettuata con successo!</p>
+			<form action="${pageContext.request.contextPath}/CandidateSkillCtr/deleteCandidateSkill">
+			
+				<label for="id">Id Candidate Skill:</label><br>
+				<input type="number" id="idCandidateSkill" name="idCandidateSkill"><br>
+			
+				<input type="submit" value="Invia">
+			</form>
 		
 		</div>
 	</div>
-
 </body>
 </html>
