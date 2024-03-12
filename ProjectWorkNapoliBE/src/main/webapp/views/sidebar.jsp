@@ -32,8 +32,11 @@
                       	<li><a href="${pageContext.request.contextPath}/CandidateSkillCtr/preUpdateCandidateSkill">Aggiorna le skill del candidato</a></li>
                       	<li><a href="${pageContext.request.contextPath}/CandidateSkillCtr/preDeleteCandidateSkill">Elimina le skill del candidato</a></li>
                        <li><a href="${pageContext.request.contextPath}/EducationCtr/preAddEducation">Aggiungi Titolo di Studio Candidato</a></li>
-                        <li><a href="${pageContext.request.contextPath}/EducationCtr/preFindById">Cerca per Titolo di Studio </a></li>
-                    	<li><a href="${pageContext.request.contextPath}/EducationCtr/preDelete">Elimina per Titolo di Studio </a></li>
+                        <li><a href="${pageContext.request.contextPath}/EducationCtr/preFindById">Cerca per Titolo di Studio Candidato</a></li>
+                    	<li><a href="${pageContext.request.contextPath}/EducationCtr/preDelete">Elimina per Titolo di Studio Candidato</a></li>
+ 						<li><a href="${pageContext.request.contextPath}/EducationCtrDegreeType/preAddEducationDegreeType">Aggiungi Tipo Titolo di Studio </a></li>
+                        <li><a href="${pageContext.request.contextPath}/EducationCtrDegreeType/preFindById">Cerca per Tipo Titolo di Studio </a></li>
+                    	<li><a href="${pageContext.request.contextPath}/EducationCtrDegreeType/preDeleteEducationDegreeType">Elimina per Tipo Titolo di Studio </a></li>
  
                     </ul>
                 </li>
