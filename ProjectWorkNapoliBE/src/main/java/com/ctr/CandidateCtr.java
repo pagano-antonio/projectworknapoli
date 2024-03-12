@@ -79,5 +79,5 @@ public class CandidateCtr {
 		candidateRep.deleteById(idCandidate);
 		return "candidate/Ok";
 	}
-	
+
 }
