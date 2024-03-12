@@ -19,6 +19,8 @@
                         <li><a href="${pageContext.request.contextPath}/CandidateCtr/preAddCandidate">Aggiungi candidato</a></li>
                        <li><a href="${pageContext.request.contextPath}/EducationCtr/preAddEducation">Aggiungi Titolo di Studio Candidato</a></li>
                         <li><a href="${pageContext.request.contextPath}/EducationCtr/preFindById">Cerca per Titolo di Studio </a></li>
+                    	<li><a href="${pageContext.request.contextPath}/EducationCtr/preDelete">Elimina per Titolo di Studio </a></li>
+ 
                     </ul>
                 </li>
                 <li>
