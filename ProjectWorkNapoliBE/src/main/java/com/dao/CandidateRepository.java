@@ -1,5 +1,6 @@
 package com.dao;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -22,5 +23,11 @@ public interface CandidateRepository extends JpaRepository<Candidate, Integer>{
 			+ "INNER JOIN education_degree_type et ON e.idEducationDegreeType = et.idEducationDegreeType "
 			+ "WHERE et.idEducationDegreeType = ?1", nativeQuery = true)
 	List<Candidate> findByTypeIdEducation(Integer idEducationDegreeType);
+
+	List<Candidate> findBySurname(String surname);
+
+	List<Candidate> findByPhone(BigInteger phone);
+
+	List<Candidate> findByCity(String city);
 
 }
