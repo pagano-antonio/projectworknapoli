@@ -34,7 +34,7 @@ public class Employee implements Serializable {
 
 	// bi-directional many-to-one association to EmployeeType
 	@ManyToOne
-	@JoinColumn(name = "idEmployeeType")
+	@JoinColumn(name = "idEmployeeType")				//devo richiamare nomeAttributo.nomeColonna e non nomeClasse.nomeAttributo
 	private EmployeeType employeeType;
 
 	// bi-directional many-to-one association to JobInterview

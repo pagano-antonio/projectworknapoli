@@ -11,10 +11,14 @@
 
 	<h2>ADD EMPLOYEE</h2>
 	
-			<label>ID EMPLOYEE</label>
-			<br> <input type="text" id="idEmployee" name="idEmployee" ><br>
 			<label>ID EMPLOYEE TYPE</label>
-			<br> <input type="text" id="employee.employeeType" name="employee.employeeType"><br>
+			<br> <input type="text" id="employeeType.idEmployeeType" name="employeeType.idEmployeeType"><br>
+			<label>NAME</label>
+			<br> <input type="text" id="name" name="name"><br>
+			<label>SURNAME</label>
+			<br> <input type="text" id="surname" name="surname"><br>
+			<label>EMAIL</label>
+			<br> <input type="text" id="email" name="email"><br>
 			<label>USERNAME</label>
 			<br> <input type="text" id="username" name="username"><br>
 			<label>PASSWORD</label>
