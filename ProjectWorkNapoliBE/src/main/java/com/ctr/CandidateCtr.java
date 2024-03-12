@@ -79,6 +79,7 @@ public class CandidateCtr {
 		return "candidate/Ok";
 	}
 
+
 	///////////////////////////////////////////////////////////////////////
 
 	@GetMapping("/preFindBySurname")
@@ -127,6 +128,5 @@ public class CandidateCtr {
 		return "candidate/findByCityResults";
 	}
 	
-	///////////////////////////////////////////////////////////////////////
-	
 }
+
