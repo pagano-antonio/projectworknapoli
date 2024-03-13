@@ -226,6 +226,13 @@ select + .btn-group .btn {
 	display:flex;
 	align-items:flex-start;
 }
+.multiselect {
+	min-height:34px;
+}
+.btn-group button.multiselect {
+	display:flex;
+	align-items:center;
+}
 .multiselect-selected-text {
 	width:100%;
 	text-align:left;

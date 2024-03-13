@@ -1,6 +1,7 @@
 package com.ctr;
 
 import java.math.BigInteger;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +10,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.dao.CandidateRepository;
+import com.dao.ContractTypeRepository;
+import com.dao.EducationDegreeTypeRepository;
+import com.dao.SkillRepository;
+import com.dao.StateJobInterviewRepository;
 import com.model.Candidate;
+import com.model.EducationDegreeType;
+import com.model.Skill;
+import com.model.StateJobInterview;
 
 @Controller
 @RequestMapping("CandidateCtr")
@@ -20,20 +29,43 @@ public class CandidateCtr {
 	@Autowired
 	public CandidateRepository candidateRep;
 
+	@Autowired
+	private SkillRepository SkillRep;
+
+	@Autowired
+	private EducationDegreeTypeRepository educationDegreeTypeRep;
+
+	@Autowired
+	private ContractTypeRepository contractTypeRep;
+
+	@Autowired
+	private StateJobInterviewRepository stateJobInterviewRepositoryRep;
+
 	////////////////////////////////////////////////////////////////////////
 
 	@GetMapping("/searchCandidateForm")
-	public String searchCandidateForm() {
+	public String searchCandidateForm(Model model) {
+		List<Skill> skills = SkillRep.findAll();
+		List<EducationDegreeType> degrees = educationDegreeTypeRep.findAll();
+		List<StateJobInterview> stateJobInterviews = stateJobInterviewRepositoryRep.findAll();
+		model.addAttribute("stateJobInterviews", stateJobInterviews);
+		model.addAttribute("skills", skills);
+		model.addAttribute("degrees", degrees);
 
 		return "candidate/searchCandidate";
 	}
 
 	@PostMapping("/searchCandidate")
-	public String searchCandidate(Model model, Candidate candidate) {
-		System.out.println(candidate.getPhone());
+	public String searchCandidate(Model model, Candidate candidate,
+			@RequestParam(name = "selectedSkills", required = false) List<Integer> selectedSkills,
+			@RequestParam(name = "degree", required = false) Integer degree,
+			@RequestParam(name = "jobinterview", required = false) Integer jobinterview,
+			@RequestParam(name = "dateAfter", required = false) LocalDate dateAfter) {
+		System.out.println("stateJobInterview:" + jobinterview);
 		List<Candidate> candidates = candidateRep.findByCriteria(candidate.getName(), candidate.getSurname(),
 				candidate.getBirthPlace(), candidate.getBirthday(), candidate.getCity(), candidate.getAddress(),
-				candidate.getEmail(), candidate.getPhone());
+				candidate.getEmail(), candidate.getPhone(), selectedSkills != null ? selectedSkills : null, degree,
+				jobinterview, dateAfter);
 		System.out.println("risultati candidati: " + candidates.size());
 
 		if (candidates.size() == 1) {

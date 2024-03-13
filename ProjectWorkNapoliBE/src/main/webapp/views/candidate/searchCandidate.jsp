@@ -62,6 +62,46 @@
                     <label class="form-label" for="phone">Phone:</label>
                     <input type="tel" name="phone" class="form-control">
                 </div>
+                
+                 <!-- Education  -->
+                <div class="mb-2 input-50">
+                    <label class="form-label" for="degree">Select degree:</label>
+                    <select name="degree" class="form-control">
+                    <option value="">Select degree</option>
+                    <c:forEach var="degree" items="${degrees}">
+                            <option value="${degree.idEducationDegreeType}">${degree.description}</option>
+                        </c:forEach>
+                    </select>
+                </div>
+                
+                 <!-- Select Skills  -->
+                <div class="mb-2 input-50">
+                    <label class="form-label" for="selectedSkills">Select Skills:</label>
+                    <select multiple="multiple" name="selectedSkills" class="multiselect form-control">
+                    <c:forEach var="skill" items="${skills}">
+                            <option value="${skill.idSkill}">${skill.title}</option>
+                        </c:forEach>
+                    </select>
+                </div>
+                
+                
+                 <!-- Job interview  -->
+                <div class="mb-2 input-50">
+                    <label class="form-label" for="jobinterview">Select state job interview</label>
+                    <select name="jobinterview" class="form-control">
+                    <option value="">Select state job interview</option>
+                    <c:forEach var="stateJobInterview" items="${stateJobInterviews}">
+                            <option value="${stateJobInterview.idStateJobInterview}">${stateJobInterview.title} - ${stateJobInterview.description}</option>
+                        </c:forEach>
+                    </select>
+                </div>
+                
+                   <!-- Interview Date -->
+                <div class="input-50 mb-2">
+                    <label class="form-label" for="dateAfter">Interview State After:</label>
+                    <input type="date" name="dateAfter" class="form-control">
+                </div>
+                
 
                 <!-- Submit Button -->
                 <input type="submit" value="Search candidate" class="btn btn-primary">
