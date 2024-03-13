@@ -19,7 +19,8 @@
                     <span>Candidati</span>
                     </a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <li><a href="${pageContext.request.contextPath}/CandidateCtr/preAddCandidate">Aggiungi candidato</a></li>
+                     	<li><a href="${pageContext.request.contextPath}/CandidateCtr/searchCandidateForm">Maxi ricerca candidato</a></li>
+                       	<li><a href="${pageContext.request.contextPath}/CandidateCtr/preAddCandidate">Aggiungi candidato</a></li>
                         <li><a href="${pageContext.request.contextPath}/CandidateCtr/preFindById">Cerca un candidato tramite l'id</a></li>
                         <li><a href="${pageContext.request.contextPath}/CandidateCtr/preUpdateCandidate">Aggiorna il candidato tramite l'id</a></li>
                         <li><a href="${pageContext.request.contextPath}/CandidateCtr/preDeleteCandidate">Elimina il candidato tramite l'id</a></li>
