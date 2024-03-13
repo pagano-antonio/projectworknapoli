@@ -26,7 +26,7 @@
 						<th class="align-middle">City</th>
 						<th class="align-middle">Email</th>
 						<th class="align-middle">Phone</th>
-						<th class="align-middle">Actions</th>
+						<th style="text-align:center" class="align-middle">Actions</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -46,8 +46,17 @@
 							<td class="align-middle">${candidate.email}</td>
 							<td class="align-middle">${candidate.phone}</td>
 							<td class="align-middle">
-								<div class="actions"></div>
-
+								<div class="actions">
+								    <a href="${pageContext.request.contextPath}/CandidateCtr/findByIdToUpdate?idCandidate=${candidate.idCandidate}">
+							       <button> 
+							       <i class="fas fa-edit"></i>
+							       <span>Edit</span>
+									</button>
+									 </a>	
+									 <a href="${pageContext.request.contextPath}/CandidateCtr/deleteCandidate?idCandidate=${candidate.idCandidate}">
+								         <button><i class="fas fa-trash"></i> <span>Delete</span></button>
+								    </a>   
+		                    </div> 
 							</td>
 						</tr>
 						<td colspan="10" class="info-table hidden pt-2"><c:choose>

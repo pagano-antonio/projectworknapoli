@@ -1,6 +1,7 @@
 package com.ctr;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,8 +59,12 @@ public class CandidateCtr {
 	@GetMapping("/findById")
 	public String findById(Model model, Integer idCandidate) {
 		Candidate c = candidateRep.findById(idCandidate).get();
-		model.addAttribute("findById", c);
-		return "candidate/findByIdResults";
+		List <Candidate> candidates = new ArrayList<>();
+		candidates.add(c);
+		model.addAttribute("candidates", candidates);
+		model.addAttribute("toastMessage", candidates.size() + " candidate founded!");
+		model.addAttribute("showToast", true);
+		return "candidate/candidateListResults";
 	}
 
 	////////////////////////////////////////////////////////////
@@ -83,7 +88,7 @@ public class CandidateCtr {
 	}
 
 	@GetMapping("findByIdToUpdate")
-	public String findByIdToUpdateCandidate(Model model, Integer idCandidate) {
+	public String findByIdToUpdateCandidate( Model model,Integer idCandidate) {
 		Candidate c = candidateRep.findById(idCandidate).get();
 		model.addAttribute("findToUpdateCandidate", c);
 		return "candidate/updateCandidate";

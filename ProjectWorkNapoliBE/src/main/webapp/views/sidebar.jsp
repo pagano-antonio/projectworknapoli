@@ -22,8 +22,6 @@
                      	<li><a href="${pageContext.request.contextPath}/CandidateCtr/searchCandidateForm">Maxi ricerca candidato</a></li>
                        	<li><a href="${pageContext.request.contextPath}/CandidateCtr/preAddCandidate">Aggiungi candidato</a></li>
                         <li><a href="${pageContext.request.contextPath}/CandidateCtr/preFindById">Cerca un candidato tramite l'id</a></li>
-                        <li><a href="${pageContext.request.contextPath}/CandidateCtr/preUpdateCandidate">Aggiorna il candidato tramite l'id</a></li>
-                        <li><a href="${pageContext.request.contextPath}/CandidateCtr/preDeleteCandidate">Elimina il candidato tramite l'id</a></li>
                         <li><a href="${pageContext.request.contextPath}/CandidateCommercialCtr/preFindById">Cerca i dati commerciali tramite id</a></li>
                         <li><a href="${pageContext.request.contextPath}/CandidateCommercialCtr/preAddCandidateCommercial">Aggiungi i dati commerciali</a></li>
                         <li><a href="${pageContext.request.contextPath}/CandidateCommercialCtr/preUpdateCandidateCommercial">Modifica i dati commerciali</a></li>
