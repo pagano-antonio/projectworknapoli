@@ -106,4 +106,11 @@ public class JobInterview implements Serializable {
 		this.stateJobInterview = stateJobInterview;
 	}
 
+	@Override
+	public String toString() {
+		return "JobInterview [idJobInterview=" + idJobInterview + ", date=" + date + ", notes=" + notes + ", outcome="
+				+ outcome + ", candidate=" + candidate + ", employee=" + employee + ", stateJobInterview="
+				+ stateJobInterview + "]";
+	}
+
 }

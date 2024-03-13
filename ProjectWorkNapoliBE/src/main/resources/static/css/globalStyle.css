@@ -280,6 +280,31 @@ select + .btn-group .btn {
 .actions a button svg path{
 	fill:white;
 }
+.cursor {
+	cursor:pointer;
+}
+
+.info-table {
+	background:#fff!important;
+}
+.info-table table {
+	background:white!important;
+}
+.info-table table {
+	background:white!important;
+}
+.ddd {
+	background:#F2F2F2!important;
+}
+.info-table table th, .info-table table td {
+	width:calc(100% / 6)!important;
+}
+.info-table table th.td-100,
+.info-table table td.td-100,
+.td-100 {
+	width:100%!important;
+}
+
 /* ---------------------------------------------------
     DISMISS STYLE
 ----------------------------------------------------- */

@@ -79,4 +79,10 @@ public class StateJobInterview implements Serializable {
 		return jobInterview;
 	}
 
+	@Override
+	public String toString() {
+		return "StateJobInterview [idStateJobInterview=" + idStateJobInterview + ", description=" + description
+				+ ", title=" + title + "]";
+	}
+
 }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.dao.CandidateRepository;
@@ -20,6 +21,34 @@ public class CandidateCtr {
 	public CandidateRepository candidateRep;
 
 	////////////////////////////////////////////////////////////////////////
+
+	@GetMapping("/searchCandidateForm")
+	public String searchCandidateForm() {
+
+		return "candidate/searchCandidate";
+	}
+
+	@PostMapping("/searchCandidate")
+	public String searchCandidate(Model model, Candidate candidate) {
+		System.out.println(candidate.getPhone());
+		List<Candidate> candidates = candidateRep.findByCriteria(candidate.getName(), candidate.getSurname(),
+				candidate.getBirthPlace(), candidate.getBirthday(), candidate.getCity(), candidate.getAddress(),
+				candidate.getEmail(), candidate.getPhone());
+		System.out.println("risultati candidati: " + candidates.size());
+
+		if (candidates.size() == 1) {
+			model.addAttribute("toastMessage", candidates.size() + " candidate founded!");
+
+		} else {
+			model.addAttribute("toastMessage", candidates.size() + " candidates founded!");
+		}
+		model.addAttribute("showToast", true);
+
+		model.addAttribute("candidates", candidates);
+		System.out.println("risultati");
+		return "candidate/candidateListResults";
+	}
+
 	@GetMapping("/preFindById")
 	public String preFindById() {
 
@@ -79,7 +108,6 @@ public class CandidateCtr {
 		return "candidate/Ok";
 	}
 
-
 	///////////////////////////////////////////////////////////////////////
 
 	@GetMapping("/preFindBySurname")
@@ -97,7 +125,7 @@ public class CandidateCtr {
 	}
 
 	///////////////////////////////////////////////////////////////////////
-	
+
 	@GetMapping("/preFindByPhone")
 	public String preFindByPhone() {
 
@@ -111,9 +139,9 @@ public class CandidateCtr {
 
 		return "candidate/findByPhoneResults";
 	}
-	
+
 	///////////////////////////////////////////////////////////////////////
-	
+
 	@GetMapping("/preFindByCity")
 	public String preFindByCity() {
 
@@ -127,6 +155,5 @@ public class CandidateCtr {
 
 		return "candidate/findByCityResults";
 	}
-	
-}
 
+}
