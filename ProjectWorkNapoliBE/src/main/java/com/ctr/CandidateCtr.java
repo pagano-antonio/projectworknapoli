@@ -2,6 +2,7 @@ package com.ctr;
 
 import java.math.BigInteger;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,7 +62,7 @@ public class CandidateCtr {
 			@RequestParam(name = "degree", required = false) Integer degree,
 			@RequestParam(name = "jobinterview", required = false) Integer jobinterview,
 			@RequestParam(name = "dateAfter", required = false) LocalDate dateAfter) {
-		System.out.println("stateJobInterview:" + jobinterview);
+		System.out.println(candidate.getPhone());
 		List<Candidate> candidates = candidateRep.findByCriteria(candidate.getName(), candidate.getSurname(),
 				candidate.getBirthPlace(), candidate.getBirthday(), candidate.getCity(), candidate.getAddress(),
 				candidate.getEmail(), candidate.getPhone(), selectedSkills != null ? selectedSkills : null, degree,
@@ -90,8 +91,12 @@ public class CandidateCtr {
 	@GetMapping("/findById")
 	public String findById(Model model, Integer idCandidate) {
 		Candidate c = candidateRep.findById(idCandidate).get();
-		model.addAttribute("findById", c);
-		return "candidate/findByIdResults";
+		List<Candidate> candidates = new ArrayList<>();
+		candidates.add(c);
+		model.addAttribute("candidates", candidates);
+		model.addAttribute("toastMessage", candidates.size() + " candidate founded!");
+		model.addAttribute("showToast", true);
+		return "candidate/candidateListResults";
 	}
 
 	////////////////////////////////////////////////////////////
