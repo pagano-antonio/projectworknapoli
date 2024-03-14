@@ -4,11 +4,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.dao.IdEmployeeRepository;
 import com.model.Employee;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping("EmployeeCtr")
@@ -56,7 +60,7 @@ public class EmployeeCtr {
 	}
 
 //////////////////////////////////////////////////////
-	
+
 	@GetMapping("/preDeleteEmployee")
 	public String preDeleteEmployee(Model model) {
 
@@ -68,5 +72,25 @@ public class EmployeeCtr {
 
 		idEmployeeRep.deleteById(idEmployee);
 		return "employee/operationSuccess";
-	}	
+	}
+
+	@GetMapping("/goToUserProfile")
+	public String goToProfile(Model model, int idEmployee) {
+		Employee employee = (Employee) idEmployeeRep.findById(idEmployee).get();
+		model.addAttribute("employee", employee);
+		return "employee/employeeProfile";
+	}
+
+	@PostMapping("/updateOwnProfile")
+	public String updateOwnProfile(HttpServletRequest request, Model model, @ModelAttribute Employee e,
+			@RequestParam("oldpassword") String p) {
+		Employee old = (Employee) idEmployeeRep.findById(e.getIdEmployee()).get();
+		System.out.println(old.getPassword());
+		System.out.println(p);
+		if (old.getPassword().equals(p)) {
+			idEmployeeRep.save(e);
+		}
+
+		return "home";
+	}
 }
