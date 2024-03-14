@@ -2,7 +2,6 @@ package com.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Date;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

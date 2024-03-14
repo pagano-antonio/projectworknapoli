@@ -6,6 +6,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
@@ -22,6 +24,7 @@ public class Candidate implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idCandidate;
 
 	private String address;
@@ -244,6 +247,15 @@ public class Candidate implements Serializable {
 		workExperience.setCandidate(null);
 
 		return workExperience;
+	}
+
+	@Override
+	public String toString() {
+		return "Candidate [idCandidate=" + idCandidate + ", address=" + address + ", birthday=" + birthday
+				+ ", birthPlace=" + birthPlace + ", city=" + city + ", email=" + email + ", name=" + name + ", phone="
+				+ phone + ", surname=" + surname + ", candidateCommercialData=" + candidateCommercialData
+				+ ", candidateSkills=" + candidateSkills + ", educations=" + educations + ", jobInterviews="
+				+ jobInterviews + ", workExperiences=" + workExperiences + "]";
 	}
 
 }

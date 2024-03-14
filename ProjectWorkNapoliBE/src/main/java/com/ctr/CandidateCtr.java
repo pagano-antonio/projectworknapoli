@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,12 +17,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.dao.CandidateRepository;
 import com.dao.ContractTypeRepository;
 import com.dao.EducationDegreeTypeRepository;
+import com.dao.EducationRepository;
 import com.dao.SkillRepository;
 import com.dao.StateJobInterviewRepository;
+import com.dao.WorkExperienceRepository;
 import com.model.Candidate;
+import com.model.Education;
 import com.model.EducationDegreeType;
 import com.model.Skill;
 import com.model.StateJobInterview;
+import com.model.WorkExperience;
+
+import jakarta.transaction.Transactional;
 
 @Controller
 @RequestMapping("CandidateCtr")
@@ -41,6 +48,12 @@ public class CandidateCtr {
 
 	@Autowired
 	private StateJobInterviewRepository stateJobInterviewRepositoryRep;
+	
+	@Autowired
+    private WorkExperienceRepository workExperienceRep;
+
+	@Autowired
+	public EducationRepository educationRep;
 
 	////////////////////////////////////////////////////////////////////////
 
@@ -106,9 +119,33 @@ public class CandidateCtr {
 		return "candidate/addCandidate";
 	}
 
-	@GetMapping("/addCandidate")
+	@Transactional
+	@PostMapping("/addCandidate")
 	public String addCandidate(Model model, Candidate c) {
-		candidateRep.save(c);
+		
+		Candidate candidate = candidateRep.saveAndFlush(c);
+
+		List<EducationDegreeType> degreeType = educationDegreeTypeRep.findAll();
+		model.addAttribute("degreeType", degreeType);
+	
+		model.addAttribute("candidate", candidate);
+		System.out.println(candidate);
+		return "candidate/AddMoreDetails";
+	}
+	
+	@PostMapping("/addEducationWorkExp/{idCandidate}")
+	public String addEducationWorkExp(Model model, @PathVariable("idCandidate") int idCandidate, Education education, WorkExperience w) {
+		Candidate candidate = candidateRep.findById(idCandidate).get();
+		education.setCandidate(candidate);
+		w.setCandidate(candidate);
+		educationRep.save(education);
+		workExperienceRep.save(w);
+		List<Candidate> candidates = candidateRep.findAll();
+		List<Education> allEducations = educationRep.findAll();
+		List<WorkExperience> allWorkExp = workExperienceRep.findAll();
+		model.addAttribute("candidates", candidates);
+		model.addAttribute("allEducations", allEducations);
+		model.addAttribute("allWorkExp", allWorkExp);
 		return "candidate/Ok";
 	}
 
