@@ -91,7 +91,7 @@ public class CandidateCtr {
 	@GetMapping("/findById")
 	public String findById(Model model, Integer idCandidate) {
 		Candidate c = candidateRep.findById(idCandidate).get();
-		List<Candidate> candidates = new ArrayList<>();
+		List <Candidate> candidates = new ArrayList<>();
 		candidates.add(c);
 		model.addAttribute("candidates", candidates);
 		model.addAttribute("toastMessage", candidates.size() + " candidate founded!");
@@ -120,7 +120,7 @@ public class CandidateCtr {
 	}
 
 	@GetMapping("findByIdToUpdate")
-	public String findByIdToUpdateCandidate(Model model, Integer idCandidate) {
+	public String findByIdToUpdateCandidate( Model model,Integer idCandidate) {
 		Candidate c = candidateRep.findById(idCandidate).get();
 		model.addAttribute("findToUpdateCandidate", c);
 		return "candidate/updateCandidate";
