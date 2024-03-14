@@ -104,7 +104,7 @@
                 
 
                 <!-- Submit Button -->
-                <input type="submit" value="Search candidate" class="btn btn-primary">
+                <input type="submit" value="Search candidate" class="btn form-btn">
             </form>
         </div>
     </div>
