@@ -13,6 +13,7 @@ import com.dao.IdEmployeeRepository;
 import com.model.Employee;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("EmployeeCtr")
@@ -89,6 +90,9 @@ public class EmployeeCtr {
 		System.out.println(p);
 		if (old.getPassword().equals(p)) {
 			idEmployeeRep.save(e);
+			HttpSession session = request.getSession();
+			session.setAttribute("username", e.getUsername());
+			request.setAttribute("username", e.getUsername());
 		}
 
 		return "home";

@@ -22,7 +22,7 @@
                 <!-- Username -->
                 <div class="input-100 mb-2">
                     <label for="username">Username:</label>
-                    <input readonly type="text" class="form-control" id="username" name="username" value="${employee.username}" required>
+                    <input  type="text" class="form-control" id="username" name="username" value="${employee.username}" required>
                 </div>
                 <!-- Name -->
                 <div class="input-100 mb-2">
@@ -43,13 +43,13 @@
                 <!-- Password -->
                 <div class="input-100 mb-2">
                     <label for="password">New Password:</label>
-                    <input type="password" class="form-control" id="password" name="password" required>
+                    <input type="password" class="form-control" id="password" name="password" value="${employee.password}" required>
                 </div>
                 
                 <!-- Password -->
-                <p class="p-0 m-0">Insert your old password to update</p>
+                <p class="p-0 m-0">Insert your current password to update</p>
                 <div class="input-100 mb-2">
-                    <label for="oldpassword">Old Password:</label>
+                    <label for="oldpassword">Current Password:</label>
                     <input type="password" class="form-control" id="oldpassword" name="oldpassword" required>
                 </div>
                 
