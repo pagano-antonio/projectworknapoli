@@ -67,7 +67,8 @@
 				enableFiltering : true,
 				enableCaseInsensitiveFiltering : true,
 				buttonWidth : '100%',
-				numberDisplayed : 3
+				numberDisplayed : 3,
+				maxHeight: 200
 			});
 		});
 	</script>
