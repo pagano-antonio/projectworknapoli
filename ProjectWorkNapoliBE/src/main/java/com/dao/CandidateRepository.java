@@ -32,19 +32,20 @@ public interface CandidateRepository extends JpaRepository<Candidate, Integer> {
 
 	List<Candidate> findByCity(String city);
 
-	@Query("SELECT DISTINCT c FROM Candidate c " + "JOIN c.candidateSkills cs " + "JOIN c.educations ed "
-			+ "JOIN c.jobInterviews ji " + "WHERE (:name IS NULL OR :name = '' OR c.name = :name) AND "
+	@Query("SELECT DISTINCT c FROM Candidate c " + "LEFT JOIN c.candidateSkills cs " + "LEFT JOIN c.educations ed "
+			+ "LEFT JOIN c.jobInterviews ji " + "WHERE (:name IS NULL OR :name = '' OR c.name = :name) AND "
 			+ "(:surname IS NULL OR :surname = '' OR c.surname = :surname) AND "
 			+ "(:place IS NULL OR :place = '' OR c.birthPlace = :place) AND "
 			+ "(:city IS NULL OR :city = '' OR c.city = :city) AND "
 			+ "(:email IS NULL OR :email = '' OR c.email = :email) AND " + "(:phone IS NULL OR c.phone = :phone) AND "
 			+ "(:address IS NULL OR c.address LIKE CONCAT('%', :address, '%')) AND "
-			+ "(:birth IS NULL OR :birth = c.birthday) AND " + "(COALESCE(:selectedSkills, NULL) IS NULL OR "
+			+ "(:birth IS NULL OR :birth = c.birthday) AND "
+			+ "(:degree IS NULL OR ed.educationDegreeType.idEducationDegreeType = :degree) AND "
+			+ "(:stateJobInterview IS NULL OR ji.stateJobInterview.idStateJobInterview = :stateJobInterview) AND "
+			+ "(:dateAfter is NULL or ji.date >= :dateAfter) AND " + "(COALESCE(:selectedSkills, NULL) IS NULL OR "
 			+ " (SELECT COUNT(DISTINCT s.idSkill) FROM CandidateSkill cs JOIN cs.skill s WHERE cs.candidate = c AND s.idSkill IN :selectedSkills) = "
 			+ " (SELECT COUNT(DISTINCT s.idSkill) FROM Skill s WHERE s.idSkill IN :selectedSkills)) AND "
-			+ "(:degree IS NULL OR ed.educationDegreeType.idEducationDegreeType = :degree) AND "
-			+ "(:stateJobInterview IS NULL OR ji.stateJobInterview.idStateJobInterview = :stateJobInterview) AND"
-			+ "(:dateAfter is NULL or ji.date >= :dateAfter)")
+			+ "(ed IS NOT NULL OR ji IS NOT NULL) AND " + "(cs IS NOT NULL)")
 	List<Candidate> findByCriteria(@Param("name") String name, @Param("surname") String surname,
 			@Param("place") String place, @Param("birth") LocalDate birth, @Param("city") String city,
 			@Param("address") String address, @Param("email") String email, @Param("phone") BigInteger phone,
