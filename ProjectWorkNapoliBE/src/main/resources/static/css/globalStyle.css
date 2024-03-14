@@ -17,8 +17,13 @@ a,
 a:hover,
 a:focus {
     color: inherit;
-    text-decoration: none;
+    text-decoration: none!important;
     transition: all 0.3s;
+}
+
+.inactiveLink {
+	pointer-events:none!important;
+	cursor:default;
 }
 
 .navbar {
@@ -41,6 +46,38 @@ a:focus {
     height: 1px;
     border-bottom: 1px dashed #ddd;
     margin: 40px 0;
+}
+.avatarAndLogoutContainer {
+	display:flex;
+	align-items:center;
+	justify-content:center;
+}
+nav .avatar{
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	height:40px;
+	width:40px;
+	border-radius:50%;
+	background: rgb(115,133,213);
+background: -moz-radial-gradient(circle, rgba(115,133,213,1) 70%, rgba(28,27,41,1) 100%);
+background: -webkit-radial-gradient(circle, rgba(115,133,213,1) 70%, rgba(28,27,41,1) 100%);
+background: radial-gradient(circle, rgba(115,133,213,1) 70%, rgba(28,27,41,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#7385d5",endColorstr="#1c1b29",GradientType=1);
+	box-shadow: 0 0 8px #889ffc, inset 0 0 8px #889ffc;
+  -webkit-animation: pulse 2s linear 1s infinite;
+}
+
+@-webkit-keyframes pulse {
+  0% { box-shadow:0 0 8px #000, inset 0 0 8px #889ffc; }
+  50% { box-shadow:0 0 16px #000, inset 0 0 14px #889ffc; }
+  100% { box-shadow:0 0 8px #000, inset 0 0 8px #889ffc; }
+}
+nav .avatar span {
+	font-size:28px;
+	color:white;
+	text-transform:uppercase;
+	font-weight:600;
 }
 
 .logout svg{

@@ -33,9 +33,22 @@
                     href="${pageContext.request.contextPath}/gestionaleCandidati">Gestionale</a>
             </h3>
         </div>
+       <div class="avatarAndLogoutContainer">
+       
+     <a href="${pageContext.request.contextPath}/EmployeeCtr/goToUserProfile?idEmployee=${sessionScope.idUser}" class="${sessionScope.idUser > 0 ? 'activeLink' : 'inactiveLink'}">
+    <div class="avatar">
+        <span>${sessionScope.username.substring(0,1)}</span>
+    </div>
+</a>
+     
+      
+       
+       
+        
         <a class="logout" href="${pageContext.request.contextPath}/logout">
         <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>logout</title><path d="M17 7L15.59 8.41L18.17 11H8V13H18.17L15.59 15.58L17 17L22 12M4 5H12V3H4C2.9 3 2 3.9 2 5V19C2 20.1 2.9 21 4 21H12V19H4V5Z" /></svg>
         </a>
+        </div>
     </nav>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

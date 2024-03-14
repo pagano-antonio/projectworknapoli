@@ -32,6 +32,12 @@ public class LoginCtr {
 
 		if (e != null || (username.equals("user") && psw.equals("1234"))) {
 			request.getSession().setAttribute("username", username);
+			if (e != null) {
+				System.out.println("user " + e);
+				request.getSession().setAttribute("idUser", e.getIdEmployee());
+
+			}
+			System.out.println("id user " + request.getSession().getAttribute("idUser"));
 			return "home";
 		} else {
 			model.addAttribute("error", "User not found or incorrect password");
