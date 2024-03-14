@@ -32,6 +32,8 @@ public interface CandidateRepository extends JpaRepository<Candidate, Integer> {
 
 	List<Candidate> findByCity(String city);
 
+//	Gesù prega per noi
+
 	@Query("SELECT DISTINCT c FROM Candidate c " + "LEFT JOIN c.candidateSkills cs " + "LEFT JOIN c.educations ed "
 			+ "LEFT JOIN c.jobInterviews ji " + "WHERE (:name IS NULL OR :name = '' OR c.name = :name) AND "
 			+ "(:surname IS NULL OR :surname = '' OR c.surname = :surname) AND "
