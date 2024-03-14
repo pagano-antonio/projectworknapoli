@@ -45,9 +45,8 @@ public interface CandidateRepository extends JpaRepository<Candidate, Integer> {
 			+ "(:degree IS NULL OR ed.educationDegreeType.idEducationDegreeType = :degree) AND "
 			+ "(:stateJobInterview IS NULL OR ji.stateJobInterview.idStateJobInterview = :stateJobInterview) AND "
 			+ "(:dateAfter is NULL or ji.date >= :dateAfter) AND " + "(COALESCE(:selectedSkills, NULL) IS NULL OR "
-			+ " (SELECT COUNT(DISTINCT s.idSkill) FROM CandidateSkill cs JOIN cs.skill s WHERE cs.candidate = c AND s.idSkill IN :selectedSkills) = "
-			+ " (SELECT COUNT(DISTINCT s.idSkill) FROM Skill s WHERE s.idSkill IN :selectedSkills)) AND "
-			+ "(ed IS NOT NULL OR ji IS NOT NULL) AND " + "(cs IS NOT NULL)")
+			+ "(SELECT COUNT(DISTINCT s.idSkill) FROM CandidateSkill cs JOIN cs.skill s WHERE cs.candidate = c AND s.idSkill IN :selectedSkills) = "
+			+ "(SELECT COUNT(DISTINCT s.idSkill) FROM Skill s WHERE s.idSkill IN :selectedSkills))")
 	List<Candidate> findByCriteria(@Param("name") String name, @Param("surname") String surname,
 			@Param("place") String place, @Param("birth") LocalDate birth, @Param("city") String city,
 			@Param("address") String address, @Param("email") String email, @Param("phone") BigInteger phone,
