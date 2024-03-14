@@ -43,12 +43,23 @@ a:focus {
     margin: 40px 0;
 }
 
+.logout svg{
+	margin:0 20px;
+	width:20px;
+	heiht:auto;
+	
+}
+.logout svg path { fill:white;}
+
 /* ---------------------------------------------------
     HEADER
 ----------------------------------------------------- */
 #header {
-	height:60px;
-	background: black;
+	display: flex;
+    height: 60px;
+    background: black;
+    align-items: center;
+    justify-content: space-between;
 }
 .header-collapse {
 	color:white;
