@@ -1,15 +1,22 @@
 package com.ctr;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.dao.CandidateRepository;
+import com.dao.EducationDegreeTypeRepository;
 import com.dao.WorkExperienceRepository;
-
+import com.model.Candidate;
+import com.model.Education;
+import com.model.EducationDegreeType;
 import com.model.WorkExperience;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -20,6 +27,12 @@ public class WorkExperienceCtr {
 
 	@Autowired
     private WorkExperienceRepository workExperienceRep;
+	
+	@Autowired
+	public CandidateRepository candidateRep;
+	
+	@Autowired
+	private EducationDegreeTypeRepository educationDegreeTypeRep;
 	
 	@GetMapping("/indexWorkExp")
     public String home(Model model) {
@@ -45,6 +58,23 @@ public class WorkExperienceCtr {
         return "workExperience/ok";
         
     }
+	
+	@PostMapping("/addWorkExpToCandidate")
+	public String addWorkExpToCandidate(Model model, @RequestParam("idCandidate") int idCandidate, WorkExperience w) {
+		Candidate candidate = candidateRep.findById(idCandidate).get();
+		w.setCandidate(candidate);
+		workExperienceRep.save(w);
+		model.addAttribute("candidate", candidate);
+		boolean reloadW = true;
+		model.addAttribute("reloadW", reloadW);
+		List<WorkExperience> workExpOfCandidate = candidate.getWorkExperiences();
+		model.addAttribute("workExpOfCandidate", workExpOfCandidate);
+		List<EducationDegreeType> degreeType = educationDegreeTypeRep.findAll();
+		model.addAttribute("degreeType", degreeType);
+			
+		return "candidate/AddMoreDetails";
+	
+	}
 
 	//////////////////////////////////////////////////////////////////////////////////
 	

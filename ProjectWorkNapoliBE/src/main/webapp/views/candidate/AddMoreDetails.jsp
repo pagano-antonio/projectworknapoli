@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,10 +14,40 @@
 		<jsp:include page="../sidebar.jsp" />
 		<div id="content">
 		
-			<h2>${candidate.name} ${candidate.surname} aggiunto!</h2><br>
+			<h1>${candidate.name} ${candidate.surname}</h1><br>
 		
 			<h2>Titoli di studio</h2><br>
-			<form action="addEducationWorkExp/${candidate.idCandidate}" method="post">
+			
+			<c:if test="${reload}">
+			 	<!-- tabella educazione -->
+			    <table class="table table-striped table-sm align-middle table-responsive">
+			        <thead>
+			            <tr>
+			                <th>Titolo</th>
+			                <th>Istituto</th>
+			                <th>Città</th>
+			                <th>Data</th>
+			                <th>Voto</th>
+			            </tr>
+			        </thead>
+			        <tbody>
+			        	<c:forEach var="education" items="${educationsOfCandidate}">
+			                <tr>
+			                    <td class="align-middle">${education.educationDegreeType.description}</td>
+			 					<td class="align-middle">${education.schoolName}</td>
+			                    <td class="align-middle">${education.place}</td>
+			                    <td class="align-middle">
+			                        <fmt:formatNumber value="${education.date.dayOfMonth}" pattern="00"/>-
+			                        <fmt:formatNumber value="${education.date.monthValue}" pattern="00"/>-
+			                        <fmt:formatNumber value="${education.date.year}" pattern="0000"/>
+			                    </td>
+			                    <td class="align-middle">${education.finalGrade}</td>
+			            </c:forEach>
+			        </tbody>
+			    </table>
+			</c:if>
+
+			<form action="${pageContext.request.contextPath}/EducationCtr/addEducationToCandidate" method="post">
 			
                 <!-- Select degree type  -->
                 <div class="mb-2 input-100">
@@ -53,11 +84,48 @@
                </div>
                
                 <!-- Submit Button -->
-            	<input type="submit" value="Aggiungi">
+                <input type="hidden" name="idCandidate" required class="form-control" value="${candidate.idCandidate}">
+            	<input type="submit" value="Aggiungi un altro titolo di studio">
             	</form>
                
 				<h2>Esperienze lavorative</h2><br>
-				<form action="addEducationWorkExp/${candidate.idCandidate}" method="post">
+				
+				<c:if test="${reloadW}">
+					<!-- tabella work exp -->
+				    <table class="table table-striped table-sm align-middle table-responsive">
+				        <thead>
+				            <tr>
+				                <th>Titolo</th>
+				                <th>Descrizione</th>
+				                <th>Data di inizio</th>
+				                <th>Data di fine</th>
+				                <th>Azienda</th>
+				                <th>Città</th>
+				            </tr>
+				        </thead>
+				        <tbody>
+				        	<c:forEach var="job" items="${workExpOfCandidate}">
+				                <tr>
+				                    <td class="align-middle">${job.title}</td>
+				 					<td class="align-middle">${job.description}</td>
+				                    <td class="align-middle">
+				                        <fmt:formatNumber value="${job.startDate.dayOfMonth}" pattern="00"/>-
+				                        <fmt:formatNumber value="${job.startDate.monthValue}" pattern="00"/>-
+				                        <fmt:formatNumber value="${job.startDate.year}" pattern="0000"/>
+				                    </td>
+				                    <td class="align-middle">
+				                        <fmt:formatNumber value="${job.endDate.dayOfMonth}" pattern="00"/>-
+				                        <fmt:formatNumber value="${job.endDate.monthValue}" pattern="00"/>-
+				                        <fmt:formatNumber value="${job.endDate.year}" pattern="0000"/>
+				                    </td>
+				                    <td class="align-middle">${job.company}</td>
+				                    <td class="align-middle">${job.city}</td>
+				            </c:forEach>
+				        </tbody>
+				    </table>
+				</c:if>
+				<br>
+				<form action="${pageContext.request.contextPath}/workExpCtr/addWorkExpToCandidate" method="post">
 				<!-- work exp title -->
                 <div class="input-100 mb-2">
                     <label class="form-label" for="title">Titolo:</label>
@@ -95,7 +163,8 @@
                 </div>
                
                 <!-- Submit Button -->
-            	<input type="submit" value="Aggiungi">
+                <input type="hidden" name="idCandidate" required class="form-control" value="${candidate.idCandidate}">
+            	<input type="submit" value="Aggiungi un'altra esperienza lavorativa">
 			
 			</form>
 			

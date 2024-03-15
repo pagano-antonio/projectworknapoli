@@ -1,14 +1,22 @@
 package com.ctr;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.dao.CandidateRepository;
+import com.dao.EducationDegreeTypeRepository;
 import com.dao.EducationRepository;
+import com.model.Candidate;
 import com.model.Education;
+import com.model.EducationDegreeType;
+import com.model.WorkExperience;
 
 @Controller
 @RequestMapping("EducationCtr")
@@ -16,6 +24,13 @@ public class EducationCtr {
 
 	@Autowired
 	public EducationRepository educationRep;
+	
+	@Autowired
+	public CandidateRepository candidateRep;
+	
+	@Autowired
+	private EducationDegreeTypeRepository educationDegreeTypeRep;
+
 
 //////////////////////////////////////////////////////
 
@@ -32,6 +47,27 @@ public class EducationCtr {
 		System.out.println(education);
 
 		return "education/operationSuccess";
+	}
+	
+	
+	@PostMapping("/addEducationToCandidate")
+	public String addEducationToCandidate(Model model, @RequestParam("idCandidate") int idCandidate, Education education) {
+		Candidate candidate = candidateRep.findById(idCandidate).get();
+		education.setCandidate(candidate);
+		educationRep.save(education);
+		List<EducationDegreeType> degreeType = educationDegreeTypeRep.findAll();
+		model.addAttribute("degreeType", degreeType);
+		model.addAttribute("candidate", candidate);
+		boolean reload = true;
+		model.addAttribute("reload", reload);
+		List<Education> educationsOfCandidate = candidate.getEducations();
+		List<WorkExperience> workExpOfCandidate = candidate.getWorkExperiences();
+
+		model.addAttribute("educationsOfCandidate", educationsOfCandidate);
+		model.addAttribute("workExpOfCandidate", workExpOfCandidate);
+			
+		return "candidate/AddMoreDetails";
+
 	}
 
 //////////////////////////////////////////////////////

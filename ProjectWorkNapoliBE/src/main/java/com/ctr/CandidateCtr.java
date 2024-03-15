@@ -129,25 +129,10 @@ public class CandidateCtr {
 		model.addAttribute("degreeType", degreeType);
 	
 		model.addAttribute("candidate", candidate);
-		System.out.println(candidate);
+		
 		return "candidate/AddMoreDetails";
 	}
 	
-	@PostMapping("/addEducationWorkExp/{idCandidate}")
-	public String addEducationWorkExp(Model model, @PathVariable("idCandidate") int idCandidate, Education education, WorkExperience w) {
-		Candidate candidate = candidateRep.findById(idCandidate).get();
-		education.setCandidate(candidate);
-		w.setCandidate(candidate);
-		educationRep.save(education);
-		workExperienceRep.save(w);
-		List<Candidate> candidates = candidateRep.findAll();
-		List<Education> allEducations = educationRep.findAll();
-		List<WorkExperience> allWorkExp = workExperienceRep.findAll();
-		model.addAttribute("candidates", candidates);
-		model.addAttribute("allEducations", allEducations);
-		model.addAttribute("allWorkExp", allWorkExp);
-		return "candidate/Ok";
-	}
 
 	///////////////////////////////////////////////////////////////
 
