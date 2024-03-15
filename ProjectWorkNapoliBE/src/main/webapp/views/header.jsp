@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Gestionale candidati</title>
+<title>Recruiter Gestional Tool</title>
 <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
     rel="stylesheet"
@@ -32,7 +32,7 @@
                 </button>
 
                 <a class="header-collapse-title"
-                    href="${pageContext.request.contextPath}/gestionaleCandidati">Gestionale</a>
+                    href="${pageContext.request.contextPath}/gestionaleCandidati">Recruiter Gestional Tool</a>
             </h3>
         </div>
        <div class="avatarAndLogoutContainer">

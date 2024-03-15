@@ -101,8 +101,8 @@ nav .avatar span {
 .header-collapse {
 	color:white;
 	padding: 10px 0;
-	min-width: 250px;
-    max-width: 250px;
+	min-width: 300px;
+    max-width: 3000px;
     display:flex;
     align-items:center;
 }

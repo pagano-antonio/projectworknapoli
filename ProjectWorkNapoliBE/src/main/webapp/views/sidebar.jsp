@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Recruiter Gestional Tool</title>
 <link rel="stylesheet" type="text/css" href="/css/globalStyle.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
@@ -16,38 +16,38 @@
                 <li>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>account-multiple</title><path d="M16 17V19H2V17S2 13 9 13 16 17 16 17M12.5 7.5A3.5 3.5 0 1 0 9 11A3.5 3.5 0 0 0 12.5 7.5M15.94 13A5.32 5.32 0 0 1 18 17V19H22V17S22 13.37 15.94 13M15 4A3.39 3.39 0 0 0 13.07 4.59A5 5 0 0 1 13.07 10.41A3.39 3.39 0 0 0 15 11A3.5 3.5 0 0 0 15 4Z" /></svg>
-                    <span>Candidati</span>
+                    <span>Candidates</span>
                     </a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
-                     	<li><a href="${pageContext.request.contextPath}/CandidateCtr/searchCandidateForm">Maxi ricerca candidato</a></li>
-                       	<li><a href="${pageContext.request.contextPath}/CandidateCtr/preAddCandidate">Aggiungi candidato</a></li>
-                        <li><a href="${pageContext.request.contextPath}/CandidateCtr/preFindById">Cerca un candidato tramite l'id</a></li>
-                        <li><a href="${pageContext.request.contextPath}/CandidateCommercialCtr/preFindById">Cerca i dati commerciali tramite id</a></li>
-                        <li><a href="${pageContext.request.contextPath}/CandidateCommercialCtr/preAddCandidateCommercial">Aggiungi i dati commerciali</a></li>
-                        <li><a href="${pageContext.request.contextPath}/CandidateCommercialCtr/preUpdateCandidateCommercial">Modifica i dati commerciali</a></li>
-                        <li><a href="${pageContext.request.contextPath}/CandidateCommercialCtr/preUpdateCandidateCommercial">Aggiorna i dati commerciali</a></li>
-                         <li><a href="${pageContext.request.contextPath}/CandidateSkillCtr/preFindById">Cerca le skill del candidato tramite id</a></li> 
-                      	<li><a href="${pageContext.request.contextPath}/CandidateSkillCtr/preAddCandidateSkill">Aggiungi le skill del candidato</a></li>
-                      	<li><a href="${pageContext.request.contextPath}/CandidateSkillCtr/preUpdateCandidateSkill">Aggiorna le skill del candidato</a></li>
-                      	<li><a href="${pageContext.request.contextPath}/CandidateSkillCtr/preDeleteCandidateSkill">Elimina le skill del candidato</a></li>
-                       <li><a href="${pageContext.request.contextPath}/EducationCtr/preAddEducation">Aggiungi Titolo di Studio Candidato</a></li>
-                        <li><a href="${pageContext.request.contextPath}/EducationCtr/preFindById">Cerca per Titolo di Studio Candidato</a></li>
-                    	<li><a href="${pageContext.request.contextPath}/EducationCtr/preDelete">Elimina per Titolo di Studio Candidato</a></li>
- 						<li><a href="${pageContext.request.contextPath}/EducationCtrDegreeType/preAddEducationDegreeType">Aggiungi Tipo Titolo di Studio </a></li>
-                        <li><a href="${pageContext.request.contextPath}/EducationCtrDegreeType/preFindById">Cerca per Tipo Titolo di Studio </a></li>
-                    	<li><a href="${pageContext.request.contextPath}/EducationCtrDegreeType/preDeleteEducationDegreeType">Elimina per Tipo Titolo di Studio </a></li>
+                     	<li><a href="${pageContext.request.contextPath}/CandidateCtr/searchCandidateForm">Maxi candidate search</a></li>
+                       	<li><a href="${pageContext.request.contextPath}/CandidateCtr/preAddCandidate">Add candidate</a></li>
+                        <li><a href="${pageContext.request.contextPath}/CandidateCtr/preFindById">Search for candidate by id</a></li>
+                        <li><a href="${pageContext.request.contextPath}/CandidateCommercialCtr/preFindById">Search commercial data by id</a></li>
+                        <li><a href="${pageContext.request.contextPath}/CandidateCommercialCtr/preAddCandidateCommercial">Add commercial data</a></li>
+                        <li><a href="${pageContext.request.contextPath}/CandidateCommercialCtr/preUpdateCandidateCommercial">Modify commercial data</a></li>
+                        <li><a href="${pageContext.request.contextPath}/CandidateCommercialCtr/preUpdateCandidateCommercial">Update commercial data</a></li>
+                         <li><a href="${pageContext.request.contextPath}/CandidateSkillCtr/preFindById">Search candidate skills by id</a></li> 
+                      	<li><a href="${pageContext.request.contextPath}/CandidateSkillCtr/preAddCandidateSkill">Add candidate skills</a></li>
+                      	<li><a href="${pageContext.request.contextPath}/CandidateSkillCtr/preUpdateCandidateSkill">Update candidate skills</a></li>
+                      	<li><a href="${pageContext.request.contextPath}/CandidateSkillCtr/preDeleteCandidateSkill">Delete candidate skills</a></li>
+                       <li><a href="${pageContext.request.contextPath}/EducationCtr/preAddEducation">Add Candidate Education</a></li>
+                        <li><a href="${pageContext.request.contextPath}/EducationCtr/preFindById">Search by Candidate Education</a></li>
+                    	<li><a href="${pageContext.request.contextPath}/EducationCtr/preDelete">Delete by Candidate Education</a></li>
+ 						<li><a href="${pageContext.request.contextPath}/EducationCtrDegreeType/preAddEducationDegreeType">Add Education Degree Type </a></li>
+                        <li><a href="${pageContext.request.contextPath}/EducationCtrDegreeType/preFindById">Search by Education Degree Type </a></li>
+                    	<li><a href="${pageContext.request.contextPath}/EducationCtrDegreeType/preDeleteEducationDegreeType">Delete by Education Degree Type </a></li>
  
                     </ul>
                 </li>
                 <li>
                     <a href="#jobOffer" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>briefcase</title><path d="M10,2H14A2,2 0 0,1 16,4V6H20A2,2 0 0,1 22,8V19A2,2 0 0,1 20,21H4C2.89,21 2,20.1 2,19V8C2,6.89 2.89,6 4,6H8V4C8,2.89 8.89,2 10,2M14,6V4H10V6H14Z" /></svg>
-                    <span>Offerte di lavoro</span>
+                    <span>Job Offers</span>
                     </a>
                     <ul class="collapse list-unstyled" id="jobOffer">
-                        <li><a href="${pageContext.request.contextPath}/JobOfferCtr/jobOfferForm">Crea offerta di lavoro</a></li>
-                        <li><a href="${pageContext.request.contextPath}/JobOfferCtr/jobOffers">Tutte le offerte di lavoro</a></li>
-                       <li><a href="${pageContext.request.contextPath}/JobOfferCtr/searchJobOfferForm">Cerca offerta di lavoro</a></li>
+                        <li><a href="${pageContext.request.contextPath}/JobOfferCtr/jobOfferForm">Create job offer</a></li>
+                        <li><a href="${pageContext.request.contextPath}/JobOfferCtr/jobOffers">All job offers</a></li>
+                       <li><a href="${pageContext.request.contextPath}/JobOfferCtr/searchJobOfferForm">Search job offer</a></li>
                     </ul>
                 </li>
                 <li>
@@ -56,43 +56,43 @@
                 	<span>Skills</span>
                 	</a>
                     <ul class="collapse list-unstyled" id="skill">
-                        <li><a href="${pageContext.request.contextPath}/skillCtr/toAdd">Aggiungi skill</a></li>
-                        <li><a href="${pageContext.request.contextPath}/skillCtr/toUpdateById">Aggiorna skill per id</a></li>
-                        <li><a href="${pageContext.request.contextPath}/skillCtr/toDeleteById">Elimina skill per id</a></li>
+                        <li><a href="${pageContext.request.contextPath}/skillCtr/toAdd">Add skill</a></li>
+                        <li><a href="${pageContext.request.contextPath}/skillCtr/toUpdateById">Update skill by id</a></li>
+                        <li><a href="${pageContext.request.contextPath}/skillCtr/toDeleteById">Delete skill by id</a></li>
                        <li><a href="#">Page 3</a></li>
                     </ul>
                 </li>
                 <li>
                 	<a href="#stateJob" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                 	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>microphone</title><path d="M12,2A3,3 0 0,1 15,5V11A3,3 0 0,1 12,14A3,3 0 0,1 9,11V5A3,3 0 0,1 12,2M19,11C19,14.53 16.39,17.44 13,17.93V21H11V17.93C7.61,17.44 5,14.53 5,11H7A5,5 0 0,0 12,16A5,5 0 0,0 17,11H19Z" /></svg>
-                	<span>Stato job interview</span>
+                	<span>Job Interview Status</span>
                 	</a>
                     <ul class="collapse list-unstyled" id="stateJob">
-                        <li><a href="${pageContext.request.contextPath}/stateJobIntCtr/toAdd">Aggiungi stato della job interview</a></li>
-                        <li><a href="${pageContext.request.contextPath}/stateJobIntCtr/toUpdateById">Aggiorna stato della job interview per id</a></li>
-                        <li><a href="${pageContext.request.contextPath}/stateJobIntCtr/toDeleteById">Elimina stato della job interview per id</a></li>
+                        <li><a href="${pageContext.request.contextPath}/stateJobIntCtr/toAdd">Add job interview status</a></li>
+                        <li><a href="${pageContext.request.contextPath}/stateJobIntCtr/toUpdateById">Update job interview status by id</a></li>
+                        <li><a href="${pageContext.request.contextPath}/stateJobIntCtr/toDeleteById">Delete job interview status by id</a></li>
                        <li><a href="#">Page 3</a></li>
                     </ul>
                 </li>
                 <li>
                 	<a href="#workExp" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                 	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>domain</title><path d="M18,15H16V17H18M18,11H16V13H18M20,19H12V17H14V15H12V13H14V11H12V9H20M10,7H8V5H10M10,11H8V9H10M10,15H8V13H10M10,19H8V17H10M6,7H4V5H6M6,11H4V9H6M6,15H4V13H6M6,19H4V17H6M12,7V3H2V21H22V7H12Z" /></svg>
-                	<span>Esperienze lavorative</span>
+                	<span>Work Experiences</span>
                 	</a>
                     <ul class="collapse list-unstyled" id="workExp">
-                        <li><a href="${pageContext.request.contextPath}/workExpCtr/toAdd">Aggiungi esperienze lavorative</a></li>
-                        <li><a href="${pageContext.request.contextPath}/workExpCtr/toUpdateById">Aggiorna stato delle esperienze lavorative per id</a></li>
-                        <li><a href="${pageContext.request.contextPath}/workExpCtr/toDeleteById">Elimina stato delle esperienze lavorative per id</a></li>
+                        <li><a href="${pageContext.request.contextPath}/workExpCtr/toAdd">Add work experiences</a></li>
+                        <li><a href="${pageContext.request.contextPath}/workExpCtr/toUpdateById">Update work experiences by id</a></li>
+                        <li><a href="${pageContext.request.contextPath}/workExpCtr/toDeleteById">Delete work experiences by id</a></li>
                        <li><a href="#">Page 3</a></li>
                     </ul>
                 </li>
                  <li>
                 	<a href="#emp" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>domain</title><path d="M18,15H16V17H18M18,11H16V13H18M20,19H12V17H14V15H12V13H14V11H12V9H20M10,7H8V5H10M10,11H8V9H10M10,15H8V13H10M10,19H8V17H10M6,7H4V5H6M6,11H4V9H6M6,15H4V13H6M6,19H4V17H6M12,7V3H2V21H22V7H12Z" /></svg>
+                	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>account-tie</title><path d="M12 3C14.21 3 16 4.79 16 7S14.21 11 12 11 8 9.21 8 7 9.79 3 12 3M16 13.54C16 14.6 15.72 17.07 13.81 19.83L13 15L13.94 13.12C13.32 13.05 12.67 13 12 13S10.68 13.05 10.06 13.12L11 15L10.19 19.83C8.28 17.07 8 14.6 8 13.54C5.61 14.24 4 15.5 4 17V21H20V17C20 15.5 18.4 14.24 16 13.54Z" /></svg>
                 	<span>Employees</span>
                 	</a>
                     <ul class="collapse list-unstyled" id="emp">
-                        <li><a href="${pageContext.request.contextPath}/EmployeeCtr/addEmployeeForm">Aggiungi impiegato</a></li>
+                        <li><a href="${pageContext.request.contextPath}/EmployeeCtr/addEmployeeForm">Add employee</a></li>
                         
                     </ul>
                 </li>
