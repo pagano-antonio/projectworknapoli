@@ -34,7 +34,7 @@ public class Employee implements Serializable {
 
 	// bi-directional many-to-one association to EmployeeType
 	@ManyToOne
-	@JoinColumn(name = "idEmployeeType")				//devo richiamare nomeAttributo.nomeColonna e non nomeClasse.nomeAttributo
+	@JoinColumn(name = "idEmployeeType") // devo richiamare nomeAttributo.nomeColonna e non nomeClasse.nomeAttributo
 	private EmployeeType employeeType;
 
 	// bi-directional many-to-one association to JobInterview
@@ -120,6 +120,12 @@ public class Employee implements Serializable {
 		jobInterview.setEmployee(null);
 
 		return jobInterview;
+	}
+
+	@Override
+	public String toString() {
+		return "Employee [idEmployee=" + idEmployee + ", email=" + email + ", name=" + name + ", password=" + password
+				+ ", surname=" + surname + ", username=" + username + ", employeeType=" + employeeType + "]";
 	}
 
 }

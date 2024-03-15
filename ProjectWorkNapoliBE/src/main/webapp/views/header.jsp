@@ -3,8 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Gestionale candidati</title>
-<link rel="stylesheet" type="text/css" href="/css/globalStyle.css">
+<title>Recruiter Gestional Tool</title>
 <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
     rel="stylesheet"
@@ -19,6 +18,9 @@
     src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
     integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
     crossorigin="anonymous" type="text/javascript"></script>
+    
+    <link rel="stylesheet" type="text/css" href="/css/globalStyle.css">
+    
 </head>
 <body>
 
@@ -30,7 +32,7 @@
                 </button>
 
                 <a class="header-collapse-title"
-                    href="${pageContext.request.contextPath}/gestionaleCandidati">Gestionale</a>
+                    href="${pageContext.request.contextPath}/gestionaleCandidati">Recruiter Gestional Tool</a>
             </h3>
         </div>
        <div class="avatarAndLogoutContainer">

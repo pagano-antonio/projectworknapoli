@@ -82,7 +82,7 @@
                 </select>
             </div>
             <!-- Submit Button -->
-            <input type="submit" value="Create Job Offer">
+            <input type="submit" class="btn form-btn" value="Create Job Offer">
         </form>
     </div>
 </div>

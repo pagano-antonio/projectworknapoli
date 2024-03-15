@@ -97,7 +97,7 @@
                 </div>
 
                 <!-- Submit Button -->
-                <input type="submit" value="Update Job Offer">
+                <input type="submit" class="btn form-btn" value="Update Job Offer">
             </form>
         </div>
     </div>

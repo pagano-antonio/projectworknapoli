@@ -15,8 +15,6 @@ display: flex;
     color:grey;
 	
 }
-</style>
-<style>
 .wrapper {
 width:100%;
 height:100vh;
@@ -45,27 +43,25 @@ color:red;
 	<div class="wrapper">
 		<div id="content">
 
-			<h2 class="pb-2">Login</h2>
-			<i class="pt-2 pb-2" style="font-size:10px;">Per loggarsi occorre essere registrati nella tabella Employee,<br> oppure si può accedere usando "user" come username e "1234" come password</i>
-			<form action="loginServlet" method="post">
-				<!-- Username -->
+			<h2 class="pb-2">Reset Password</h2>
+			<form action="resetPassword" method="post">
+				<!-- Email -->
 				<div class="input-100 mt-4 mb-2">
-					<label class="form-label" for="username">Username:</label> 
-					<input type="text" name="username" value="" autocomplete="false" required class="form-control">
+					<label class="form-label" for="email">Email:</label> 
+					<input type="text" name="email" value="" autocomplete="false" required class="form-control">
 				</div>
 
 				<!-- Psw -->
 				<div class="input-100 mb-4">
-					<label class="form-label" for="psw">Password:</label> <input
+					<label class="form-label" for="psw">Choose a new Password:</label> <input
 						type="password" name="psw" autocomplete="false" value="" required class="form-control">
 				</div>
-				<input type="submit" value="Login">
-				
+				<input type="submit" value="Reset Password">
 			</form>
-			<a class="pt-4 login-reset" href="${pageContext.request.contextPath}/resetPasswordForm">
-			<i>Reset password</span>
-				</a>
 			
+			<a class="pt-4 login-reset" href="${pageContext.request.contextPath}/login">
+			<i>Back to login</span>
+				</a>
 			
 			<p class="mt-4">${error}</p>
 
