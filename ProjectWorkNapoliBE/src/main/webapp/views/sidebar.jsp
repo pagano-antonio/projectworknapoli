@@ -45,8 +45,9 @@
                     <span>Job Offers</span>
                     </a>
                     <ul class="collapse list-unstyled" id="jobOffer">
-                        <li><a href="${pageContext.request.contextPath}/JobOfferCtr/jobOfferForm">Create job offer</a></li>
                         <li><a href="${pageContext.request.contextPath}/JobOfferCtr/jobOffers">All job offers</a></li>
+                       <li><a href="${pageContext.request.contextPath}/JobOfferCtr/jobOfferForm">Create job offer</a></li>
+                        
                        <li><a href="${pageContext.request.contextPath}/JobOfferCtr/searchJobOfferForm">Search job offer</a></li>
                     </ul>
                 </li>
@@ -56,7 +57,11 @@
                 	<span>Skills</span>
                 	</a>
                     <ul class="collapse list-unstyled" id="skill">
+                    <li><a href="${pageContext.request.contextPath}/skillCtr/allSkills">All skills</a></li>
+                        
                         <li><a href="${pageContext.request.contextPath}/skillCtr/toAdd">Add skill</a></li>
+                         <li><a href="${pageContext.request.contextPath}/skillCtr/searchSkillForm">Search skill</a></li>
+                      
                         <li><a href="${pageContext.request.contextPath}/skillCtr/toUpdateById">Update skill by id</a></li>
                         <li><a href="${pageContext.request.contextPath}/skillCtr/toDeleteById">Delete skill by id</a></li>
                        <li><a href="#">Page 3</a></li>

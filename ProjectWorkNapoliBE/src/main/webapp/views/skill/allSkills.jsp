@@ -11,7 +11,7 @@
     <div class="wrapper">
         <jsp:include page="../sidebar.jsp" />
         <div id="content">
-            <h2>All Job Offers</h2>
+            <h2>All Skills</h2>
     
     <table class="table table-striped table-sm align-middle table-responsive">
         <thead>
@@ -19,45 +19,25 @@
                 <th>ID</th>
                 <th>Title</th>
                 <th>Description</th>
-                <th>Start Date</th>
-                <th>End Date</th>
-                <th>Min Ral</th>
-                <th>Max Ral</th>
-                <th>Company</th>
-                <th>Contract Type</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-            <c:forEach var="jobOffer" items="${jobOffers}">
+            <c:forEach var="skill" items="${skills}">
                 <tr>
-                    <td class="align-middle">${jobOffer.idJobOffer}</td>
-                    <td class="align-middle">${jobOffer.title}</td>
-                    <td class="align-middle">${jobOffer.description}</td>
-                    <td class="align-middle">
-                        <fmt:formatNumber value="${jobOffer.startDate.dayOfMonth}" pattern="00"/>-
-                        <fmt:formatNumber value="${jobOffer.startDate.monthValue}" pattern="00"/>-
-                        <fmt:formatNumber value="${jobOffer.startDate.year}" pattern="0000"/>
-                    </td>
-                    <td class="align-middle">
-                        <fmt:formatNumber value="${jobOffer.endDate.dayOfMonth}" pattern="00"/>-
-                        <fmt:formatNumber value="${jobOffer.endDate.monthValue}" pattern="00"/>-
-                        <fmt:formatNumber value="${jobOffer.endDate.year}" pattern="0000"/>
-                    </td>
-                    <td class="align-middle text-right">${jobOffer.minRal}$</td>
-                    <td class="align-middle text-right">${jobOffer.maxRal}$</td>
-                    <td class="align-middle">${jobOffer.companyClient.name}</td>
-                    <td class="align-middle">${jobOffer.contractType.title}</td>
-                    <td class="align-middle">
+                    <td class="align-middle">${skill.idSkill}</td>
+                    <td class="align-middle">${skill.title}</td>
+                    <td class="align-middle">${skill.description}</td>
+                    <td>
                     <div class="actions">
-                     <a href="${pageContext.request.contextPath}/JobOfferCtr/updateJobOfferForm?id=${jobOffer.idJobOffer}">
+                     <a href="${pageContext.request.contextPath}/skillCtr/updateSkillForm?id=${skill.idSkill}">
 					       <button> 
 					       <i class="fas fa-edit"></i>
 					       <span>Edit</span>
 					       </button>
 					 </a>
 					
-					 <a href="${pageContext.request.contextPath}/JobOfferCtr/deleteJobOffer/${jobOffer.idJobOffer}">
+					 <a href="${pageContext.request.contextPath}/skillCtr/delete?id=${skill.idSkill}">
 				         <button><i class="fas fa-trash"></i> <span>Delete</span></button>
 				    </a>
 
