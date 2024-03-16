@@ -177,16 +177,16 @@ button:hover {
         <div id="content">
             <h2 class="pb-2">Login</h2>
             <i class="pt-2 pb-2" style="font-size:10px;">Per loggarsi occorre essere registrati nella tabella Employee,<br> oppure si può accedere usando "user" come username e "1234" come password</i>
-            <form action="loginServlet" method="post">
+            <form action="loginServlet" method="post" autocomplete="off">
                 <!-- Username -->
                 <div class="input-100 mt-4 mb-2">
                     <label class="form-label" for="username">Username:</label> 
-                    <input type="text" name="username" value="" autocomplete="false" required class="form-control">
+                    <input type="text" name="username" value="" autocomplete="off" required class="form-control">
                 </div>
                 <!-- Psw -->
                 <div class="input-100 mb-4">
                     <label class="form-label" for="psw">Password:</label> 
-                    <input type="password" name="psw" autocomplete="false" value="" required class="form-control">
+                    <input type="password" name="psw" autocomplete="new-password" value="" required class="form-control">
                 </div>
                 <input type="submit" value="Login">
             </form>

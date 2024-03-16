@@ -11,17 +11,27 @@
 	<div class="wrapper">
 		<jsp:include page="../sidebar.jsp" />
 		<div id="content">
-		<h2>Delete Skill By Id</h2>
-			<form action="${pageContext.request.contextPath}/stateJobIntCtr/delete" method="get">
-			   <div class="input-100 mb-2">
-			  <label class="form-label" for="id">The ID of the job state interview you want to delete:</label>
-			  <input class="form-control" type="number" id="id" name="id" required>
+		<h2>Search Job State Interview</h2>
+			<form action="${pageContext.request.contextPath}/stateJobIntCtr/searchJobInterview" method="post">
+			   <div class="input-50 mb-2">
+			  <label class="form-label" for="id">Id:</label>
+			  <input class="form-control" type="number" id="id" name="id">
 			  </div>
-			  <input class="btn form-btn" type="submit" value="Delete Job State Interview" />
+			  
+			  <div class="input-50 mb-2">
+			  <label class="form-label" for="title">Title:</label>
+			  <input class="form-control" type="text" id="title" name="title">
+			  </div>
+			  
+			  <div class="input-100 mb-2">
+			  <label class="form-label" for="description">Description:</label>
+			  <textarea rows="4" maxlength="50" class="form-control"  id="description" name="description" ></textarea>
+			  </div>
+			  <input class="btn form-btn" type="submit" value="Search job State interview">
 			</form>
 	</div>
 	</div>
-	
+
 	<div class="my-toast ${toastTitle}">
     <div class="my-toast-content">
     <svg class="my-toast-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>close</title><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
@@ -84,5 +94,3 @@ document.addEventListener('DOMContentLoaded', function() {
         clearTimeout(timer2);
     });
 </script>
-</body>
-</html>

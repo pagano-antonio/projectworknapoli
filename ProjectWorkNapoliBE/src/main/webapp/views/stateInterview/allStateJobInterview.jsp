@@ -1,28 +1,57 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Recruiter Gestional Tool</title>
+    <title>Recruiter Gestional Tool</title>
 </head>
 <body>
-    <jsp:include page="../header.jsp" />
-	<div class="wrapper">
-		<jsp:include page="../sidebar.jsp" />
-		<div id="content">
-		<h2>Delete Skill By Id</h2>
-			<form action="${pageContext.request.contextPath}/stateJobIntCtr/delete" method="get">
-			   <div class="input-100 mb-2">
-			  <label class="form-label" for="id">The ID of the job state interview you want to delete:</label>
-			  <input class="form-control" type="number" id="id" name="id" required>
-			  </div>
-			  <input class="btn form-btn" type="submit" value="Delete Job State Interview" />
-			</form>
-	</div>
-	</div>
-	
-	<div class="my-toast ${toastTitle}">
+  <jsp:include page="../header.jsp" />
+    <div class="wrapper">
+        <jsp:include page="../sidebar.jsp" />
+        <div id="content">
+            <h2>All State Job Interview</h2>
+    
+    <table class="table table-striped table-sm align-middle table-responsive">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <c:forEach var="state" items="${states}">
+                <tr>
+                    <td class="align-middle">${state.idStateJobInterview}</td>
+                    <td class="align-middle">${state.title}</td>
+                    <td class="align-middle">${state.description}</td>
+                    <td>
+                    <div class="actions">
+                     <a href="${pageContext.request.contextPath}/stateJobIntCtr/updateStateJobInterviewForm?id=${state.idStateJobInterview}">
+					       <button> 
+					       <i class="fas fa-edit"></i>
+					       <span>Edit</span>
+					       </button>
+					 </a>
+					
+					 <a href="${pageContext.request.contextPath}/stateJobIntCtr/delete?id=${state.idStateJobInterview}">
+				         <button><i class="fas fa-trash"></i> <span>Delete</span></button>
+				    </a>
+
+                  
+                    </div>
+                    
+                    </td>
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
+</div>
+
+   <div class="my-toast ${toastTitle}">
     <div class="my-toast-content">
     <svg class="my-toast-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>close</title><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
     

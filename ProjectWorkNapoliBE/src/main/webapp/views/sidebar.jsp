@@ -64,19 +64,21 @@
                       
                         <li><a href="${pageContext.request.contextPath}/skillCtr/toUpdateById">Update skill by id</a></li>
                         <li><a href="${pageContext.request.contextPath}/skillCtr/toDeleteById">Delete skill by id</a></li>
-                       <li><a href="#">Page 3</a></li>
                     </ul>
                 </li>
                 <li>
                 	<a href="#stateJob" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                 	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>microphone</title><path d="M12,2A3,3 0 0,1 15,5V11A3,3 0 0,1 12,14A3,3 0 0,1 9,11V5A3,3 0 0,1 12,2M19,11C19,14.53 16.39,17.44 13,17.93V21H11V17.93C7.61,17.44 5,14.53 5,11H7A5,5 0 0,0 12,16A5,5 0 0,0 17,11H19Z" /></svg>
-                	<span>Job Interview Status</span>
+                	<span>Job Interview State</span>
                 	</a>
                     <ul class="collapse list-unstyled" id="stateJob">
+                    <li><a href="${pageContext.request.contextPath}/stateJobIntCtr/goToAllStateJobInterview">All job interview status</a></li>
+                        
                         <li><a href="${pageContext.request.contextPath}/stateJobIntCtr/toAdd">Add job interview status</a></li>
-                        <li><a href="${pageContext.request.contextPath}/stateJobIntCtr/toUpdateById">Update job interview status by id</a></li>
-                        <li><a href="${pageContext.request.contextPath}/stateJobIntCtr/toDeleteById">Delete job interview status by id</a></li>
-                       <li><a href="#">Page 3</a></li>
+                        <li><a href="${pageContext.request.contextPath}/stateJobIntCtr/searchJobInterviewForm">Search state job interview</a></li>
+                        
+                        <li><a href="${pageContext.request.contextPath}/stateJobIntCtr/toUpdateById">Update job interview state by id</a></li>
+                        <li><a href="${pageContext.request.contextPath}/stateJobIntCtr/toDeleteById">Delete job interview state by id</a></li>
                     </ul>
                 </li>
                 <li>
@@ -88,8 +90,7 @@
                         <li><a href="${pageContext.request.contextPath}/workExpCtr/toAdd">Add work experiences</a></li>
                         <li><a href="${pageContext.request.contextPath}/workExpCtr/toUpdateById">Update work experiences by id</a></li>
                         <li><a href="${pageContext.request.contextPath}/workExpCtr/toDeleteById">Delete work experiences by id</a></li>
-                       <li><a href="#">Page 3</a></li>
-                    </ul>
+                   </ul>
                 </li>
                  <li>
                 	<a href="#emp" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
