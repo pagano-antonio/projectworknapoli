@@ -50,6 +50,9 @@ public class LoginCtr {
 			if (e != null) {
 				request.getSession().setAttribute("idUser", e.getIdEmployee());
 			}
+			model.addAttribute("showToast", true);
+			model.addAttribute("toastTitle", "Welcome " + e.getName());
+			model.addAttribute("toastMessage", "Have a nice session!");
 			return "home";
 		} else {
 			model.addAttribute("error", "User not found or incorrect password");

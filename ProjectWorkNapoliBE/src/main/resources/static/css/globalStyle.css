@@ -7,6 +7,15 @@ h2 + form {
 	margin-top:25px;
 }
 
+.warningText{
+	color:#c4147d!important;
+	text-transform:uppercase;
+}
+
+.warningText + input{
+	background-color:#c4147d10!important;
+}
+
 p {
     font-size: 1.1em;
     font-weight: 300;
@@ -426,6 +435,7 @@ select + .btn-group .btn {
   min-width:350px;
   border-radius: 5px;
   font-weight:500;
+  background: #01a9c0;
   padding: 20px 35px 20px 25px;
   box-shadow: 0 6px 20px -5px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -536,6 +546,7 @@ select + .btn-group .btn {
   right: 0;
   height: 100%;
   width: 100%;
+  background-color: #1289c4;
   
 }
 .my-toast.Success .progress:before{

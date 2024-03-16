@@ -100,18 +100,28 @@ public class EmployeeCtr {
 	@PostMapping("/updateOwnProfile")
 	public String updateOwnProfile(HttpServletRequest request, Model model, @ModelAttribute Employee e,
 			@RequestParam("oldpassword") String p) {
+		model.addAttribute("showToast", true);
 		Employee old = (Employee) EmployeeRep.findById(e.getIdEmployee()).get();
-		System.out.println(old.getPassword());
-		System.out.println(p);
+
 		if (passwordEncoder.matches(p, old.getPassword())) {
-			String psw = passwordEncoder.encode(e.getPassword());
-			e.setPassword(psw);
+			if (e.getPassword() != null && e.getPassword() != "") {
+				String psw = passwordEncoder.encode(e.getPassword());
+				e.setPassword(psw);
+			} else {
+				e.setPassword(old.getPassword());
+			}
 			EmployeeRep.save(e);
 			HttpSession session = request.getSession();
 			session.setAttribute("username", e.getUsername());
 			request.setAttribute("username", e.getUsername());
+			model.addAttribute("toastTitle", "Success");
+			model.addAttribute("toastMessage", "Profile updated!");
+			return "home";
+		} else {
+			model.addAttribute("employee", e);
+			model.addAttribute("toastTitle", "Warning");
+			model.addAttribute("toastMessage", "Incorrect password. Try Again");
+			return "employee/employeeProfile";
 		}
-
-		return "home";
 	}
 }
