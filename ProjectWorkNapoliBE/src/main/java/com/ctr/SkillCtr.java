@@ -33,15 +33,23 @@ public class SkillCtr {
 	@GetMapping("/allSkills")
 	public String allSkills(Model model) {
 		List<Skill> skills = SkillRep.findAll();
-		model.addAttribute("skills", skills);
 		model.addAttribute("showToast", true);
-		if (skills.size() == 1) {
-			model.addAttribute("toastMessage", "1 skill found");
-		} else {
-			model.addAttribute("toastMessage", skills.size() + " skills found");
 
+		if (skills.size() == 0) {
+			model.addAttribute("toastTitle", "Warning");
+			model.addAttribute("toastMessage", "No skill found. Add one first!");
+			return "skill/addSkill";
+		} else {
+			model.addAttribute("skills", skills);
+			model.addAttribute("toastTitle", "Success");
+
+			if (skills.size() == 1) {
+				model.addAttribute("toastMessage", "1 skill found");
+			} else {
+				model.addAttribute("toastMessage", skills.size() + " skills found");
+			}
+			return "skill/allSkills";
 		}
-		return "skill/allSkills";
 
 	}
 
@@ -110,6 +118,7 @@ public class SkillCtr {
 		List<Skill> skills = SkillRep.findAll();
 		model.addAttribute("skills", skills);
 		model.addAttribute("showToast", true);
+		model.addAttribute("toastTitle", "Success");
 		model.addAttribute("toastMessage", "Skill deleted");
 		return "skill/allSkills";
 	}
@@ -131,6 +140,7 @@ public class SkillCtr {
 		List<Skill> skills = SkillRep.findAll();
 		model.addAttribute("skills", skills);
 		model.addAttribute("showToast", true);
+		model.addAttribute("toastTitle", "Success");
 		model.addAttribute("toastMessage", "Skill updated");
 		return "skill/allSkills";
 	}
@@ -142,10 +152,17 @@ public class SkillCtr {
 		List<Skill> skills = SkillRep.findByCriteria(id, s.getTitle(), s.getDescription());
 		model.addAttribute("skills", skills);
 		model.addAttribute("showToast", true);
-		if (skills.size() == 1) {
-			model.addAttribute("toastMessage", "1 skill found");
+		if (skills.size() == 0) {
+			model.addAttribute("toastTitle", "Warning");
+			model.addAttribute("toastMessage", "Skill not found. Try again");
+			return "skill/searchSkill";
 		} else {
-			model.addAttribute("toastMessage", skills.size() + " skills found");
+			model.addAttribute("toastTitle", "Success");
+			if (skills.size() == 1) {
+				model.addAttribute("toastMessage", "1 skill found");
+			} else {
+				model.addAttribute("toastMessage", skills.size() + " skills found");
+			}
 		}
 		return "skill/allSkills";
 	}

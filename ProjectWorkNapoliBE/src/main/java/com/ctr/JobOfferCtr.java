@@ -74,9 +74,23 @@ public class JobOfferCtr {
 	@GetMapping("jobOffers")
 	public String jobOffers(Model model) {
 		List<JobOffer> jobOffers = jobOfferRep.findAll();
-		model.addAttribute("jobOffers", jobOffers);
-		model.addAttribute("showToast", false);
-		return "jobOffer/jobOffers";
+		model.addAttribute("showToast", true);
+		if (jobOffers.size() == 0) {
+			model.addAttribute("toastTitle", "Warning");
+			model.addAttribute("toastMessage", "No Job Offers found! Add one first!");
+			return "jobOffer/addJobOffer";
+		} else {
+			model.addAttribute("jobOffers", jobOffers);
+			model.addAttribute("toastTitle", "Success");
+
+			if (jobOffers.size() == 1) {
+				model.addAttribute("toastMessage", jobOffers.size() + " Job Offer founded!");
+
+			} else {
+				model.addAttribute("toastMessage", jobOffers.size() + " Job Offers founded!");
+			}
+			return "jobOffer/jobOffers";
+		}
 	}
 
 	@GetMapping("updateJobOfferForm")
@@ -124,6 +138,7 @@ public class JobOfferCtr {
 		}
 
 		List<JobOffer> jobOffers = jobOfferRep.findAll();
+		model.addAttribute("toastTitle", "Success");
 		model.addAttribute("toastMessage", "Job Offer created!");
 		model.addAttribute("showToast", true);
 		model.addAttribute("jobOffers", jobOffers);
@@ -161,6 +176,7 @@ public class JobOfferCtr {
 
 		List<JobOffer> jobOffers = jobOfferRep.findAll();
 		model.addAttribute("jobOffers", jobOffers);
+		model.addAttribute("toastTitle", "Success");
 		model.addAttribute("toastMessage", "Job Offer updated!");
 		model.addAttribute("showToast", true);
 		return "jobOffer/jobOffers";
@@ -175,6 +191,7 @@ public class JobOfferCtr {
 
 		List<JobOffer> jobOffers = jobOfferRep.findAll();
 		model.addAttribute("jobOffers", jobOffers);
+		model.addAttribute("toastTitle", "Success");
 		model.addAttribute("toastMessage", "Job Offer deleted!");
 		model.addAttribute("showToast", true);
 		return "jobOffer/jobOffers";
@@ -197,14 +214,23 @@ public class JobOfferCtr {
 				stipendiomin, stipendiomax, selectedSkills != null ? selectedSkills : null);
 
 		System.out.println(searchResults.size());
-		if (searchResults.size() == 1) {
-			model.addAttribute("toastMessage", searchResults.size() + " Job Offer founded!");
 
+		if (searchResults.size() == 0) {
+			model.addAttribute("toastTitle", "Warning");
+			model.addAttribute("toastMessage", "Job offer not found. Try again.");
+
+			return "jobOffer/searchJobOffer";
 		} else {
-			model.addAttribute("toastMessage", searchResults.size() + " Job Offers founded!");
+			model.addAttribute("toastTitle", "Success");
+
+			if (searchResults.size() == 1) {
+				model.addAttribute("toastMessage", searchResults.size() + " Job Offer founded!");
+
+			} else {
+				model.addAttribute("toastMessage", searchResults.size() + " Job Offers founded!");
+			}
 		}
 		model.addAttribute("showToast", true);
-
 		model.addAttribute("jobOffers", searchResults);
 		return "jobOffer/jobOffers";
 	}
