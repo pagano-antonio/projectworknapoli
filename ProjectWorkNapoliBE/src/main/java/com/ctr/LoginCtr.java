@@ -37,10 +37,9 @@ public class LoginCtr {
 
 	@PostMapping("/loginServlet")
 	public String goToLogin(HttpServletRequest request, Model model, String username, String psw) {
-		model.addAttribute("error", "");
-
 		// Ottieni l'utente dal repository basato sul nome utente
 		Employee e = loginRepository.findByUsername(username);
+		model.addAttribute("showToast", true);
 
 		// Controlla se l'utente esiste e confronta le password
 		if ((e != null && passwordEncoder.matches(psw, e.getPassword()))
@@ -49,13 +48,17 @@ public class LoginCtr {
 			request.getSession().setAttribute("username", username);
 			if (e != null) {
 				request.getSession().setAttribute("idUser", e.getIdEmployee());
+				model.addAttribute("toastTitle", "Welcome " + e.getName());
+
+			} else {
+				model.addAttribute("toastTitle", "Welcome");
+
 			}
-			model.addAttribute("showToast", true);
-			model.addAttribute("toastTitle", "Welcome " + e.getName());
 			model.addAttribute("toastMessage", "Have a nice session!");
 			return "home";
 		} else {
-			model.addAttribute("error", "User not found or incorrect password");
+			model.addAttribute("toastTitle", "Warning");
+			model.addAttribute("toastMessage", "User not found or incorrect password");
 			return "login/login";
 		}
 	}
@@ -64,10 +67,20 @@ public class LoginCtr {
 	public String resetPassword(HttpServletRequest request, Model model, String email, String psw) {
 
 		Employee e = loginRepository.findByEmail(email);
-		String hashedPassword = passwordEncoder.encode(psw);
-		e.setPassword(hashedPassword);
-		EmployeeRep.save(e);
+		model.addAttribute("showToast", true);
+		if (e != null) {
+			String hashedPassword = passwordEncoder.encode(psw);
+			e.setPassword(hashedPassword);
+			EmployeeRep.save(e);
+			model.addAttribute("toastTitle", "Success!");
+			model.addAttribute("toastMessage", "Password updated!");
 
-		return "login/login";
+			return "login/login";
+		} else {
+			model.addAttribute("toastTitle", "Warning");
+			model.addAttribute("toastMessage", "User not found!");
+
+			return "login/resetPassword";
+		}
 	}
 }
