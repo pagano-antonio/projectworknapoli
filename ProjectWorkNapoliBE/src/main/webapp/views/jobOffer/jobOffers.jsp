@@ -40,9 +40,7 @@
                         <fmt:formatNumber value="${jobOffer.startDate.year}" pattern="0000"/>
                     </td>
                     <td class="align-middle">
-                        <fmt:formatNumber value="${jobOffer.endDate.dayOfMonth}" pattern="00"/>-
-                        <fmt:formatNumber value="${jobOffer.endDate.monthValue}" pattern="00"/>-
-                        <fmt:formatNumber value="${jobOffer.endDate.year}" pattern="0000"/>
+                        <fmt:formatNumber value="${jobOffer.endDate.dayOfMonth}" pattern="00"/>-<fmt:formatNumber value="${jobOffer.endDate.monthValue}" pattern="00"/>-<fmt:formatNumber value="${jobOffer.endDate.year}" pattern="0000"/>
                     </td>
                     <td class="align-middle text-right">${jobOffer.minRal}$</td>
                     <td class="align-middle text-right">${jobOffer.maxRal}$</td>
