@@ -1,6 +1,7 @@
 package com.ctr;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -96,23 +97,31 @@ public class StateJobInterviewCtr {
 
 	@GetMapping("/delete")
 	public String delete(Model model, @RequestParam("id") Integer id) {
-		StateJobInterviewRep.deleteById(id);
-		StateJobInterviewRep.flush();
+		Optional<StateJobInterview> j = StateJobInterviewRep.findById(id);
+		if (j.isPresent()) {
+			StateJobInterviewRep.deleteById(id);
+			StateJobInterviewRep.flush();
 
-		List<StateJobInterview> states = StateJobInterviewRep.findAll();
-		if (states.size() > 0) {
-			model.addAttribute("showToast", true);
-			model.addAttribute("toastTitle", "Success");
-			model.addAttribute("toastMessage", "State Job Interview deleted!");
-			model.addAttribute("states", states);
+			List<StateJobInterview> states = StateJobInterviewRep.findAll();
+			if (states.size() > 0) {
+				model.addAttribute("showToast", true);
+				model.addAttribute("toastTitle", "Success");
+				model.addAttribute("toastMessage", "State Job Interview deleted!");
+				model.addAttribute("states", states);
 
-			return "stateInterview/allStateJobInterview";
+				return "stateInterview/allStateJobInterview";
+			} else {
+				model.addAttribute("showToast", true);
+				model.addAttribute("toastTitle", "Warning");
+				model.addAttribute("toastMessage", "Deletion success, add one more.");
+				return "stateInterview/addStateInterview";
+
+			}
 		} else {
 			model.addAttribute("showToast", true);
 			model.addAttribute("toastTitle", "Warning");
-			model.addAttribute("toastMessage", "Deletion success, add one more.");
-			return "stateInterview/addStateInterview";
-
+			model.addAttribute("toastMessage", "Job State Interview not found");
+			return "stateInterview/deleteById";
 		}
 	}
 
