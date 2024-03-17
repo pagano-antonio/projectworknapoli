@@ -1,10 +1,17 @@
 body {
     font-family: arial, sans-serif;
     background: #fafafa;
+    font-size:11px;
+}
+#content h2 {
+	font-weight: 600;
+    color: #3d51b4!important;
+    margin-top:5px;
 }
 h2 + table,
 h2 + form {
-	margin-top:25px;
+	margin-top:30px;
+	
 }
 
 .warningText{
@@ -167,7 +174,6 @@ thead tr th:last-child {
 
 #sidebar ul.components {
     padding: 20px 0;
-    border-bottom: 1px solid #47748b;
 }
 
 #sidebar ul p {
@@ -177,15 +183,19 @@ thead tr th:last-child {
 
 #sidebar ul li a {
 	color:white;
-    padding: 10px 20px;
+    padding: 10px 20px 10px 20px;
     font-size: 1em;
     display: block;
     text-decoration:none!important;
+    background: #13aac505;
+}
+#sidebar ul.components.list-unstyled li ul li a {
+	padding: 8px 20px 8px 55px;
 }
 
 #sidebar ul li a:hover {
     color: #F7E8D3;
-    background: #13aac545;
+    background: #73b1db50;
 }
 
 #sidebar ul li.active>a,
@@ -208,6 +218,7 @@ a[data-toggle="collapse"] {
 	fill:white;
 }
 #sidebar ul li a span  {
+	font-size:11px;
 	text-transform:uppercase;
 }
 #sidebar ul li a:hover svg path{
@@ -222,11 +233,6 @@ a[data-toggle="collapse"] {
     transform: translateY(-50%);
 }
 
-ul ul a {
-    font-size: 0.9em !important;
-    padding-left: 30px !important;
-    background: #13aac505;
-}
 
 /* ---------------------------------------------------
     OVERLAY
@@ -318,6 +324,10 @@ form {
 	align-items:center;
 }
 
+form label {
+	text-transform:uppercase;
+	font-size:8px;
+}
 .input-100 {
 	flex-direction:column;
 	display:flex;
@@ -361,13 +371,50 @@ select + .btn-group .btn {
 	align-items:center;
 	justify-content:center;
 }
+.dropdown-menu.multiselect-container  .input-group-btn,
+.btn.btn-default.multiselect-clear-filter,
+.dropdown-menu.multiselect-container .input-group-addon {
+	height:34px;
+	min-height:34px;
+	max-height:34px;
+	width:40px;
+	padding:0;
+	display:flex;
+	justify-content: flex-start;
+	align-items:center;
+}
+.btn.btn-default.multiselect-clear-filter i {
+	font-size:16px;
+}
+a.multiselect-all {
+	display:flex;
+	align-items:center;
+}
+.multiselect-container>li>a {
+	padding:5px 0;
+	display:flex;
+	align-items:center;
+	outline:0!important;
+	border:0!important;
+}
+.multiselect-container>li>a:hover {
+	background:#3E50B5;
+	color:white!important;
+}
+.form-control.multiselect-search {
+	outline:0!important;
+	box-shadow:none!important;
+}
+.multiselect-container>li>a>label>input[type=checkbox] {
+	margin-top:-1px;
+}
 .multiselect-item .input-group span.input-group-btn{
 	width:40px;
 	display:flex;
 	height:100%;
 	justify-content:center;
 	align-items:center;
-	border:1px solid;
+	border:0;
 }
 .actions  {
 	display:flex;

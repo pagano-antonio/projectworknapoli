@@ -6,24 +6,22 @@
 <meta charset="UTF-8">
 <title>Recruiter Gestional Tool</title>
 <script>
-//Function to calculate and display the time elapsed since login
 function displayElapsedTime() {
-    // Retrieve the timestamp from the hidden input element
     var timestamp = document.getElementById("time").value;
-    // Calculate the time elapsed since login in milliseconds
     var currentTime = new Date().getTime();
     var elapsedTimeInSeconds = Math.floor((currentTime - timestamp) / 1000);
-    // Calculate minutes and seconds
-    var minutes = Math.floor(elapsedTimeInSeconds / 60);
-    var seconds = elapsedTimeInSeconds % 60;
-    // Display the elapsed time
-    document.getElementById("elapsedTime").innerHTML = "Sei loggato da " + minutes + " minuti " + seconds + " secondi";
+    var hours = Math.floor(elapsedTimeInSeconds / 3600);
+    var remainingSeconds = elapsedTimeInSeconds % 3600;
+    var minutes = Math.floor(remainingSeconds / 60);
+    var seconds = remainingSeconds % 60;
+    var formattedHours = ("0" + hours).slice(-2);
+    var formattedMinutes = ("0" + minutes).slice(-2);
+    var formattedSeconds = ("0" + seconds).slice(-2);
+    var message = "Session time: " + formattedHours + ":" + formattedMinutes + ":" + formattedSeconds;
+    document.getElementById("elapsedTime").innerHTML = message;
 }
-
-// Call the displayElapsedTime function when the page is loaded
 document.addEventListener('DOMContentLoaded', function() {
     displayElapsedTime();
-    // Update the elapsed time every second
     setInterval(displayElapsedTime, 1000);
 });
 
