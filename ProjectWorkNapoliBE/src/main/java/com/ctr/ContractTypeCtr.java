@@ -17,7 +17,7 @@ import com.dao.ContractTypeRepository;
 import com.model.ContractType;
 
 @RestController
-@RequestMapping("/contract-type")
+@RequestMapping("ContractTypeCtr")
 public class ContractTypeCtr{
     
     @Autowired
