@@ -107,7 +107,7 @@ public class CandidateCtr {
 		List <Candidate> candidates = new ArrayList<>();
 		candidates.add(c);
 		model.addAttribute("candidates", candidates);
-		model.addAttribute("toastMessage", candidates.size() + " candidate founded!");
+		model.addAttribute("toastMessage", candidates.size() + " candidate found!");
 		model.addAttribute("showToast", true);
 		return "candidate/candidateListResults";
 	}
@@ -151,7 +151,12 @@ public class CandidateCtr {
 	@GetMapping("updateCandidate")
 	public String updateCandidate(Model model, Candidate c) {
 		candidateRep.save(c);
-		return "candidate/Ok";
+
+		List<Candidate> candidates = candidateRep.findAll();
+		model.addAttribute("candidates", candidates);
+		model.addAttribute("toastMessage", c.getName() + " updated!");
+		model.addAttribute("showToast", true);
+		return "candidate/candidateListResults";
 	}
 
 	///////////////////////////////////////////////////////////////////////
