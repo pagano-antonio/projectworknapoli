@@ -12,13 +12,10 @@
 		<jsp:include page="../sidebar.jsp" />
 		<div id="content">
 			<form action="${pageContext.request.contextPath}/skillCtr/findById" method="get">
-			  <label for="id">Id of the skill:</label><br>
-			  <input type="hidden" id="tipoOp" name="tipoOp" value="search"><br>
-			  <input type="number" id="id" name="id"><br>
+			  <label class="form-label" for="id">Id of the skill:</label>
+			  <input class="form-control" type="number" id="id" name="id">
 			  <input type="submit" value="Submit">
 			</form>
-		
-		
 		</div>
 	</div>
 </body>
