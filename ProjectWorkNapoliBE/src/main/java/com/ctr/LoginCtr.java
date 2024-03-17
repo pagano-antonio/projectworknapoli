@@ -1,5 +1,7 @@
 package com.ctr;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -54,6 +56,7 @@ public class LoginCtr {
 				model.addAttribute("toastTitle", "Welcome");
 
 			}
+			request.getSession().setAttribute("timestamp", new Date().getTime());
 			model.addAttribute("toastMessage", "Have a nice session!");
 			return "home";
 		} else {

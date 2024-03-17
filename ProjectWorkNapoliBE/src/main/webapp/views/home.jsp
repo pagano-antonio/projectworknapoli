@@ -5,14 +5,40 @@
 <head>
 <meta charset="UTF-8">
 <title>Recruiter Gestional Tool</title>
+<script>
+//Function to calculate and display the time elapsed since login
+function displayElapsedTime() {
+    // Retrieve the timestamp from the hidden input element
+    var timestamp = document.getElementById("time").value;
+    // Calculate the time elapsed since login in milliseconds
+    var currentTime = new Date().getTime();
+    var elapsedTimeInSeconds = Math.floor((currentTime - timestamp) / 1000);
+    // Calculate minutes and seconds
+    var minutes = Math.floor(elapsedTimeInSeconds / 60);
+    var seconds = elapsedTimeInSeconds % 60;
+    // Display the elapsed time
+    document.getElementById("elapsedTime").innerHTML = "Sei loggato da " + minutes + " minuti " + seconds + " secondi";
+}
+
+// Call the displayElapsedTime function when the page is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    displayElapsedTime();
+    // Update the elapsed time every second
+    setInterval(displayElapsedTime, 1000);
+});
+
+</script>
 </head>
 <body>
     <jsp:include page="header.jsp" />
 	<div class="wrapper">
 		<jsp:include page="sidebar.jsp" />
-		<div id="content">
-		Content page
-		<div class="provacss">Devo essere giallorosso </div>
+		<div id="content" class="home">
+		<h2 class="home-title">Recruiter Gestional Tool</h2>
+		<input type="hidden" id="time" name="time" value="${sessionScope.timestamp}"/>
+		<div id="elapsedTime"></div>
+		
+		<img src="/images/bg2.png"/>
 		
 		</div>
 	</div>
