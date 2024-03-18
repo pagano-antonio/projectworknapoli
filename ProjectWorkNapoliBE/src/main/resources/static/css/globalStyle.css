@@ -1,7 +1,9 @@
-body {
+html, body {
     font-family: arial, sans-serif;
     background: #fafafa;
     font-size:11px;
+    overflow:hidden;
+    position:relative;
 }
 #content h2 {
 	font-weight: 600;
@@ -155,10 +157,12 @@ thead tr th:last-child {
 ----------------------------------------------------- */
 
 #sidebar {
-    min-width: 250px;
+	min-width: 250px;
     max-width: 250px;
     background: #137DC5;
     color: #fff;
+    overflow-y:auto;
+     max-height: calc(100vh - 60px);
     transition: all 0.3s;
 }
 
@@ -519,11 +523,12 @@ a.multiselect-all {
 
 
 .my-toast {
-	z-index:99999;
+  z-index:99999;
   position: absolute;
   top: 25px;
   right: 30px;
   min-width:350px;
+  max-width:350px;
   border-radius: 5px;
   font-weight:500;
   background: #01a9c0;
