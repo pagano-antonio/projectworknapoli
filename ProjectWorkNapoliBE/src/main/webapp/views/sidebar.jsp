@@ -33,9 +33,9 @@
                        <li><a href="${pageContext.request.contextPath}/EducationCtr/preAddEducation">Add Candidate Education</a></li>
                         <li><a href="${pageContext.request.contextPath}/EducationCtr/preFindById">Search by Candidate Education</a></li>
                     	<li><a href="${pageContext.request.contextPath}/EducationCtr/preDelete">Delete by Candidate Education</a></li>
- 						<li><a href="${pageContext.request.contextPath}/EducationCtrDegreeType/preAddEducationDegreeType">Add Education Degree Type </a></li>
-                        <li><a href="${pageContext.request.contextPath}/EducationCtrDegreeType/preFindById">Search by Education Degree Type </a></li>
-                    	<li><a href="${pageContext.request.contextPath}/EducationCtrDegreeType/preDeleteEducationDegreeType">Delete by Education Degree Type </a></li>
+ 						<li><a href="${pageContext.request.contextPath}/EducationDegreeTypeCtr/preAddEducationDegreeType">Add Education Degree Type </a></li>
+                        <li><a href="${pageContext.request.contextPath}/EducationDegreeTypeCtr/preFindById">Search by Education Degree Type </a></li>
+                    	<li><a href="${pageContext.request.contextPath}/EducationDegreeTypeCtr/preDeleteEducationDegreeType">Delete by Education Degree Type </a></li>
  
                     </ul>
                 </li>

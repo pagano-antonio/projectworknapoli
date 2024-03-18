@@ -11,12 +11,10 @@
 
 	<h2>ADD EDUCATION DEGREE TYPE</h2>
 	
-			<label>ID EDUCATION DEGREE TYPE</label>
-			<br> <input type="text" id="educationDegreeType.idEducationDegreeType" name="educationDegreeType.idEducationDegreeType" ><br>
-			<label>DESCRIPTION</label>
-			<br> <input type="text" id="description" name="description"><br>
-				<label>submit</label>
-				<input type="submit" value="invia">
+<label>DESCRIPTION</label>
+<br> <input type="text" id="description" name="description"><br>
+		<label>submit</label>
+		<input type="submit" value="invia">
 				
 	</form>			
 </body>

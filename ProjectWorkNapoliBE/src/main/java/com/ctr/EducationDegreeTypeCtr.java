@@ -21,8 +21,8 @@ public class EducationDegreeTypeCtr {
 
 	@GetMapping("/preAddEducationDegreeType")
 	public String preAddEducationDegreeType(Model model) {
-
-		return "educationDegreeType/addEducationDegreeType";
+System.out.println("Arriva qui");
+return "educationDegreeType/addEducationDegreeType";
 	}
 
 	@GetMapping("/addEducationDegreeType")

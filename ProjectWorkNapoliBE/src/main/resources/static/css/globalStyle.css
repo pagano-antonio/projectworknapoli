@@ -192,6 +192,11 @@ thead tr th:last-child {
 #sidebar ul.components.list-unstyled li ul li a {
 	padding: 8px 20px 8px 55px;
 }
+#sidebar ul.components.list-unstyled{
+	max-height: 200 px;
+	overflow-y: auto;
+	border: 1 px solid;
+}
 
 #sidebar ul li a:hover {
     color: #F7E8D3;
