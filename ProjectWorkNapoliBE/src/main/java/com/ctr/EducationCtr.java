@@ -78,7 +78,7 @@ public class EducationCtr {
 	}
 
 	@GetMapping("/findById")
-	public String findById(Model model, int idEducation) {
+	public String findById(Model model, @RequestParam("idEducation") int idEducation) {
 		Education education = new Education();
 		education = (Education) educationRep.findById(idEducation).get();
 		model.addAttribute("idEducationFound", education);
@@ -100,7 +100,7 @@ public class EducationCtr {
 	}
 
 	@GetMapping("/deleteEducation")
-	public String deleteEducation(Model model, int idEducation) {
+	public String deleteEducation(Model model, @RequestParam("idEducation") int idEducation) {
 
 		educationRep.deleteById(idEducation);
 		return "education/operationSuccess";

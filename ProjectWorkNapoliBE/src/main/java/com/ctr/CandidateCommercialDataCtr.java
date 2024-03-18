@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.dao.CandidateCommercialDataRepository;
 import com.model.CandidateCommercialData;
@@ -54,7 +55,7 @@ public class CandidateCommercialDataCtr {
 	}
 	
 	@GetMapping("findByIdToUpdate")
-	public String findByIdToUpdateCandidateCommercial(Model model, Integer idCandidateCommercial) {
+	public String findByIdToUpdateCandidateCommercial(Model model, @RequestParam("idCandidateCommercial") Integer idCandidateCommercial) {
 		CandidateCommercialData ccd = candidateCommercialRep.findById(idCandidateCommercial).get();
 		model.addAttribute("candidatecommercial", ccd);
 		return "candidateCommercial/updateCandidateCommercial";
@@ -74,7 +75,7 @@ public class CandidateCommercialDataCtr {
 	}
 	
 	@GetMapping("deleteCandidateCommercial")
-	public String deleteCandidateCommercial (Model model, Integer idCandidateCommercial) {
+	public String deleteCandidateCommercial (Model model, @RequestParam("idCandidateCommercial") Integer idCandidateCommercial) {
 		candidateCommercialRep.deleteById(idCandidateCommercial);
 		return "candidateCommercial/Ok";
 	}

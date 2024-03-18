@@ -12,6 +12,9 @@
 	<div class="wrapper">
 		<jsp:include page="../sidebar.jsp" />
 		<div id="content">
+		
+		<c:set var = "update" scope = "session" value = "update"/>
+		
 			<h2>Candidate Results</h2>
 
 			<table class="table table-striped table-sm align-middle">
@@ -69,7 +72,7 @@
 											<th class="align-middle ddd" scope="col">Date</th>
 											<th class="align-middle ddd" scope="col">School</th>
 											<th class="align-middle ddd td-100" scope="col">Place</th>
-
+											<th style="text-align:center" class="align-middle">Actions</th>
 
 										</tr>
 										<c:forEach items="${candidate.educations}" var="education">
@@ -79,6 +82,19 @@
 												<td class="align-middle">${education.date}</td>
 												<td class="align-middle">${education.schoolName}</td>
 												<td class="align-middle td-100">${education.place}</td>
+												<td class="align-middle">
+												<div class="actions">
+												    <a href="${pageContext.request.contextPath}/EducationCtr/findById?idEducation=${education.idEducation}">
+											       <button> 
+											       <i class="fas fa-edit"></i>
+											       <span>Edit</span>
+													</button>
+												 </a>	
+												 <a href="${pageContext.request.contextPath}/EducationCtr/deleteEducation?idEducation=${education.idEducation}">
+											         <button><i class="fas fa-trash"></i> <span>Delete</span></button>
+											    </a>   
+						                    </div> 
+											</td>
 											</tr>
 										</c:forEach>
 									</table>
@@ -98,6 +114,7 @@
 											<th class="align-middle ddd" scope="col">City</th>
 											<th class="align-middle ddd" scope="col">Start Date</th>
 											<th class="align-middle ddd" scope="col">End Date</th>
+											<th style="text-align:center" class="align-middle">Actions</th>
 										</tr>
 
 										<c:forEach items="${candidate.workExperiences}" var="work">
@@ -108,6 +125,19 @@
 												<td class="align-middle">${work.city}</td>
 												<td class="align-middle">${work.startDate}</td>
 												<td class="align-middle">${work.endDate}</td>
+												<td>
+													<div class="actions">
+												    <a href="${pageContext.request.contextPath}/workExpCtr/findById?id=${work.idWorkExperience}&tipoOp=${update}">
+											       <button> 
+											       <i class="fas fa-edit"></i>
+											       <span>Edit</span>
+													</button>
+												 </a>	
+												 <a href="${pageContext.request.contextPath}/workExpCtr/deleteEducation?idEducation=${education.idEducation}">
+											         <button><i class="fas fa-trash"></i> <span>Delete</span></button>
+											    </a>   
+						                    </div> 
+											</td>
 											</tr>
 										</c:forEach>
 									</table>
@@ -126,6 +156,7 @@
 											<th class="align-middle ddd" scope="col">Month Refund</th>
 											<th class="align-middle ddd" scope="col">Business Cost</th>
 											<th class="align-middle ddd td-100" scope="col">Notes</th>
+											<th style="text-align:center" class="align-middle">Actions</th>
 										</tr>
 										<c:forEach items="${candidate.candidateCommercialData}"
 											var="data">
@@ -136,6 +167,19 @@
 												<td class="align-middle">${data.monthRefund}</td>
 												<td class="align-middle">${data.businessCost}</td>
 												<td class="align-middle td-100">${data.notes}</td>
+												<td>
+												<div class="actions">
+												    <a href="${pageContext.request.contextPath}/CandidateCommercialCtr/findByIdToUpdate?idCandidateCommercial=${data.idCandidateCommercial}">
+											    <button> 
+											       <i class="fas fa-edit"></i>
+											    <span>Edit</span>
+													</button>
+												 </a>	
+												 <a href="${pageContext.request.contextPath}/CandidateCommercialCtr/deleteCandidateCommercial?idCandidateCommercial=${data.idCandidateCommercial}">
+											         <button><i class="fas fa-trash"></i> <span>Delete</span></button>
+											    </a>   
+						                    </div> 
+											</td>
 											</tr>
 										</c:forEach>
 									</table>
@@ -154,6 +198,7 @@
 											<th class="align-middle ddd" scope="col">Date</th>
 											<th class="align-middle ddd" scope="col">Outcome</th>
 											<th class="align-middle ddd td-100" scope="col">Notes</th>
+											<th style="text-align:center" class="align-middle">Actions</th>
 										</tr>
 										<c:forEach items="${candidate.jobInterviews}"
 											var="jobInterview">
@@ -162,6 +207,19 @@
 												<td class="align-middle">${jobInterview.date}</td>
 												<td class="align-middle">${jobInterview.outcome}</td>
 												<td class="align-middle td-100">${jobInterview.notes}</td>
+												<td>
+												<div class="actions">
+												    <a href="#">
+											    <button> 
+											       <i class="fas fa-edit"></i>
+											    <span>Edit</span>
+													</button>
+												 </a>	
+												 <a href="#">
+											         <button><i class="fas fa-trash"></i> <span>Delete</span></button>
+											    </a>   
+						                    </div> 
+											</td>
 											</tr>
 										</c:forEach>
 									</table>
