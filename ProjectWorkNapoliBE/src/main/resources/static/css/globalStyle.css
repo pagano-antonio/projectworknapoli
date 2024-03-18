@@ -547,7 +547,6 @@ a.multiselect-all {
   top: 25px;
   right: 30px;
   min-width:350px;
-  max-width:350px;
   border-radius: 5px;
   font-weight:500;
   background: #01a9c0;
@@ -628,6 +627,7 @@ a.multiselect-all {
   margin-top:2.5px;
   font-weight: 400;
   color:white;
+  min-width:max-content;
   text-align:center;
   text-transform:uppercase;
 }

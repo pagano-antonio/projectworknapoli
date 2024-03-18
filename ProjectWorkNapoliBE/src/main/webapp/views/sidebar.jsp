@@ -75,6 +75,8 @@
                      <li><a href="${pageContext.request.contextPath}/JobInterviewCtr/allJobInterviews">All job interviews</a></li>
                    
                     <li><a href="${pageContext.request.contextPath}/JobInterviewCtr/addJobInterviewForm">Add job interview</a></li>
+                      <li><a href="${pageContext.request.contextPath}/JobInterviewCtr/searchJobInterviewForm">Search job interview</a></li>
+                  
                    </ul>
                 </li>
                 <li>
