@@ -374,12 +374,7 @@ select + .btn-group .btn {
 .multiselect-item.filter {
 	width:calc(100% - 40px);
 }
-.dropdown-menu.multiselect-container .filter .input-group,
-.input-group-addon {
-	display:flex;
-	align-items:center;
-	justify-content:center;
-}
+
 .dropdown-menu.multiselect-container  .input-group-btn,
 .btn.btn-default.multiselect-clear-filter,
 .dropdown-menu.multiselect-container .input-group-addon {
@@ -391,6 +386,30 @@ select + .btn-group .btn {
 	display:flex;
 	justify-content: flex-start;
 	align-items:center;
+}
+
+.multi-disabled + .btn-group,  .multi-disabled {
+	pointer-events:none!important;
+	background:#FAFAFA90!important;
+}
+.dropdown-menu.multiselect-container .filter .input-group,
+.input-group-addon {
+	display:flex;
+	align-items:center!important;
+	justify-content:center!important;
+}
+.multiselect {
+	background:white!important;
+}
+.multiselect-container.dropdown-menu{
+	width:100%!important;
+}
+.dropdown-menu>.active>a, .dropdown-menu>.active>a:focus, .dropdown-menu>.active>a:hover {
+	background:#3E50B5!important;
+	color:white!important;
+}
+ul.dropdown-menu.multiselect-container li a .radio input {
+	margin-top:-1px;
 }
 .btn.btn-default.multiselect-clear-filter i {
 	font-size:16px;
