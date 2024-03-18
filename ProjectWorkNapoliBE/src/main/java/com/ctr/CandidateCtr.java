@@ -154,7 +154,7 @@ public class CandidateCtr {
 
 		List<Candidate> candidates = candidateRep.findAll();
 		model.addAttribute("candidates", candidates);
-		model.addAttribute("toastMessage", c.getName() + " updated!");
+		model.addAttribute("toastMessage", "candidate number "+c.getIdCandidate()+ " updated!");
 		model.addAttribute("showToast", true);
 		return "candidate/candidateListResults";
 	}
@@ -169,7 +169,11 @@ public class CandidateCtr {
 	@GetMapping("deleteCandidate")
 	public String deleteCandidate(Model model, Integer idCandidate) {
 		candidateRep.deleteById(idCandidate);
-		return "candidate/Ok";
+		List<Candidate> candidates = candidateRep.findAll();
+		model.addAttribute("candidates", candidates);
+		model.addAttribute("toastMessage", "candidate number "+ idCandidate + " deleted!");
+		model.addAttribute("showToast", true);
+		return "candidate/candidateListResults";
 	}
 
 	///////////////////////////////////////////////////////////////////////

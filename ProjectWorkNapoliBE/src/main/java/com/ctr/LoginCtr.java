@@ -47,6 +47,7 @@ public class LoginCtr {
 		if ((e != null && passwordEncoder.matches(psw, e.getPassword()))
 				|| username.equals("user") && psw.equals("1234")) {
 			// Se le password corrispondono, autentica l'utente
+			request.getSession().setMaxInactiveInterval(3600);
 			request.getSession().setAttribute("username", username);
 			if (e != null) {
 				request.getSession().setAttribute("idUser", e.getIdEmployee());
