@@ -12,6 +12,9 @@
 		<div class="wrapper">
 			<jsp:include page="../sidebar.jsp" />
 			<div id="content">
+			
+				<h2>Update candidate</h2>
+			
 				<form action="${pageContext.request.contextPath}/CandidateCtr/updateCandidate">
 
 				

@@ -1,5 +1,7 @@
 package com.ctr;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.dao.CandidateCommercialDataRepository;
+import com.dao.CandidateRepository;
+import com.model.Candidate;
 import com.model.CandidateCommercialData;
 
 @Controller
@@ -15,6 +19,8 @@ public class CandidateCommercialDataCtr {
 
 	@Autowired
 	public CandidateCommercialDataRepository candidateCommercialRep;
+	@Autowired
+	public CandidateRepository candidateRep;
 	
 	////////////////////////////////////////////////////////////////////////
 	
@@ -36,13 +42,17 @@ public class CandidateCommercialDataCtr {
 	
 	
 	@GetMapping("/preAddCandidateCommercial")
-	public String preAddCandidateCommercial () {
+	public String preAddCandidateCommercial (Model model) {
+		List <Candidate> candidates = candidateRep.findAll();
+		model.addAttribute("candidates", candidates);
 		return "candidateCommercial/addCandidateCommercial";
 	}
 	
 	@GetMapping("/addCandidateCommercial")
 	public String addCandidateCommercial(Model model, CandidateCommercialData ccd) {
+		
 		candidateCommercialRep.save(ccd);
+		
 		return "candidateCommercial/Ok";
 	}
 	
