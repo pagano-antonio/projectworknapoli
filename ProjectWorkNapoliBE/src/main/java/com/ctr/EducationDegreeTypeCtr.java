@@ -81,6 +81,7 @@ public class EducationDegreeTypeCtr {
 			@RequestParam(name = "id", required = false) Integer id) {
 		List<EducationDegreeType> educations = educationDegreeTypeRep.findByCriteria(id,
 				educationDegreeType.getDescription());
+		model.addAttribute("showToast", true);
 		if (educations.size() > 0) {
 			model.addAttribute("educations", educations);
 			model.addAttribute("toastTitle", "Success");
