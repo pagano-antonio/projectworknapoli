@@ -11,14 +11,17 @@
 	<div class="wrapper">
 		<jsp:include page="../sidebar.jsp" />
 		<div id="content">
-		<h2>Add education degree type</h2>
-			<form action="${pageContext.request.contextPath}/EducationDegreeTypeCtr/addEducationDegreeType" method="post">
-			  
+		<h2>Search education degree type</h2>
+			<form action="${pageContext.request.contextPath}/EducationDegreeTypeCtr/searchEducationDegreeType" method="post">
+			   <div class="input-100 mb-2">
+			  <label class="form-label" for="id">Id:</label>
+			  <input class="form-control" type="number" id="id" name="id">
+			  </div>
 			  <div class="input-100 mb-2">
 			  <label class="form-label" for="description">Description:</label>
 			  <input class="form-control" type="text" id="description" name="description">
 			  </div>
-			  <input class="btn form-btn" type="submit" value="Add Education Degree Type">
+			  <input class="btn form-btn" type="submit" value="Search Education Degree Type">
 			</form>
 	</div>
 	</div>

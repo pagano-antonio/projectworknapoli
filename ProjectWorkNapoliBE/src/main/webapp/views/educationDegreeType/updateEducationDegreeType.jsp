@@ -12,13 +12,16 @@
 		<jsp:include page="../sidebar.jsp" />
 		<div id="content">
 		<h2>Add education degree type</h2>
-			<form action="${pageContext.request.contextPath}/EducationDegreeTypeCtr/addEducationDegreeType" method="post">
-			  
+			<form action="${pageContext.request.contextPath}/EducationDegreeTypeCtr/updateEducationDegreeType" method="post">
+			   <div class="input-100 mb-2">
+			  <label class="form-label" for="idEducationDegreeType">Id:</label>
+			  <input readonly class="form-control" type="number" id="idEducationDegreeType" name="idEducationDegreeType" value=${education.idEducationDegreeType }>
+			  </div>
 			  <div class="input-100 mb-2">
 			  <label class="form-label" for="description">Description:</label>
-			  <input class="form-control" type="text" id="description" name="description">
+			  <input class="form-control" type="text" id="description" name="description" value=${education.description }>
 			  </div>
-			  <input class="btn form-btn" type="submit" value="Add Education Degree Type">
+			  <input class="btn form-btn" type="submit" value="Update Education Degree Type">
 			</form>
 	</div>
 	</div>
