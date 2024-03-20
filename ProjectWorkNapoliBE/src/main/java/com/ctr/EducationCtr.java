@@ -24,13 +24,12 @@ public class EducationCtr {
 
 	@Autowired
 	public EducationRepository educationRep;
-	
+
 	@Autowired
 	public CandidateRepository candidateRep;
-	
+
 	@Autowired
 	private EducationDegreeTypeRepository educationDegreeTypeRep;
-
 
 //////////////////////////////////////////////////////
 
@@ -48,10 +47,10 @@ public class EducationCtr {
 
 		return "education/operationSuccess";
 	}
-	
-	
+
 	@PostMapping("/addEducationToCandidate")
-	public String addEducationToCandidate(Model model, @RequestParam("idCandidate") int idCandidate, Education education) {
+	public String addEducationToCandidate(Model model, @RequestParam("idCandidate") int idCandidate,
+			Education education) {
 		Candidate candidate = candidateRep.findById(idCandidate).get();
 		education.setCandidate(candidate);
 		educationRep.save(education);
@@ -65,7 +64,7 @@ public class EducationCtr {
 
 		model.addAttribute("educationsOfCandidate", educationsOfCandidate);
 		model.addAttribute("workExpOfCandidate", workExpOfCandidate);
-			
+
 		return "candidate/AddMoreDetails";
 
 	}
@@ -81,7 +80,12 @@ public class EducationCtr {
 	public String findById(Model model, @RequestParam("idEducation") int idEducation) {
 		Education education = new Education();
 		education = (Education) educationRep.findById(idEducation).get();
+		List<EducationDegreeType> educations = educationDegreeTypeRep.findAll();
+		List<Candidate> candidates = candidateRep.findAll();
 		model.addAttribute("idEducationFound", education);
+		model.addAttribute("candidates", candidates);
+		model.addAttribute("educationsdegree", educations);
+
 		return "education/resultsFindById";
 	}
 

@@ -389,10 +389,7 @@ select + .btn-group .btn {
 	align-items:center;
 }
 
-.multi-disabled + .btn-group,  .multi-disabled {
-	pointer-events:none!important;
-	background:#FAFAFA90!important;
-}
+
 .dropdown-menu.multiselect-container .filter .input-group,
 .input-group-addon {
 	display:flex;
@@ -401,6 +398,10 @@ select + .btn-group .btn {
 }
 .multiselect {
 	background:white!important;
+}
+.multi-disabled + .btn-group,  .multi-disabled, .multi-disabled + .btn-group button{
+	pointer-events:none!important;
+	background:#EEEEEE!important;
 }
 .multiselect-container.dropdown-menu{
 	width:100%!important;

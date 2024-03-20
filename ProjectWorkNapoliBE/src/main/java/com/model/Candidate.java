@@ -253,9 +253,7 @@ public class Candidate implements Serializable {
 	public String toString() {
 		return "Candidate [idCandidate=" + idCandidate + ", address=" + address + ", birthday=" + birthday
 				+ ", birthPlace=" + birthPlace + ", city=" + city + ", email=" + email + ", name=" + name + ", phone="
-				+ phone + ", surname=" + surname + ", candidateCommercialData=" + candidateCommercialData
-				+ ", candidateSkills=" + candidateSkills + ", educations=" + educations + ", jobInterviews="
-				+ jobInterviews + ", workExperiences=" + workExperiences + "]";
+				+ phone + ", surname=" + surname + "]";
 	}
 
 }
