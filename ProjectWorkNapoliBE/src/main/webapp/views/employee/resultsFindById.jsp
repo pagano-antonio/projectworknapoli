@@ -12,6 +12,10 @@
 </head>
 
 <body>
+    <jsp:include page="../header.jsp" />
+	<div class="wrapper">
+		<jsp:include page="../sidebar.jsp" />
+		<div id="content">
 
 <h2> RISULTATI AGGIORNABILI</h2>
 
@@ -51,6 +55,7 @@
 <% } %>
 
 </form>
-
+		</div>
+	</div>
 </body>
 </html>
