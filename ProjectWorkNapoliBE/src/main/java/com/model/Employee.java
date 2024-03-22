@@ -3,6 +3,8 @@ package com.model;
 import java.io.Serializable;
 import java.util.List;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
@@ -17,19 +19,24 @@ import jakarta.persistence.OneToMany;
  * 
  */
 @Entity
+@CrossOrigin
 @NamedQuery(name = "Employee.findAll", query = "SELECT e FROM Employee e")
 public class Employee implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	@JsonIgnore
 	@Id
 	private int idEmployee;
 
+	@JsonIgnore
 	private String email;
 
+	@JsonIgnore
 	private String name;
 
 	private String password;
 
+	@JsonIgnore
 	private String surname;
 
 	private String username;
@@ -45,7 +52,13 @@ public class Employee implements Serializable {
 	@OneToMany(mappedBy = "employee")
 	private List<JobInterview> jobInterviews;
 
+	public Employee(String username, String password) {
+		this.username= username;
+		this.password = password;
+	}
+	
 	public Employee() {
+		
 	}
 
 	public int getIdEmployee() {
