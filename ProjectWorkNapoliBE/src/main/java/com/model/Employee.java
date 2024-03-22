@@ -3,6 +3,8 @@ package com.model;
 import java.io.Serializable;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -33,11 +35,13 @@ public class Employee implements Serializable {
 	private String username;
 
 	// bi-directional many-to-one association to EmployeeType
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "idEmployeeType") // devo richiamare nomeAttributo.nomeColonna e non nomeClasse.nomeAttributo
 	private EmployeeType employeeType;
 
 	// bi-directional many-to-one association to JobInterview
+	@JsonIgnore
 	@OneToMany(mappedBy = "employee")
 	private List<JobInterview> jobInterviews;
 
