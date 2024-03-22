@@ -56,7 +56,7 @@ import com.model.Employee;
 	
 	/////////////////////////////////////////////////////////////////////////
 	
-	@GetMapping("findById/{idEmplopyee}")
+	@GetMapping("findById/{idEmployee}")
 	public Employee findById(@PathVariable("idEmployee") int idEmployee) {
 	
 		Employee res = employeeRep.findById(idEmployee).get();
