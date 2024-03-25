@@ -19,7 +19,8 @@
                     <span>Candidates</span>
                     </a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
-                     	<li><a href="${pageContext.request.contextPath}/CandidateCtr/searchCandidateForm">Maxi candidate search</a></li>
+                    <li><a href="${pageContext.request.contextPath}/CandidateCtr/allCandidates">All candidates</a></li>
+                     	<li><a href="${pageContext.request.contextPath}/CandidateCtr/searchCandidateForm">Search candidate</a></li>
                        	<li><a href="${pageContext.request.contextPath}/CandidateCtr/preAddCandidate">Add candidate</a></li>
              <%--            <li><a href="${pageContext.request.contextPath}/CandidateCtr/preFindById">Search for candidate by id</a></li>
                         <li><a href="${pageContext.request.contextPath}/CandidateCommercialCtr/preFindById">Search commercial data by id</a></li> --%>
