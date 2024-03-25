@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Candidate commercial data</title>
 </head>
 <body>
 	<jsp:include page="../header.jsp" />
@@ -13,29 +13,45 @@
 			<div id="content">
 				<form action="${pageContext.request.contextPath}/CandidateCommercialCtr/updateCandidateCommercial">
 				    
-				    <label for="idCandidateCommercial">ID Candidato Commerciale:</label><br>
-				    <input type="number" id="idCandidateCommercial" name="idCandidateCommercial" value="${candidatecommercial.idCandidateCommercial}"><br>
+				   <div class="mb-2 input-50">
+				  	  <label for="idCandidateCommercial" class="form-label">ID Candidato Commerciale:</label><br>
+				   	 <input class="form-control" type="number" id="idCandidateCommercial" name="idCandidateCommercial" readonly = "readonly" value="${candidatecommercial.idCandidateCommercial}"><br>
+				   </div>
 				    
-				    <label for="idCandidate">ID Candidato:</label><br>
-				    <input type="number" id="candidate.idCandidate" name="candidate.idCandidate" value="${candidatecommercial.candidate.idCandidate}"><br>
+				    <div class="mb-2 input-50">
+					    <label for="idCandidate" class="form-label">ID Candidato:</label><br>
+					    <input class="form-control" type="number"  id="candidate.idCandidate"  name="candidate.idCandidate" value="${candidatecommercial.candidate.idCandidate}"><br>
+				    </div>
 				    
-				    <label for="currentRal">Retribuzione Attuale:</label><br>
-				    <input type="number" id="currentRal" name="currentRal" value="${candidatecommercial.currentRal}"><br>
+				  <div class="mb-2 input-50">
+				    <label for="currentRal" class="form-label">Retribuzione Attuale:</label><br>
+				    <input class="form-control" type="number" id="currentRal" name="currentRal" value="${candidatecommercial.currentRal}"><br>
+				  </div> 
+				   
+				   <div class="mb-2 input-50">
+				    <label for="proposedRal" class="form-label">Retribuzione Proposta:</label><br>
+				   	<input class="form-control" type="number" id="proposedRal" name="proposedRal" value="${candidatecommercial.proposedRal}"><br>
+				   </div> 
+				 
+				   <div class="mb-2 input-50" > 
+				   	<label for="monthRefund" class="form-label">Rimborso Mensile:</label><br>
+				    <input class="form-control" type="number" id="monthRefund" name="monthRefund" value="${candidatecommercial.monthRefund}"><br>
+				   </div>
 				    
-				    <label for="proposedRal">Retribuzione Proposta:</label><br>
-				    <input type="number" id="proposedRal" name="proposedRal" value="${candidatecommercial.proposedRal}"><br>
+				   <div class="mb-2 input-50">
+				    <label for="businessCost" class="form-label">Costo Business:</label><br>
+				    <input class="form-control" type="number" id="businessCost" name="businessCost" value="${candidatecommercial.businessCost}"><br>
+				   </div>
 				    
-				    <label for="monthRefund">Rimborso Mensile:</label><br>
-				    <input type="number" id="monthRefund" name="monthRefund" value="${candidatecommercial.monthRefund}"><br>
+				   <div class="mb-2 input-50">
+				    <label for="subsidyFlag" class="form-label">Sussidio:</label><br>
+				    <input class="form-control" type="number" id="subsidyFlag" name="subsidyFlag" value="${candidatecommercial.subsidyFlag}"><br>
+				   </div>
 				    
-				    <label for="businessCost">Costo Business:</label><br>
-				    <input type="number" id="businessCost" name="businessCost" value="${candidatecommercial.businessCost}"><br>
-				    
-				    <label for="subsidyFlag">Sussidio:</label><br>
-				    <input type="number" id="subsidyFlag" name="subsidyFlag" value="${candidatecommercial.subsidyFlag}"><br>
-				    
-				    <label for="notes">Note:</label><br>
-				    <input type="text" id="notes" name="notes" value="${candidatecommercial.notes}"><br><br>
+				   <div class="mb-2 input-50">
+				    <label for="notes" class="form-label">Note:</label><br>
+				    <textarea id="notes" name="notes" rows="4" cols="50" required class="form-control" >${candidatecommercial.notes}"</textarea ><br><br>
+				  </div>
 				    
 				    <input type="submit" value="Invia">
 			</form>
