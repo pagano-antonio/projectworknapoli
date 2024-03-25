@@ -1,6 +1,9 @@
 package com.rest;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +17,7 @@ import com.dao.EducationDegreeTypeRepository;
 import com.model.EducationDegreeType;
 
 @RestController
+@CrossOrigin
 @RequestMapping("EducationDegreeType")
 
 public class EducationDegreeTypeRest {
@@ -23,45 +27,51 @@ public class EducationDegreeTypeRest {
 
 /////////////////////////////////////////////////////////////////////////   
 
-@PostMapping("addEducationDegreeType")
-public String addEducationDegreeType(@RequestBody EducationDegreeType educationDegreeType) {
-System.out.println("operation add complete for " + educationDegreeType);
-educationDegreeTypeRep.save(educationDegreeType);
+	@PostMapping("addEducationDegreeType")
+	public String addEducationDegreeType(@RequestBody EducationDegreeType educationDegreeType) {
+		System.out.println("operation add complete for " + educationDegreeType);
+		educationDegreeTypeRep.save(educationDegreeType);
 
-return "operation add complete";
-}
+		return "operation add complete";
+	}
 
 /////////////////////////////////////////////////////////////////////////
-	
-@PutMapping("updateEducationDegreeType")
-public String updateEducationDegreeType(@RequestBody EducationDegreeType educationDegreeType) {
-	System.out.println("operation update complete for " + educationDegreeType);
-	educationDegreeTypeRep.save(educationDegreeType);
 
-	return "operation update complete";
-}
+	@PutMapping("updateEducationDegreeType")
+	public String updateEducationDegreeType(@RequestBody EducationDegreeType educationDegreeType) {
+		System.out.println("operation update complete for " + educationDegreeType);
+		educationDegreeTypeRep.save(educationDegreeType);
+
+		return "operation update complete";
+	}
 
 /////////////////////////////////////////////////////////////////////////	
 
-@DeleteMapping("deleteEducationDegreeType/{id}")
-public String deleteEducationDegreeType(@PathVariable("id") int id) {
-	System.out.println("operation delete complete for id " + id);
-	educationDegreeTypeRep.deleteById(id);
+	@DeleteMapping("deleteEducationDegreeType/{id}")
+	public String deleteEducationDegreeType(@PathVariable("id") int id) {
+		System.out.println("operation delete complete for id " + id);
+		educationDegreeTypeRep.deleteById(id);
 
-	return "operation delete complete";
-}
+		return "operation delete complete";
+	}
 
 /////////////////////////////////////////////////////////////////////////
 
-@GetMapping("findById/{id}")
-public EducationDegreeType findById(@PathVariable("id") int id) {
+	@GetMapping("findById/{id}")
+	public EducationDegreeType findById(@PathVariable("id") int id) {
 
-	EducationDegreeType res = educationDegreeTypeRep.findById(id).get();
+		EducationDegreeType res = educationDegreeTypeRep.findById(id).get();
 
-	return res;
-}
+		return res;
+	}
 
 /////////////////////////////////////////////////////////////////////////   
 
-	
+	@GetMapping("getEducationDegreeTypes")
+	public List<EducationDegreeType> getEducationDegreeTypes() {
+
+		List<EducationDegreeType> degrees = educationDegreeTypeRep.findAll();
+		System.out.println("degree " + degrees.size());
+		return degrees;
+	}
 }

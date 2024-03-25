@@ -1,6 +1,9 @@
 package com.rest;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,10 +18,18 @@ import com.dao.WorkExperienceRepository;
 import com.model.WorkExperience;
 
 @RestController
-@RequestMapping("/work_experience")
+@CrossOrigin
+@RequestMapping("WorkExperienceRest")
 public class WorkExperienceRest {
 	@Autowired
 	private WorkExperienceRepository workExperienceRep;
+
+	@PostMapping("addWorkExperience")
+	public int addWorkExperience(@RequestBody List<WorkExperience> works) {
+		System.out.println("works-->" + works);
+		workExperienceRep.saveAll(works);
+		return 200;
+	}
 
 	@GetMapping("findById/{id}")
 	@ResponseBody

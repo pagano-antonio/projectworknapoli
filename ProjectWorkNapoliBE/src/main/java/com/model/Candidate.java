@@ -38,15 +38,12 @@ public class Candidate implements Serializable {
 
 	private String city;
 
-	@JsonIgnore
 	private String email;
 
 	private String name;
 
-	@JsonIgnore
 	private BigInteger phone;
 
-	@JsonIgnore
 	private String surname;
 
 	// bi-directional many-to-one association to CandidateCommercialData
