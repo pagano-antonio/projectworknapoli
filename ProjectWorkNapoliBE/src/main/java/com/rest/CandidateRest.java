@@ -14,36 +14,36 @@ import org.springframework.web.bind.annotation.RestController;
 import com.dao.CandidateRepository;
 import com.model.Candidate;
 
-
 @RestController
 @RequestMapping("CandidateRest")
 @CrossOrigin
 public class CandidateRest {
-	
+
 	@Autowired
 	private CandidateRepository candidateRep;
-	
+
 	@GetMapping("findById/{idCandidate}")
-	public Candidate findById(@PathVariable ("idCandidate") Integer idCandidate) {
+	public Candidate findById(@PathVariable("idCandidate") Integer idCandidate) {
 		Candidate c = candidateRep.findById(idCandidate).get();
 		return c;
 	}
-	
+
 	@PostMapping("addCandidate")
-	public String addCandidate(@RequestBody Candidate c) {
-		candidateRep.save(c);
-    	return "Ok, inserito";
+	public Candidate addCandidate(@RequestBody Candidate c) {
+		System.out.println("salvo il candidato: " + c);
+		Candidate saved = candidateRep.save(c);
+		return saved;
 	}
-	
+
 	@PutMapping("updateCandidate")
-	  public String updateCandidate(@RequestBody Candidate c ) {
-	    	candidateRep.save(c);
-	    	return "Ok, aggiornata";
-	  }
-	  
-	  @DeleteMapping("deleteCandidate/{idCandidate}")
-	  public String deleteCandidate (@PathVariable("idCandidate") Integer idCandidate) {
-	    	candidateRep.deleteById(idCandidate);
-	    	return "Ok, eliminata";
-	  }
+	public String updateCandidate(@RequestBody Candidate c) {
+		candidateRep.save(c);
+		return "Ok, aggiornata";
+	}
+
+	@DeleteMapping("deleteCandidate/{idCandidate}")
+	public String deleteCandidate(@PathVariable("idCandidate") Integer idCandidate) {
+		candidateRep.deleteById(idCandidate);
+		return "Ok, eliminata";
+	}
 }

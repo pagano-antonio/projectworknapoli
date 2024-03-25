@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -21,6 +23,7 @@ public class Education implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idEducation;
 
 	@Temporal(TemporalType.DATE)
@@ -52,7 +55,6 @@ public class Education implements Serializable {
 	public void setIdEducation(int idEducation) {
 		this.idEducation = idEducation;
 	}
-
 
 	public LocalDate getDate() {
 		return date;
