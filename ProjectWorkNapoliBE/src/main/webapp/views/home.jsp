@@ -32,11 +32,10 @@ document.addEventListener('DOMContentLoaded', function() {
 	<div class="wrapper">
 		<jsp:include page="sidebar.jsp" />
 		<div id="content" class="home">
-		<h2 class="home-title">Recruiter Gestional Tool</h2>
 		<input type="hidden" id="time" name="time" value="${sessionScope.timestamp}"/>
 		<div id="elapsedTime"></div>
 		
-		<img src="/images/bg2.png"/>
+		<img src="/images/hr-2.jpg"/>
 		
 		</div>
 	</div>
