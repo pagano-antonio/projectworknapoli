@@ -35,6 +35,12 @@ public class EducationCtr {
 
 	@GetMapping("/preAddEducation")
 	public String preAddEducation(Model model) {
+		
+		List<Candidate> candidates = candidateRep.findAll();
+		model.addAttribute("candidates", candidates);
+		
+		List<EducationDegreeType> educations = educationDegreeTypeRep.findAll();
+		model.addAttribute("educations", educations);
 
 		return "education/addEducation";
 	}
@@ -43,9 +49,11 @@ public class EducationCtr {
 	public String addEducation(Model model, Education education) {
 
 		educationRep.save(education);
-		System.out.println(education);
-
-		return "education/operationSuccess";
+		List <Candidate> candidates =candidateRep.findAll();
+        model.addAttribute("candidates", candidates);
+        model.addAttribute("toastMessage", "education added!");
+        model.addAttribute("showToast", true);
+        return "candidate/candidateListResults";
 	}
 
 	@PostMapping("/addEducationToCandidate")
@@ -92,7 +100,11 @@ public class EducationCtr {
 	@PostMapping("/updateEducation")
 	public String updateEducation(Model model, Education education) {
 		educationRep.save(education);
-		return "education/operationSuccess";
+		List <Candidate> candidates =candidateRep.findAll();
+        model.addAttribute("candidates", candidates);
+        model.addAttribute("toastMessage", " candidate updated!");
+        model.addAttribute("showToast", true);
+        return "candidate/candidateListResults";
 	}
 
 //////////////////////////////////////////////////////
@@ -109,5 +121,4 @@ public class EducationCtr {
 		educationRep.deleteById(idEducation);
 		return "education/operationSuccess";
 	}
-
 }

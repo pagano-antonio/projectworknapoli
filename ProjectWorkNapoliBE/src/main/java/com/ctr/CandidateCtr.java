@@ -56,6 +56,15 @@ public class CandidateCtr {
 	public EducationRepository educationRep;
 
 	////////////////////////////////////////////////////////////////////////
+	
+	@GetMapping("allCandidates")
+	public String allCandidates(Model model ) {
+		List<Candidate> candidates = candidateRep.findAll();
+		model.addAttribute("candidates", candidates);
+		model.addAttribute("toastMessage", candidates.size() + " candidates found");
+		model.addAttribute("showToast", true);
+		return "candidate/candidateListResults";
+	}
 
 	@GetMapping("/searchCandidateForm")
 	public String searchCandidateForm(Model model) {
