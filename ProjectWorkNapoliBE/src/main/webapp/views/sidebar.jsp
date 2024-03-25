@@ -21,22 +21,22 @@
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                      	<li><a href="${pageContext.request.contextPath}/CandidateCtr/searchCandidateForm">Maxi candidate search</a></li>
                        	<li><a href="${pageContext.request.contextPath}/CandidateCtr/preAddCandidate">Add candidate</a></li>
-                        <li><a href="${pageContext.request.contextPath}/CandidateCtr/preFindById">Search for candidate by id</a></li>
-                        <li><a href="${pageContext.request.contextPath}/CandidateCommercialCtr/preFindById">Search commercial data by id</a></li>
+             <%--            <li><a href="${pageContext.request.contextPath}/CandidateCtr/preFindById">Search for candidate by id</a></li>
+                        <li><a href="${pageContext.request.contextPath}/CandidateCommercialCtr/preFindById">Search commercial data by id</a></li> --%>
                         <li><a href="${pageContext.request.contextPath}/CandidateCommercialCtr/preAddCandidateCommercial">Add commercial data</a></li>
-                        <li><a href="${pageContext.request.contextPath}/CandidateCommercialCtr/preUpdateCandidateCommercial">Modify commercial data</a></li>
-                        <li><a href="${pageContext.request.contextPath}/CandidateCommercialCtr/preUpdateCandidateCommercial">Update commercial data</a></li>
-                         <li><a href="${pageContext.request.contextPath}/CandidateSkillCtr/preFindById">Search candidate skills by id</a></li> 
+                    <%--     <li><a href="${pageContext.request.contextPath}/CandidateCommercialCtr/preUpdateCandidateCommercial">Modify commercial data</a></li>
+                        <li><a href="${pageContext.request.contextPath}/CandidateCommercialCtr/preUpdateCandidateCommercial">Update commercial data</a></li> --%>
+                    <%--      <li><a href="${pageContext.request.contextPath}/CandidateSkillCtr/preFindById">Search candidate skills by id</a></li>  --%>
                       	<li><a href="${pageContext.request.contextPath}/CandidateSkillCtr/preAddCandidateSkill">Add candidate skills</a></li>
-                      	<li><a href="${pageContext.request.contextPath}/CandidateSkillCtr/preUpdateCandidateSkill">Update candidate skills</a></li>
-                      	<li><a href="${pageContext.request.contextPath}/CandidateSkillCtr/preDeleteCandidateSkill">Delete candidate skills</a></li>
+             <%--          	<li><a href="${pageContext.request.contextPath}/CandidateSkillCtr/preUpdateCandidateSkill">Update candidate skills</a></li>
+                      	<li><a href="${pageContext.request.contextPath}/CandidateSkillCtr/preDeleteCandidateSkill">Delete candidate skills</a></li> --%>
                        <li><a href="${pageContext.request.contextPath}/EducationCtr/preAddEducation">Add Candidate Education</a></li>
-                        <li><a href="${pageContext.request.contextPath}/EducationCtr/preFindById">Search by Candidate Education</a></li>
-                    	<li><a href="${pageContext.request.contextPath}/EducationCtr/preDelete">Delete by Candidate Education</a></li>
- 						<li><a href="${pageContext.request.contextPath}/EducationDegreeTypeCtr/preAddEducationDegreeType">Add Education Degree Type </a></li>
+                 <%--        <li><a href="${pageContext.request.contextPath}/EducationCtr/preFindById">Search by Candidate Education</a></li>
+                    	<li><a href="${pageContext.request.contextPath}/EducationCtr/preDelete">Delete by Candidate Education</a></li> --%>
+ 					<%-- 	<li><a href="${pageContext.request.contextPath}/EducationDegreeTypeCtr/preAddEducationDegreeType">Add Education Degree Type </a></li>
                         <li><a href="${pageContext.request.contextPath}/EducationDegreeTypeCtr/preFindById">Search by Education Degree Type </a></li>
                     	<li><a href="${pageContext.request.contextPath}/EducationDegreeTypeCtr/preDeleteEducationDegreeType">Delete by Education Degree Type </a></li>
- 
+  --%>
                     </ul>
                 </li>
                  <li>
