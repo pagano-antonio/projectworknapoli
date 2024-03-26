@@ -53,8 +53,12 @@ public class CandidateCommercialDataCtr {
 	public String addCandidateCommercial(Model model, CandidateCommercialData ccd) {
 		
 		candidateCommercialRep.save(ccd);
+		List <Candidate> candidates =candidateRep.findAll();
+        model.addAttribute("candidates", candidates);
+        model.addAttribute("toastMessage", "commercial data added!");
+        model.addAttribute("showToast", true);
+        return "candidate/candidateListResults";
 		
-		return "candidateCommercial/Ok";
 	}
 	
 	///////////////////////////////////////////////////////////////
@@ -68,13 +72,18 @@ public class CandidateCommercialDataCtr {
 	public String findByIdToUpdateCandidateCommercial(Model model, @RequestParam("idCandidateCommercial") Integer idCandidateCommercial) {
 		CandidateCommercialData ccd = candidateCommercialRep.findById(idCandidateCommercial).get();
 		model.addAttribute("candidatecommercial", ccd);
+		
 		return "candidateCommercial/updateCandidateCommercial";
 	}
 	
 	@GetMapping("updateCandidateCommercial")
 	public String updateCandidateCommercial(Model model, CandidateCommercialData ccd) {
 		candidateCommercialRep.save(ccd);
-		return "candidateCommercial/Ok";
+		List <Candidate> candidates =candidateRep.findAll();
+        model.addAttribute("candidates", candidates);
+        model.addAttribute("toastMessage", "commercial data updated!");
+        model.addAttribute("showToast", true);
+        return "candidate/candidateListResults";
 	}
 	
 	///////////////////////////////////////////////////////////////////////
@@ -87,6 +96,10 @@ public class CandidateCommercialDataCtr {
 	@GetMapping("deleteCandidateCommercial")
 	public String deleteCandidateCommercial (Model model, @RequestParam("idCandidateCommercial") Integer idCandidateCommercial) {
 		candidateCommercialRep.deleteById(idCandidateCommercial);
-		return "candidateCommercial/Ok";
+		List <Candidate> candidates =candidateRep.findAll();
+        model.addAttribute("candidates", candidates);
+        model.addAttribute("toastMessage", "commercial data deleted!");
+        model.addAttribute("showToast", true);
+        return "candidate/candidateListResults";
 	}
 }

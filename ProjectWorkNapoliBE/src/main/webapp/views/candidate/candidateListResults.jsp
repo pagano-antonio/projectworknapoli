@@ -44,8 +44,8 @@
 									value="${candidate.birthday.monthValue}" pattern="00" />- <fmt:formatNumber
 									value="${candidate.birthday.year}" pattern="0000" /></td>
 							<td class="align-middle">${candidate.birthPlace}</td>
-							<td class="align-middle">${candidate.city}</td>
 							<td class="align-middle">${candidate.address}</td>
+							<td class="align-middle">${candidate.city}</td>
 							<td class="align-middle">${candidate.email}</td>
 							<td class="align-middle">${candidate.phone}</td>
 							<td class="align-middle">

@@ -1,6 +1,9 @@
 package com.rest;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,18 +19,26 @@ import com.model.Skill;
 
 @RestController
 @RequestMapping("/skill")
+@CrossOrigin
 public class SkillRest {
-	
+
 	@Autowired
 	private SkillRepository skillRep;
-	
+
 	@GetMapping("findById/{id}")
 	@ResponseBody
 	public Skill findById(@PathVariable("id") int id) {
 
-		Skill res =skillRep.findById(id).get();
+		Skill res = skillRep.findById(id).get();
 
 		return res;
+
+	}
+
+	@GetMapping("getSkills")
+	public List<Skill> getSkills() {
+		List<Skill> skills = skillRep.findAll();
+		return skills;
 
 	}
 
@@ -54,6 +65,5 @@ public class SkillRest {
 		System.out.println("Eliminato dal db");
 
 	}
-
 
 }

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,41 +15,74 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dao.CompanyClientRepository;
+import com.model.Candidate;
+import com.model.CandidateSkill;
 import com.model.CompanyClient;
 
 @RestController
-@RequestMapping("/company-clients")
+@RequestMapping("CompanyClientCtr")
 public class CompanyClientCtr {
     
     @Autowired
     private CompanyClientRepository companyClientRepository;
 
-    @GetMapping
-    public List<CompanyClient> getAllCompanyClients() {
-        return companyClientRepository.findAll();
+    @GetMapping("preFindById")
+    public String preFindById () {
+    	return "CompanyClient/FindbyId";
+    }
+    
+
+    @GetMapping("findById")
+    public String findById(Model model, Integer idCompanyClient) {
+    	companyClientRepository.findById(idCompanyClient).get();
+        return "CompanyClient/FindByIdResults";
     }
 
-    @GetMapping("/{id}")
-    public CompanyClient getCompanyClientById(@PathVariable Integer id) {
-        return companyClientRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Client not found"));
+    ///////////////////////////////////////////////////////////////
+    
+    @GetMapping("preAddCompanyClient")
+    public String preAddCompanyClient () {
+    	return "CompanyClient/addCompanyClient";
+    }
+    
+    @PostMapping("addCompanyClient")
+    public String addCompanyClient(Model model, CompanyClient cc) {
+    	companyClientRepository.save(cc);
+        return "";
     }
 
-    @PostMapping
-    public CompanyClient createCompanyClient(@RequestBody CompanyClient companyClient) {
-        return companyClientRepository.save(companyClient);
-    }
-
-    @PutMapping("/{id}")
-    public CompanyClient updateCompanyClient(@PathVariable Integer id, @RequestBody CompanyClient updatedCompanyClient) {
-      // Optional<CompanyClient> update = companyClientRepository.findById(id);
-        //companyClientRepository.
-        
-        return companyClientRepository.save(updatedCompanyClient);
-    }
-
-    @DeleteMapping("/{id}")
-    public void deleteCompanyClient(@PathVariable Integer id) {
-        companyClientRepository.deleteById(id);
-    }
+///////////////////////////////////////////////////////////////
+	
+	@GetMapping("preUpdateCompanyClient")
+	public String preUpdateCompanyClient() {
+	return "CompanyClient/updateById";
+	}
+	
+	@GetMapping("findByIdToUpdate")
+	public String findByIdToUpdateCompanyClient(Model model, Integer idCompanyClient) {
+		CompanyClient cc = companyClientRepository.findById(idCompanyClient).get();
+		model.addAttribute("companyclient", cc);
+	return "CompanyClient/UpdateCompanyClient";
+	}
+	
+	@GetMapping("updateCompanyClient")
+	public String updateCompanyClient(Model model, CompanyClient cc) {
+		companyClientRepository.save(cc);
+		
+	return "";
+	}
+	
+	///////////////////////////////////////////////////////////////////////
+	
+	@GetMapping("preDeleteCompanyClient")
+	public String preDeleteCompanyClient () {
+	return "CompanyClient/DeleteCompanyClient";
+	}
+	
+	@GetMapping("deleteCompanyClient")
+	public String deleteCandidateSkill (Model model, Integer idCompanyClient) {
+		companyClientRepository.deleteById(idCompanyClient);
+	
+	return "";
+	}
 }
