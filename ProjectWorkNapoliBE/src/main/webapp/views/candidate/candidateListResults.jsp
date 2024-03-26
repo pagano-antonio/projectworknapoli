@@ -134,7 +134,7 @@
 											       <span>Edit</span>
 													</button>
 												 </a>	
-												 <a href="${pageContext.request.contextPath}/workExpCtr/deleteEducation?idEducation=${education.idEducation}">
+												 <a href="${pageContext.request.contextPath}/workExpCtr/delete?id=${work.idWorkExperience}">
 											         <button><i class="fas fa-trash"></i> <span>Delete</span></button>
 											    </a>   
 						                    </div> 
@@ -210,13 +210,13 @@
 												<td class="align-middle td-100">${jobInterview.notes}</td>
 												<td>
 												<div class="actions">
-												    <a href="#">
+												    <a href="${pageContext.request.contextPath}/JobInterviewCtr/updateJobInterviewForm?id=${jobInterview.idJobInterview}">
 											    <button> 
 											       <i class="fas fa-edit"></i>
 											    <span>Edit</span>
 													</button>
 												 </a>	
-												 <a href="#">
+												 <a href="${pageContext.request.contextPath}/JobInterviewCtr/deleteJobInterview?id=${jobInterview.idJobInterview}">
 											         <button><i class="fas fa-trash"></i> <span>Delete</span></button>
 											    </a>   
 						                    </div> 

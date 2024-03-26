@@ -52,7 +52,7 @@
                     <input type="text" name="city" required class="form-control" value="${workExpFound.getCity()}">
                 </div>
                
-			  <input type="submit" value="Submit">
+			  <input type="submit" value="Submit" class="btn form-btn">
 			</form>
 	</div>
 	</div>

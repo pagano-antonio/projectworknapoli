@@ -25,6 +25,7 @@ public class CandidateRest {
 	@Autowired
 	private CandidateRepository candidateRep;
 
+	
 	@PostMapping("/searchCandidate")
 	public List<Candidate> searchCandidate(@RequestBody SearchRequest request) {
 		List<Candidate> candidates = candidateRep.findByCriteria(request.getCandidate().getName(),

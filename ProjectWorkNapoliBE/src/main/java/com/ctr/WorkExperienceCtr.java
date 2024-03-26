@@ -106,6 +106,7 @@ public class WorkExperienceCtr {
 		model.addAttribute("workExpFound", workExpFound);
 		
 		if (tipoOp.equals("update")) {
+			
 			return "workExperience/updateWorkExp";
 		}
 		else {
@@ -121,12 +122,16 @@ public class WorkExperienceCtr {
 		return "workExperience/deleteById";
     }
 	
-    @GetMapping("/delete/{id}")
-    public String delete(Model model, @PathVariable("id") String id, HttpServletRequest request) {
+    @GetMapping("/delete")
+    public String delete(Model model, @RequestParam("id") String id, HttpServletRequest request) {
     	int i = Integer.parseInt(request.getParameter("id"));
     	
     	workExperienceRep.deleteById(i);
-    	return "workExperience/ok";
+    	List<Candidate> candidates = candidateRep.findAll();
+    	model.addAttribute("candidates", candidates);
+    	model.addAttribute("toastMessage", "work experience deleted!");
+		model.addAttribute("showToast", true);
+    	return "candidate/candidateListResults";
     }
     
 	//////////////////////////////////////////////////////////////////////////////////
@@ -140,9 +145,12 @@ public class WorkExperienceCtr {
 	@GetMapping("/update")
     public String update(Model model, WorkExperience w) {
 
-		workExperienceRep.save(w);
-		model.addAttribute("workExpUpdated", w);
-        return "workExperience/resUpdateWorkExp";
+		workExperienceRep.save(w);	
+		List<Candidate> candidates = candidateRep.findAll();
+    	model.addAttribute("candidates", candidates);
+    	model.addAttribute("toastMessage", "work experience updated!");
+		model.addAttribute("showToast", true);
+		return "candidate/candidateListResults";
     }
 
 }

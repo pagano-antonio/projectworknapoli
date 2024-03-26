@@ -124,6 +124,10 @@ public class EducationCtr {
 	public String deleteEducation(Model model, @RequestParam("idEducation") int idEducation) {
 
 		educationRep.deleteById(idEducation);
-		return "education/operationSuccess";
+		List<Candidate> candidates = candidateRep.findAll();
+    	model.addAttribute("candidates", candidates);
+    	model.addAttribute("toastMessage", "education deleted!");
+		model.addAttribute("showToast", true);
+		return "candidate/candidateListResults";
 	}
 }

@@ -53,7 +53,7 @@
 				    <textarea id="notes" name="notes" rows="4" cols="50" required class="form-control" >${candidatecommercial.notes}"</textarea ><br><br>
 				  </div>
 				    
-				    <input type="submit" value="Invia">
+				    <input type="submit" value="Invia" class="btn form-btn">
 			</form>
 				
 				
