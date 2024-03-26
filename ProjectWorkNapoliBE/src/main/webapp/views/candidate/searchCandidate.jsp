@@ -12,7 +12,7 @@
     <div class="wrapper">
         <jsp:include page="../sidebar.jsp" />
         <div id="content">
-            <h2>Candidate Form</h2>
+            <h2>Candidate Search Form</h2>
             <form action="searchCandidate" method="post">
 
                 <!-- Name -->
@@ -61,6 +61,16 @@
                 <div class="input-50 mb-2">
                     <label class="form-label" for="phone">Phone:</label>
                     <input type="tel" name="phone" class="form-control">
+                </div>
+                
+                 <!-- Select company  -->
+                <div class="mb-2 input-50">
+                    <label class="form-label" for="company">Select Company Client:</label>
+                    <select name="company" class="multiselect form-control">
+                    <c:forEach var="company" items="${companies}">
+                            <option value="${company.name}">${company.name}</option>
+                        </c:forEach>
+                    </select>
                 </div>
                 
                  <!-- Education  -->
