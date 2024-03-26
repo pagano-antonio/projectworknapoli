@@ -106,8 +106,11 @@
                 	<span>Contract Type</span>
                 	</a>
                     <ul class="collapse list-unstyled" id="contractType">
-                    <li></li>
+                     <li><a href="${pageContext.request.contextPath}/ContractTypeCtr/allContractType">All Contract Type</a></li>
+                     <li><a href="${pageContext.request.contextPath}/ContractTypeCtr/addContractTypeform">Add Contract Type</a></li>
+                     <li><a href="${pageContext.request.contextPath}/ContractTypeCtr/SearchContractTypeform">Search Contract Type</a></li>
                      </ul>
+                     
                 </li>
                 <li>
                 	<a href="#skill" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">

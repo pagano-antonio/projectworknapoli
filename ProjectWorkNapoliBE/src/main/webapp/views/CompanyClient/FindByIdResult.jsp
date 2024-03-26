@@ -21,9 +21,9 @@
 			        </tr>
 			        <tr>
 			            <td>${findById.idCompanyClient}</td>
-			            <td>${findById.skill.name}</td>
-			            <td>${findById.skill.city}</td>
-			            <td>${findById.skill.address}</td>
+			            <td>${findById.name}</td>
+			            <td>${findById.city}</td>
+			            <td>${findById.address}</td>
 
 			        </tr>
     		</table>

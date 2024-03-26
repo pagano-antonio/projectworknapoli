@@ -1,33 +1,57 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Recruiter Gestional Tool</title>
+    <title>Recruiter Gestional Tool</title>
 </head>
 <body>
-    <jsp:include page="../header.jsp" />
-	<div class="wrapper">
-		<jsp:include page="../sidebar.jsp" />
-		<div id="content">
-		<h2>Add Contract Type</h2>
-			<form action="${pageContext.request.contextPath}/ContractTypeCtr/createContractType" method="post">
-			  
-			  <div class="input-100 mb-2">
-			  <label class="form-label" for="title">Title:</label>
-			  <input class="form-control" type="text" id="title" name="title">
-			  </div>
-			  
-			  <div class="input-100 mb-2">
-			  <label class="form-label" for="description">Description:</label>
-			  <textarea rows="4" maxlength="50" class="form-control"  id="description" name="description"></textarea>
-			  </div>
-			  <input class="btn form-btn" type="submit" value="Add Contract Type">
-			</form>
-	</div>
-	</div>
-	<div class="my-toast ${toastTitle}">
+  <jsp:include page="../header.jsp" />
+    <div class="wrapper">
+        <jsp:include page="../sidebar.jsp" />
+        <div id="content">
+            <h2>All Contract Type</h2>
+    
+    <table class="table table-striped table-sm align-middle table-responsive">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <c:forEach var="contractype" items="${ContractType}">
+                <tr>
+                    <td class="align-middle">${contractype.idContractType}</td>
+                    <td class="align-middle">${contractype.title}</td>
+                    <td class="align-middle">${contractype.description}</td>
+                    <td>
+                    <div class="actions">
+                     <a href="${pageContext.request.contextPath}/ContractTypeCtr/updateContractTypeForm?id=${contractype.idContractType}">
+					       <button> 
+					       <i class="fas fa-edit"></i>
+					       <span>Edit</span>
+					       </button>
+					 </a>
+					
+					 <a href="${pageContext.request.contextPath}/ContractTypeCtr/delete?id=${contractype.idContractType}">
+				         <button><i class="fas fa-trash"></i> <span>Delete</span></button>
+				    </a>
+
+                  
+                    </div>
+                    
+                    </td>
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
+</div>
+
+   <div class="my-toast ${toastTitle}">
     <div class="my-toast-content">
     <svg class="my-toast-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>close</title><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
     

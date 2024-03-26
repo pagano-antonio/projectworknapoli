@@ -11,8 +11,8 @@
 	<div class="wrapper">
 		<jsp:include page="../sidebar.jsp" />
 		<div id="content">
-		<h2>Add Contract Type</h2>
-			<form action="${pageContext.request.contextPath}/ContractTypeCtr/createContractType" method="post">
+		<h2>Search Contract Type</h2>
+			<form action="${pageContext.request.contextPath}/ContractTypeCtr/SearchContractType" method="post">
 			  
 			  <div class="input-100 mb-2">
 			  <label class="form-label" for="title">Title:</label>
@@ -23,7 +23,7 @@
 			  <label class="form-label" for="description">Description:</label>
 			  <textarea rows="4" maxlength="50" class="form-control"  id="description" name="description"></textarea>
 			  </div>
-			  <input class="btn form-btn" type="submit" value="Add Contract Type">
+			  <input class="btn form-btn" type="submit" value="Search Contract Type">
 			</form>
 	</div>
 	</div>
