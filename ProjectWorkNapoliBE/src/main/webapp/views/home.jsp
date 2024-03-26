@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		<input type="hidden" id="time" name="time" value="${sessionScope.timestamp}"/>
 		<div id="elapsedTime"></div>
 		
-		<img src="/images/hr-2.jpg"/>
+		<img style="display:none" src="/images/hr-2.jpg"/>
 		
 		</div>
 	</div>
