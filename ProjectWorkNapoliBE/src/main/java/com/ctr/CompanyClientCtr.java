@@ -44,7 +44,7 @@ public class CompanyClientCtr {
 				model.addAttribute("toastMessage", companyClients.size() + " Company client found!");
 
 			} else {
-				model.addAttribute("toastMessage", companyClients.size() + "company clients found!");
+				model.addAttribute("toastMessage", companyClients.size() + " company clients found!");
 			}
 			model.addAttribute("showToast", true);
 			return "CompanyClient/allCompanyClients";

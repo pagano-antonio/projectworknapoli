@@ -13,6 +13,7 @@
 		<jsp:include page="../sidebar.jsp" />
 		<div id="content">
 		
+		<h2>Add Candidate skill</h2>
 		
 			<form action="${pageContext.request.contextPath}/CandidateSkillCtr/addCandidateSkill" >
     
