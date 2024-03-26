@@ -84,10 +84,10 @@ public class JobOfferCtr {
 			model.addAttribute("toastTitle", "Success");
 
 			if (jobOffers.size() == 1) {
-				model.addAttribute("toastMessage", jobOffers.size() + " Job Offer founded!");
+				model.addAttribute("toastMessage", jobOffers.size() + " Job Offer found!");
 
 			} else {
-				model.addAttribute("toastMessage", jobOffers.size() + " Job Offers founded!");
+				model.addAttribute("toastMessage", jobOffers.size() + " Job Offers found!");
 			}
 			return "jobOffer/jobOffers";
 		}
@@ -224,10 +224,10 @@ public class JobOfferCtr {
 			model.addAttribute("toastTitle", "Success");
 
 			if (searchResults.size() == 1) {
-				model.addAttribute("toastMessage", searchResults.size() + " Job Offer founded!");
+				model.addAttribute("toastMessage", searchResults.size() + " Job Offer found!");
 
 			} else {
-				model.addAttribute("toastMessage", searchResults.size() + " Job Offers founded!");
+				model.addAttribute("toastMessage", searchResults.size() + " Job Offers found!");
 			}
 		}
 		model.addAttribute("showToast", true);
