@@ -1,0 +1,203 @@
+<div class="grid align-items-center flex-wrap">
+    <h2 class="title">Candidates</h2>
+    <p-table [value]="candidates" dataKey="idCandidate" [tableStyle]="{ 'min-width': '60rem' }">
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width: 5rem"></th>
+                <th pSortableColumn="idCandidate">Id <p-sortIcon field="idCandidate"></p-sortIcon></th>
+                <th pSortableColumn="surname">Name Surname <p-sortIcon field="surname"></p-sortIcon></th>
+                <th pSortableColumn="birthday">Birthday <p-sortIcon field="birthday"></p-sortIcon></th>
+                <th pSortableColumn="birthPlace">BirthPlace <p-sortIcon field="birthPlace"></p-sortIcon></th>
+                <th pSortableColumn="address">Address <p-sortIcon field="address"></p-sortIcon></th>
+                <th pSortableColumn="city">City <p-sortIcon field="city"></p-sortIcon></th>
+                <th pSortableColumn="email">Email <p-sortIcon field="email"></p-sortIcon></th>
+                <th>Phone</th>
+                <th>Actions</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-candidate let-expanded="expanded">
+            <tr>
+                <td>
+                    <button type="button" pButton pRipple [pRowToggler]="candidate"
+                        class="p-button-text p-button-rounded p-button-plain"
+                        [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+                </td>
+                <td>{{candidate.idCandidate}}</td>
+                <td>{{ candidate.name }} {{ candidate.surname }}</td>
+                <td>{{candidate.birthday}}</td>
+                <td>{{ candidate.birthPlace }}</td>
+                <td>{{ candidate.address }}</td>
+                <td>{{ candidate.city }}</td>
+                <td>{{ candidate.email }}</td>
+                <td>{{ candidate.phone }}</td>
+                <td>
+                    <div style="min-width:max-content">
+                        <p-button [text]="true" class="mx-1" size="small" label="Update" (click)="update(candidate)" />
+                        <p-button [text]="true" size="small" class="mx-1" label="Delete"
+                            (click)="delete(candidate.idCandidate)" />
+                    </div>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="rowexpansion" let-candidate>
+            <tr class="candidate-table-inside">
+                <td colspan="11">
+                    <h4>Skills</h4>
+                    <div class="p-3">
+                        <p-table [value]="candidate.candidateSkills" dataKey="idCandidateSkill">
+                            <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="idCandidateSkill">Id <p-sortIcon field="idCandidateSkill"></p-sortIcon></th>
+                <th pSortableColumn="title">Skill Title <p-sortIcon field="skill.title"></p-sortIcon></th>
+                <th pSortableColumn="description">Description <p-sortIcon field="skill.description"></p-sortIcon></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-candidateSkill>
+            <tr>
+                <td>{{ candidateSkill.idCandidateSkill }}</td>
+                <td>{{ candidateSkill.skill.title }}</td>
+                <td>{{ candidateSkill.skill.description }}</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="3">There are no skills for this candidate yet.</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+<h4>Education</h4>
+<div class="p-3">
+    <p-table [value]="candidate.educations" dataKey="idEducation">
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="idEducation">Id <p-sortIcon field="idEducation"></p-sortIcon></th>
+                <th pSortableColumn="date">Date <p-sortIcon field="date"></p-sortIcon></th>
+                <th pSortableColumn="finalGrade">Final Grade <p-sortIcon field="finalGrade"></p-sortIcon></th>
+                <th pSortableColumn="place">Place <p-sortIcon field="place"></p-sortIcon></th>
+                <th pSortableColumn="schoolName">School Name <p-sortIcon field="schoolName"></p-sortIcon></th>
+                <th pSortableColumn="educationDegreeType">Education Degree Type <p-sortIcon
+                        field="educationDegreeType"></p-sortIcon></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-education>
+            <tr>
+                <td>{{ education.idEducation }}</td>
+                <td>{{ education.date }}</td>
+                <td>{{ education.finalGrade }}</td>
+                <td>{{ education.place }}</td>
+                <td>{{ education.schoolName }}</td>
+                <td>{{ education.educationDegreeType.description }}</td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="6">There are no educations for this candidate yet.</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+<h4>Work Experience</h4>
+<div class="p-3">
+    <p-table [value]="candidate.workExperiences" dataKey="idWorkExperience">
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="idWorkExperience">Id <p-sortIcon field="idWorkExperience"></p-sortIcon></th>
+                <th pSortableColumn="title">Title <p-sortIcon field="title"></p-sortIcon></th>
+                <th pSortableColumn="company">Company <p-sortIcon field="company"></p-sortIcon></th>
+                <th pSortableColumn="description">Description <p-sortIcon field="description"></p-sortIcon></th>
+                <th pSortableColumn="startDate">Start Date <p-sortIcon field="startDate"></p-sortIcon></th>
+                <th pSortableColumn="endDate">End Date <p-sortIcon field="endDate"></p-sortIcon></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-workExperience>
+            <tr>
+                <td>{{ workExperience.idWorkExperience }}</td>
+                <td>{{ workExperience.title }}</td>
+                <td>{{ workExperience.company }}</td>
+                <td>{{ workExperience.description }}</td>
+                <td>{{ workExperience.startDate }}</td>
+                <td>{{ workExperience.endDate }}</td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="6">There are no work experiences for this candidate yet.</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+<h4>Commercial Data</h4>
+<div class="p-3">
+    <p-table [value]="candidate.candidateCommercialData" dataKey="idCandidateCommercial">
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="idCandidateCommercial">Id <p-sortIcon field="idCandidateCommercial"></p-sortIcon>
+                </th>
+                <th pSortableColumn="businessCost">Business Cost <p-sortIcon field="businessCost"></p-sortIcon></th>
+                <th pSortableColumn="currentRal">Current RAL <p-sortIcon field="currentRal"></p-sortIcon></th>
+                <th pSortableColumn="monthRefund">Month Refund <p-sortIcon field="monthRefund"></p-sortIcon></th>
+                <th pSortableColumn="proposedRal">Proposed RAL <p-sortIcon field="proposedRal"></p-sortIcon></th>
+                <th pSortableColumn="subsidyFlag">Subsidy Flag <p-sortIcon field="subsidyFlag"></p-sortIcon></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-commercialData>
+            <tr>
+                <td>{{ commercialData.idCandidateCommercial }}</td>
+                <td>{{ commercialData.businessCost }}</td>
+                <td>{{ commercialData.currentRal }}</td>
+                <td>{{ commercialData.monthRefund }}</td>
+                <td>{{ commercialData.proposedRal }}</td>
+                <td>{{ commercialData.subsidyFlag }}</td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="6">There are no commercial data for this candidate yet.</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+<h4>Job Interviews</h4>
+<div class="p-3">
+    <p-table [value]="candidate.jobInterviews" dataKey="idJobInterview">
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="idJobInterview">Id <p-sortIcon field="idJobInterview"></p-sortIcon></th>
+                <th pSortableColumn="date">Date <p-sortIcon field="date"></p-sortIcon></th>
+                <th pSortableColumn="notes">Notes <p-sortIcon field="notes"></p-sortIcon></th>
+                <th pSortableColumn="outcome">Outcome <p-sortIcon field="outcome"></p-sortIcon></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-interview>
+            <tr>
+                <td>{{ interview.idJobInterview }}</td>
+                <td>{{ interview.date }}</td>
+                <td>{{ interview.notes }}</td>
+                <td>{{ interview.outcome }}</td>
+                <td></td>
+                <td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="4">There are no job interviews for this candidate yet.</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+</td>
+</tr>
+</ng-template>
+</p-table>
+<p-toast></p-toast>
+
+</div>

@@ -1,0 +1,20 @@
+<header id="header" *ngIf="showLayout()">
+    <div class="main-header">
+        <p-button icon="pi pi-bars" [rounded]="true" severity="primary" (click)="toggleSidebar()"></p-button>
+        <h1>
+            <div class="main-title-p">Recruitment</div>
+            <div class="sub-container">
+                <div class="line"></div>
+                <div class="sub">Gestional Tool</div>
+                <div class="line"></div>
+            </div>
+        </h1>
+    </div>
+</header>
+<div class="page-wrapper w-100">
+    <app-sidebar id="sidebar" [ngClass]="{ 'hidden-sidebar': sidebar }" *ngIf="showLayout()" />
+    <div id="content">
+        <router-outlet />
+    </div>
+
+</div>

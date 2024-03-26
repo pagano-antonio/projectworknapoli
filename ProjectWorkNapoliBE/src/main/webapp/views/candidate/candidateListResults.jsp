@@ -5,7 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Candidates Results</title>
+<title>Recruiter Gestional Tool</title>
+
 </head>
 <body>
 	<jsp:include page="../header.jsp" />

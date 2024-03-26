@@ -1,0 +1,66 @@
+<h2 class="title">Search Candidate Form</h2>
+<div class="col-12 mt-4 mb-1 px-4 pt-5 form border-2 border-dashed surface-border border-round surface-ground">
+    <div class="field half-width">
+        <label for="name">Name</label>
+        <input id="name" type="text" [(ngModel)]="candidate.name"
+            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+    </div>
+    <div class="field half-width">
+        <label for="surname">Surname</label>
+        <input id="surname" type="text" [(ngModel)]="candidate.surname"
+            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+    </div>
+    <div class="field half-width">
+        <label for="birthDate">Birth Date</label>
+        <p-calendar id="birthDate" type="date" [(ngModel)]="candidate.birthday" [iconDisplay]="'input'"
+            [showIcon]="true" class="w-full"></p-calendar>
+
+    </div>
+    <div class="field half-width">
+        <label for="birthPlace">Birth Place</label>
+        <input id="birthPlace" type="text" [(ngModel)]="candidate.birthPlace"
+            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+    </div>
+    <div class="field half-width">
+        <label for="address">Address</label>
+        <input id="address" type="text" [(ngModel)]="candidate.address"
+            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+    </div>
+    <div class="field half-width">
+        <label for="city">City</label>
+        <input id="city" type="text" [(ngModel)]="candidate.city"
+            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+    </div>
+    <div class="field half-width">
+        <label for="email">Email</label>
+        <input id="email" type="email" [(ngModel)]="candidate.email"
+            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+    </div>
+    <div class="field half-width">
+        <label for="phone">Phone</label>
+        <input id="phone" type="number" [(ngModel)]="candidate.phone"
+            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+    </div>
+    <div class="field half-width">
+        <label for="skills">Select Skills</label>
+        <p-multiSelect name="skills" [options]="skills" [(ngModel)]="selectedSkills" placeholder="" optionLabel="title"
+            optionValue="idSkill" [showClear]="true"></p-multiSelect>
+    </div>
+    <div class="field half-width">
+        <label for="degree">Select Degree</label>
+        <p-dropdown [options]="educationDegreeType" [(ngModel)]="degree" optionLabel="description" [showClear]="true"
+            optionValue="idEducationDegreeType"></p-dropdown>
+    </div>
+    <div class="field half-width">
+        <label for="degree">Select Job State Interview</label>
+        <p-dropdown [options]="states" [(ngModel)]="jobinterview" optionLabel="title" [showClear]="true"
+            optionValue="idStateJobInterview"></p-dropdown>
+    </div>
+    <div class="field half-width">
+        <label for="dateAfter">Interview State After</label>
+        <p-calendar id="dateAfter" type="date" [(ngModel)]="dateAfter" [iconDisplay]="'input'" [showIcon]="true"
+            class="w-full"></p-calendar>
+
+    </div>
+</div>
+<p-button (click)="searchCandidate()">Search</p-button>
