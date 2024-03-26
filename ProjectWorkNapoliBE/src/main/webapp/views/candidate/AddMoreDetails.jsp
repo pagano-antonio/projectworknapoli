@@ -6,7 +6,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>aggiungi dettagli candidato</title>
+<title>Recruiter Gestional Tool</title>
+
 </head>
 <body>
     <jsp:include page="../header.jsp" />

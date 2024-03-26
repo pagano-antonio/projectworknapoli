@@ -1,0 +1,193 @@
+@import "primeicons/primeicons.css";
+
+html {
+    font-size: 13px;
+    overflow: hidden !important;
+}
+body {
+    background: #f4f3fc;
+    font-size: 1rem;
+    margin: 0;
+    overflow: hidden !important;
+}
+h2.title {
+    text-transform: uppercase;
+    color: #6602ff;
+}
+h4 {
+    color: #618abe;
+}
+.p-accordion.p-component {
+    margin-top: 15px;
+}
+.p-accordion .p-accordion-header .p-accordion-header-link .p-accordion-toggle-icon {
+    position: absolute;
+    right: 10px;
+    transform: scale(0.7);
+}
+.p-calendar:not(.p-calendar-disabled).p-focus > .p-inputtext,
+select:focus,
+input:focus {
+    border-color: #4701b2 !important;
+}
+.p-stepper-number {
+    background: #1f99b020;
+    color: #6602ff !important;
+}
+.btn-icon button {
+    min-width: 45px !important;
+    width: 45px !important;
+    max-width: 45px !important;
+    min-height: 45px !important;
+    height: 45px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    svg {
+        min-width: 20px;
+        width: 20px;
+        max-width: 20px;
+        height: auto;
+        path {
+            fill: #e8f4f7;
+        }
+    }
+}
+.p-accordion .p-accordion-header .p-accordion-header-link {
+    background-color: transparent !important;
+    border: 0;
+    color: #e8f4f7;
+}
+.p-accordion-header[role="heading"] .p-accordion-header-link {
+    display: flex;
+    align-items: center;
+    span {
+        margin-left: 5px;
+        color: #e8f4f7;
+        text-transform: uppercase;
+    }
+    svg {
+        width: 20px;
+        height: auto;
+        path {
+            fill: #f4f3fc;
+        }
+    }
+}
+.p-accordion-header.p-highlight .p-accordion-header-link {
+    span {
+        color: #f9fafb;
+        text-transform: uppercase;
+    }
+    svg {
+        width: 20px;
+        height: auto;
+        path {
+            fill: #f9fafb;
+        }
+    }
+}
+.p-accordion .p-accordion-content {
+    border-radius: 0 !important;
+    border: 0;
+    padding: 10px;
+    background: #5b01e5;
+}
+.p-menu {
+    padding: 0.25rem 0;
+    background: transparent;
+    color: #e5e7eb;
+    border: 0;
+    border-radius: 0 !important;
+    width: 100%;
+    .p-menuitem-content {
+        background-color: transparent;
+        background: transparent;
+        color: rgb(39, 38, 38);
+    }
+    .p-menuitem-text,
+    .p-menuitem > .p-menuitem-content .p-menuitem-link {
+        color: #f9fafb !important;
+        font-size: 14px;
+    }
+    .p-menuitem-text:hover,
+    .p-menuitem > .p-menuitem-content .p-menuitem-link:hover {
+        color: #f9fafb !important;
+        font-size: 14px;
+    }
+}
+
+.form {
+    position: relative;
+    .delete {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+    }
+    h1 {
+        text-transform: uppercase;
+        font-size: 1.25rem;
+        margin-bottom: 2.5rem;
+    }
+    .half-width {
+        width: calc(50% - 1rem); /* Imposta la larghezza al 50% meno il margine */
+        display: inline-block; /* Imposta il display su inline-block */
+        margin-right: 1rem; /* Aggiungi margine destro per separare i campi */
+    }
+    .width25 {
+        width: calc(25% - 1rem); /* Imposta la larghezza al 50% meno il margine */
+        display: inline-block; /* Imposta il display su inline-block */
+        margin-right: 1rem; /* Aggiungi margine destro per separare i campi */
+    }
+    p-calendar {
+        width: 100%;
+        display: flex;
+        span.p-calendar {
+            width: 100%;
+        }
+    }
+    p-dropdown {
+        width: 100%;
+        display: flex;
+        .p-dropdown {
+            width: 100%;
+        }
+    }
+}
+
+p-stepper.candidateStepper {
+    width: 100%;
+}
+p-stepper.steps-disabled .p-stepper-panel .p-stepper-header {
+    //pointer-events: none !important;
+}
+p-multiselect {
+    width: 100%;
+}
+.p-multiselect {
+    width: 100%;
+}
+p-menu .p-menu-list[role="menu"] .p-element.p-menuitem {
+    padding-left: 20px;
+    margin: 2.5px 0;
+}
+
+.p-menuitem-link-active .p-menuitem-text {
+    color: rgb(154 199 255) !important;
+}
+p-menu .p-menu-list[role="menu"] .p-element.p-menuitem:hover {
+    border-radius: 20px;
+    background: #618abe95;
+}
+
+.candidate-table-inside {
+    background: #618abe10;
+    p-table table tr {
+        th,
+        td {
+            width: calc(100% / 6);
+            max-width: calc(100% / 6);
+        }
+    }
+}

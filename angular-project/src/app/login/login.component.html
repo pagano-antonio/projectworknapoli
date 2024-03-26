@@ -1,0 +1,16 @@
+<div class="grid justify-content-center flex-wrap">
+    <div class="col-12 px-5 mx-5">
+        <h1>Login</h1>
+        <div class="field">
+            <label for="username">Username</label>
+            <input id="username" type="text" [(ngModel)]="user"
+                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+        </div>
+        <div class="field">
+            <label for="password">Password</label>
+            <input id="password" type="password" [(ngModel)]="password"
+                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+        </div>
+        <p-button (click)="login()"> LOGIN </p-button>
+    </div>
+    <p>{{errorMessage}}</p>

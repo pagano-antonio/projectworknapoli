@@ -1,0 +1,212 @@
+<div class="grid align-items-center flex-wrap">
+    <h2 class="title">Candidate Edit Form</h2>
+    <p-stepper class="candidateStepper" orientation="vertical" [(activeStep)]="stepIndex"
+        [ngClass]="{'steps-disabled': isCandidateAdded}" class="pr-5">
+        <p-stepperPanel header="Add candidate">
+            <ng-template pTemplate="content" let-nextCallback="nextCallback" let-index="index">
+                <div
+                    class="col-12 mt-4 mb-1 px-4 pt-5 form border-2 border-dashed surface-border border-round surface-ground">
+                    <div class="field half-width">
+                        <label for="name">Name</label>
+                        <input id="name" type="text" [(ngModel)]="candidate.name"
+                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                    </div>
+                    <div class="field half-width">
+                        <label for="surname">Surname</label>
+                        <input id="surname" type="text" [(ngModel)]="candidate.surname"
+                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                    </div>
+                    <div class="field half-width">
+                        <label for="birthDate">Birth Date</label>
+                        <p-calendar id="birthDate" type="date" [(ngModel)]="candidate.birthday" [iconDisplay]="'input'"
+                            [showIcon]="true" class="w-full"></p-calendar>
+
+                    </div>
+                    <div class="field half-width">
+                        <label for="birthPlace">Birth Place</label>
+                        <input id="birthPlace" type="text" [(ngModel)]="candidate.birthPlace"
+                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                    </div>
+                    <div class="field half-width">
+                        <label for="address">Address</label>
+                        <input id="address" type="text" [(ngModel)]="candidate.address"
+                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                    </div>
+                    <div class="field half-width">
+                        <label for="city">City</label>
+                        <input id="city" type="text" [(ngModel)]="candidate.city"
+                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                    </div>
+                    <div class="field half-width">
+                        <label for="email">Email</label>
+                        <input id="email" type="email" [(ngModel)]="candidate.email"
+                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                    </div>
+                    <div class="field half-width">
+                        <label for="phone">Phone</label>
+                        <input id="phone" type="number" [(ngModel)]="candidate.phone"
+                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                    </div>
+                </div>
+                <div class="flex py-4">
+                    <p-button label="Next" size="small" (onClick)="nextCallback.emit()"
+                        [disabled]="candidate.name == null || candidate.name == '' || candidate.surname == null || candidate.surname == '' || candidate.birthday == null ||  candidate.birthPlace == '' || candidate.birthPlace == null || candidate.address == '' || candidate.address == null || candidate.city == '' || candidate.city == null || candidate.email == '' || candidate.email == null || candidate.phone == '' || candidate.phone == null" />
+                </div>
+            </ng-template>
+        </p-stepperPanel>
+        <p-stepperPanel header="Add Skills (optional)">
+            <ng-template pTemplate="content" let-prevCallback="prevCallback" let-nextCallback="nextCallback"
+                let-index="index">
+                <div
+                    class="col-12 mt-4 mb-1 px-4 pt-5 form border-2 border-dashed surface-border border-round surface-ground">
+                    <div class="field">
+                        {{candidate}}
+                        <label for="skills">Select Skills</label>
+                        <p-multiSelect name="skills" [options]="skills" [(ngModel)]="candidate.candidateSkills"
+                            placeholder="" optionLabel="title" [showClear]="true"></p-multiSelect>
+                    </div>
+                </div>
+                <div class="flex py-4">
+                    <p-button label="Next" size="small" (onClick)="nextCallback.emit()" />
+                </div>
+            </ng-template>
+        </p-stepperPanel>
+        <!--  <p-stepperPanel header="Education (optional)">
+            <ng-template pTemplate="content" let-prevCallback="prevCallback" let-nextCallback="nextCallback"
+                let-index="index">
+                <div class="col-12 mt-4 mb-1 px-4 pt-5 form border-2 border-dashed surface-border border-round surface-ground"
+                    *ngFor="let edu of candidate.educations; let i = index">
+                    <p-button [text]="true" (click)="removeEducation(i)" class="delete" icon="pi pi-times"
+                        [rounded]="true" [text]="true" severity="danger "></p-button>
+
+                    <div class="field half-width">
+                        <label for="degree">Select Degree</label>
+                        <p-dropdown [options]="educationDegreeType" [(ngModel)]="edu.educationDegreeType"
+                            optionLabel="description" [showClear]="true"></p-dropdown>
+                    </div>
+                    <div class="field half-width">
+                        <label for="schoolName">School Name</label>
+                        <input id="schoolName" type="text" [(ngModel)]="edu.schoolName"
+                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                    </div>
+                    <div class="field half-width">
+                        <label for="place">Place</label>
+                        <input id="place" type="text" [(ngModel)]="edu.place"
+                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                    </div>
+                    <div class="field width25">
+                        <label for="date">Date</label>
+                        <p-calendar id="date" type="date" [(ngModel)]="edu.date" [iconDisplay]="'input'"
+                            [showIcon]="true" class="w-full"></p-calendar>
+
+                    </div>
+                    <div class="field width25">
+                        <label for="finalGrade">Final Grade</label>
+                        <input id="finalGrade" type="number" [(ngModel)]="edu.finalGrade"
+                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                    </div>
+                </div>
+                <div class="flex py-2 col-12 justify-content-end align-items-end">
+                    <p-button [text]="true" size="small" (click)="moreEducation()">More education</p-button>
+                </div>
+                <div class="flex py-4">
+                    <p-button label="Next" size="small" (onClick)="nextCallback.emit()" />
+                </div>
+            </ng-template>
+        </p-stepperPanel>
+        <p-stepperPanel header="Work Experience (optional)">
+            <ng-template pTemplate="content" let-nextCallback="nextCallback" let-index="index">
+                <div class="col-12 mt-4 mb-1 px-4 pt-5 form border-2 border-dashed surface-border border-round surface-ground"
+                    *ngFor="let w of workExperience; let i = index">
+
+                    <p-button icon="pi pi-times" [rounded]="true" [text]="true" (click)="removeWorkExperience(i)"
+                        class="delete" severity="danger "></p-button>
+
+
+                    <div class="field half-width">
+                        <label for="title">Title</label>
+                        <input id="title" type="text" [(ngModel)]="w.title"
+                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                    </div>
+
+                    <div class="field width25">
+                        <label for="company">Company</label>
+                        <input id="company" type="text" [(ngModel)]="w.company"
+                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                    </div>
+                    <div class="field width25">
+                        <label for="city">City</label>
+                        <input id="city" type="text" [(ngModel)]="w.city"
+                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                    </div>
+                    <div class="field half-width">
+                        <label for="startDate">Start Date</label>
+                        <p-calendar id="startDate" type="date" [(ngModel)]="w.startDate" [iconDisplay]="'input'"
+                            [showIcon]="true" class="w-full"></p-calendar>
+                    </div>
+                    <div class="field half-width">
+                        <label for="endDate">End Date</label>
+                        <p-calendar id="endDate" type="date" [(ngModel)]="w.endDate" [iconDisplay]="'input'"
+                            [showIcon]="true" class="w-full"></p-calendar>
+                    </div>
+                    <div class="field full-width">
+                        <label for="description">Description</label>
+                        <textarea id="description" [(ngModel)]="w.description"
+                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"></textarea>
+                    </div>
+                </div>
+
+                <div class="flex py-2 col-12 justify-content-end align-items-end">
+                    <p-button size="small" [text]="true" (click)="moreWork()">More Work Experience</p-button>
+                </div>
+                <div class="flex py-4">
+                    <p-button label="Next" size="small" (onClick)="nextCallback.emit()" />
+                </div>
+            </ng-template>
+        </p-stepperPanel>
+        <p-stepperPanel header="Commercial Data (optional)">
+            <ng-template pTemplate="content" let-prevCallback="prevCallback" let-index="index">
+                <div
+                    class="col-12 mt-4 mb-1 px-4 pt-5 form border-2 border-dashed surface-border border-round surface-ground">
+                    <div class="field half-width">
+                        <label for="businessCost">Business Cost</label>
+                        <input id="businessCost" type="number" [(ngModel)]="commercialData.businessCost"
+                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                    </div>
+                    <div class="field half-width">
+                        <label for="currentRal">Current Ral</label>
+                        <input id="currentRal" type="number" [(ngModel)]="commercialData.currentRal"
+                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                    </div>
+                    <div class="field half-width">
+                        <label for="monthRefund">Month Refund</label>
+                        <input id="monthRefund" type="number" [(ngModel)]="commercialData.monthRefund"
+                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                    </div>
+                    <div class="field half-width">
+                        <label for="notes">Notes</label>
+                        <input id="notes" type="text" [(ngModel)]="commercialData.notes"
+                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                    </div>
+                    <div class="field half-width">
+                        <label for="proposedRal">Proposed Ral</label>
+                        <input id="proposedRal" type="number" [(ngModel)]="commercialData.proposedRal"
+                            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+                    </div>
+                    <div class="field half-width">
+                        <label for="subsidyFlag">Subsidy Flag {{commercialData.subsidyFlag}}</label>
+                        <p-dropdown optionValue="val" [options]="[{val:0, label:'No'}, {val:1, label:'Yes'}]"
+                            [(ngModel)]="commercialData.subsidyFlag" optionLabel="label"
+                            [showClear]="true"></p-dropdown>
+                    </div>
+                </div>
+
+            </ng-template>
+        </p-stepperPanel> -->
+    </p-stepper>
+    <div class="flex py-4">
+        <!--    <p-button label="Save" (onClick)="addCandidate()"
+            [disabled]="(candidate.name == null || candidate.name == '' || candidate.surname == null || candidate.surname == '' || candidate.birthday == null ||  candidate.birthPlace == '' || candidate.birthPlace == null || candidate.address == '' || candidate.address == null || candidate.city == '' || candidate.city == null || candidate.email == '' || candidate.email == null || candidate.phone == '' || candidate.phone == null) || allEducationKeysFilled() || allWorkKeysFilled() || allCommercialKeysFilled()" /> -->
+    </div>
+
+</div>
