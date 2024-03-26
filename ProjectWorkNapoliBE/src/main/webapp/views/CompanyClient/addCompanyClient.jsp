@@ -12,17 +12,24 @@
         <jsp:include page="../sidebar.jsp" />
         <div id="content">
             <h2>Add Company Client</h2>
-            <form action="${pageContext.request.contextPath}/CompanyClientCtr/createCompanyClient" >
+            <form action="${pageContext.request.contextPath}/CompanyClientCtr/addCompanyClient" >
+               
+               <div class="mb-2 input-50">
                 <label for="name">Name:</label><br>
-                <input type="text" id="name" name="name" required><br>
+                <input type="text" id="name" name="name" class="form-control"><br>
+             </div>
              
+             <div class="mb-2 input-50">
                 <label for="city">City:</label><br>
-                <input type="text" id="city" name="city" required><br>
-                
+                <input type="text" id="city" name="city" class="form-control"><br>
+               </div>
+               
+               <div class="mb-2 input-100">
                 <label for="address">Address:</label><br>
-                <textarea id="address" name="address" required></textarea><br>
+                <input type = "text" id="address" name="address" class="form-control"><br>
+               </div>
                 
-                <input type="submit" value="Add Company Client">
+                <input type="submit" value="Submit" class="btn form-btn">
             </form>
         </div>
     </div>
