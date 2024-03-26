@@ -67,6 +67,8 @@
                 <div class="mb-2 input-50">
                     <label class="form-label" for="company">Select Company Client:</label>
                     <select name="company" class="multiselect form-control">
+                         <option value="">Select company</option>
+                       
                     <c:forEach var="company" items="${companies}">
                             <option value="${company.name}">${company.name}</option>
                         </c:forEach>
