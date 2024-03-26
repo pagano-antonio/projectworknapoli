@@ -84,15 +84,7 @@
                     </select>
                 </div>
                 
-                 <!-- Select Skills  -->
-                <div class="mb-2 input-50">
-                    <label class="form-label" for="selectedSkills">Select Skills:</label>
-                    <select multiple="multiple" name="selectedSkills" class="multiselect form-control">
-                    <c:forEach var="skill" items="${skills}">
-                            <option value="${skill.idSkill}">${skill.title}</option>
-                        </c:forEach>
-                    </select>
-                </div>
+                
                 
                 
                  <!-- Job interview  -->
@@ -112,7 +104,15 @@
                     <input type="date" name="dateAfter" class="form-control">
                 </div>
                 
-
+ <!-- Select Skills  -->
+                <div class="mb-2 input-100">
+                    <label class="form-label" for="selectedSkills">Select Skills:</label>
+                    <select multiple="multiple" name="selectedSkills" class="multiselect form-control">
+                    <c:forEach var="skill" items="${skills}">
+                            <option value="${skill.idSkill}">${skill.title}</option>
+                        </c:forEach>
+                    </select>
+                </div>
                 <!-- Submit Button -->
                 <input type="submit" value="Search candidate" class="btn form-btn">
             </form>
