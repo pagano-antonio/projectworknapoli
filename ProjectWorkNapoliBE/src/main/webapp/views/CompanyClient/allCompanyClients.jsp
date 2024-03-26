@@ -1,45 +1,59 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Recruiter Gestional Tool</title>
-<script>
-function displayElapsedTime() {
-    var timestamp = document.getElementById("time").value;
-    var currentTime = new Date().getTime();
-    var elapsedTimeInSeconds = Math.floor((currentTime - timestamp) / 1000);
-    var hours = Math.floor(elapsedTimeInSeconds / 3600);
-    var remainingSeconds = elapsedTimeInSeconds % 3600;
-    var minutes = Math.floor(remainingSeconds / 60);
-    var seconds = remainingSeconds % 60;
-    var formattedHours = ("0" + hours).slice(-2);
-    var formattedMinutes = ("0" + minutes).slice(-2);
-    var formattedSeconds = ("0" + seconds).slice(-2);
-    var message = "Session time: " + formattedHours + ":" + formattedMinutes + ":" + formattedSeconds;
-    document.getElementById("elapsedTime").innerHTML = message;
-}
-document.addEventListener('DOMContentLoaded', function() {
-    displayElapsedTime();
-    setInterval(displayElapsedTime, 1000);
-});
-
-</script>
+    <title>Recruiter Gestional Tool</title>
 </head>
 <body>
-    <jsp:include page="header.jsp" />
-	<div class="wrapper">
-		<jsp:include page="sidebar.jsp" />
-		<div id="content" class="home">
-		<input type="hidden" id="time" name="time" value="${sessionScope.timestamp}"/>
-		<div id="elapsedTime"></div>
-		
-		<img style="display:none" src="/images/hr-2.jpg"/>
-		
-		</div>
-	</div>
-	<div class="my-toast ${toastTitle}">
+  <jsp:include page="../header.jsp" />
+    <div class="wrapper">
+        <jsp:include page="../sidebar.jsp" />
+        <div id="content">
+            <h2>All Company Clients</h2>
+    
+    <table class="table table-striped table-sm align-middle table-responsive">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <c:forEach var="cc" items="${companyclient}">
+                <tr>
+                    <td class="align-middle">${cc.idCompanyClient}</td>
+                    <td class="align-middle">${cc.name}</td>
+                    <td class="align-middle">${cc.address}</td>
+                    <td class="align-middle">${cc.city}</td>
+                    <td>
+                    <div class="actions">
+                     <a href="${pageContext.request.contextPath}/CompanyClientCtr/findByIdToUpdate?idCompanyClient=${cc.idCompanyClient}">
+					       <button> 
+					       <i class="fas fa-edit"></i>
+					       <span>Edit</span>
+					       </button>
+					 </a>
+					
+					 <a href="${pageContext.request.contextPath}/CompanyClientCtr/deleteCompanyClient?idCompanyClient=${cc.idCompanyClient}">
+				         <button><i class="fas fa-trash"></i> <span>Delete</span></button>
+				    </a>
+
+                  
+                    </div>
+                    
+                    </td>
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
+</div>
+
+   <div class="my-toast ${toastTitle}">
     <div class="my-toast-content">
     <svg class="my-toast-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>close</title><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
     

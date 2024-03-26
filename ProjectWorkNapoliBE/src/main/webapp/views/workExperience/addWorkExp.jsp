@@ -12,40 +12,9 @@
 	<div class="wrapper">
 		<jsp:include page="../sidebar.jsp" />
 		<div id="content">
-		<c:if test="${reloadW}">
-					<!-- tabella work exp -->
-				    <table class="table table-striped table-sm align-middle table-responsive">
-				        <thead>
-				            <tr>
-				                <th>Titolo</th>
-				                <th>Descrizione</th>
-				                <th>Data di inizio</th>
-				                <th>Data di fine</th>
-				                <th>Azienda</th>
-				                <th>Città</th>
-				            </tr>
-				        </thead>
-				        <tbody>
-				        	<c:forEach var="job" items="${workExpOfCandidate}">
-				                <tr>
-				                    <td class="align-middle">${job.title}</td>
-				 					<td class="align-middle">${job.description}</td>
-				                    <td class="align-middle">
-				                        <fmt:formatNumber value="${job.startDate.dayOfMonth}" pattern="00"/>-
-				                        <fmt:formatNumber value="${job.startDate.monthValue}" pattern="00"/>-
-				                        <fmt:formatNumber value="${job.startDate.year}" pattern="0000"/>
-				                    </td>
-				                    <td class="align-middle">
-				                        <fmt:formatNumber value="${job.endDate.dayOfMonth}" pattern="00"/>-
-				                        <fmt:formatNumber value="${job.endDate.monthValue}" pattern="00"/>-
-				                        <fmt:formatNumber value="${job.endDate.year}" pattern="0000"/>
-				                    </td>
-				                    <td class="align-middle">${job.company}</td>
-				                    <td class="align-middle">${job.city}</td>
-				            </c:forEach>
-				        </tbody>
-				    </table>
-				    	   <div class="my-toast ${toastTitle}">
+					<c:if test="${reload}">
+			 	
+			    	   <div class="my-toast ${toastTitle}">
     <div class="my-toast-content">
     <svg class="my-toast-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>close</title><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
     
@@ -58,14 +27,14 @@
     <div class="progress active"></div>
 </div>
 	<input type="hidden" id="modelAttr" name="modelAttr" value="${showToast}"/>
-				</c:if>
-				<br>
+			</c:if>
+
 			<form action="${pageContext.request.contextPath}/workExpCtr/addWorkExp" method="get">
 			
 			    <!-- Select Candidate-->
                 <div class="mb-2 input-100">
-                    <label class="form-label" for="idCandidate">Select Candidate:</label>
-                    <select name="idCandidate" class="multiselect">
+                    <label class="form-label" for="candidate.idCandidate">Select Candidate:</label>
+                    <select name="candidate.idCandidate" class="multiselect">
                     <c:forEach var="c" items="${candidates}">
                             <option value="${c.idCandidate}">${c.name} ${c.surname}</option>
                     </c:forEach>
@@ -112,5 +81,51 @@
 			</form>
 	</div>
 	</div>
+	<script>
+
+document.addEventListener('DOMContentLoaded', function() {
+	
+        var modelAttr = $("#modelAttr").val();
+        if(modelAttr == "true"){
+        showToast();
+        }
+    
+});
+    function showToast() {
+    	const toast = document.querySelector(".my-toast");
+        const progress = document.querySelector(".progress");
+		
+        let timer1, timer2;
+		
+
+        toast.classList.add("active");
+        progress.classList.add("active");
+
+        timer1 = setTimeout(() => {
+            toast.classList.remove("active");
+        }, 2500);
+
+        timer2 = setTimeout(() => {
+            progress.classList.remove("active");
+        }, 2500);
+    }
+
+    const closeIcon = document.querySelector(".my-toast-close");
+    console.log("closeIcon", closeIcon);
+
+    closeIcon.addEventListener("click", () => {
+        const toast = document.querySelector(".my-toast");
+        const progress = document.querySelector(".progress");
+
+        toast.classList.remove("active");
+
+        setTimeout(() => {
+            progress.classList.remove("active");
+        }, 300);
+
+        clearTimeout(timer1);
+        clearTimeout(timer2);
+    });
+</script>
 </body>
 </html>

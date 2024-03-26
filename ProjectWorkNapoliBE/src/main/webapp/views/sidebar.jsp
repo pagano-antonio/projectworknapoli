@@ -97,7 +97,9 @@
                 	<span>Company Client</span>
                 	</a>
                     <ul class="collapse list-unstyled" id="company">
-                   <li></li>
+                    <li><a href="${pageContext.request.contextPath}/CompanyClientCtr/allCompanyClients">All Company Clients</a></li>
+                    <li><a href="${pageContext.request.contextPath}/CompanyClientCtr/preAddCompanyClient">Add Company Client</a></li>
+                    <li><a href="${pageContext.request.contextPath}/CompanyClientCtr/preFindByCriteria">Search Company Client</a></li>
                     </ul>
                 </li>
                 <li>
@@ -106,8 +108,11 @@
                 	<span>Contract Type</span>
                 	</a>
                     <ul class="collapse list-unstyled" id="contractType">
-                    <li></li>
+                     <li><a href="${pageContext.request.contextPath}/ContractTypeCtr/allContractType">All Contract Type</a></li>
+                     <li><a href="${pageContext.request.contextPath}/ContractTypeCtr/addContractTypeform">Add Contract Type</a></li>
+                     <li><a href="${pageContext.request.contextPath}/ContractTypeCtr/SearchContractTypeform">Search Contract Type</a></li>
                      </ul>
+                     
                 </li>
                 <li>
                 	<a href="#skill" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">

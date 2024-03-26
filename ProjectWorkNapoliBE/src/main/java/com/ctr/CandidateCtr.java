@@ -92,10 +92,10 @@ public class CandidateCtr {
 		System.out.println("risultati candidati: " + candidates.size());
 
 		if (candidates.size() == 1) {
-			model.addAttribute("toastMessage", candidates.size() + " candidate founded!");
+			model.addAttribute("toastMessage", candidates.size() + " candidate found!");
 
 		} else {
-			model.addAttribute("toastMessage", candidates.size() + " candidates founded!");
+			model.addAttribute("toastMessage", candidates.size() + " candidates found!");
 		}
 		model.addAttribute("showToast", true);
 

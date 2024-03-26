@@ -13,19 +13,27 @@
         <div id="content">
             <form action="${pageContext.request.contextPath}/CompanyClientCtr/updateCompanyClient">
                 
-                <label for="idCompanyClient">ID Company Client:</label><br>
-                <input type="number" id="idCompanyClient" name="idCompanyClient" readonly="readonly" value="${companyClient.idCompanyClient}"><br>
+                <div class="mb-2 input-50">
+                <label class="form-label" for="idCompanyClient">ID Company Client:</label><br>
+                <input type="number" class="form-control" id="idCompanyClient" name="idCompanyClient" readonly="readonly" value="${companyclient.idCompanyClient}"><br>
+                </div>
                 
-                <label for="contractTypeName">name:</label><br>
-                <input type="text" id="companyClientname" name="companyClientname" value="${companyClient.companyClientname}"><br>
+                <div class="mb-2 input-50">
+                <label class="form-label" for="contractTypeName">name:</label><br>
+                <input type="text" class="form-control" id="name" name="name" value="${companyclient.name}"><br>
+                </div>
                 
-                <label for="companyClientaddress">address:</label><br>
-                <textarea id="companyClientaddress" name="companyClientaddress">${companyClient.companyClientaddress}</textarea><br>
+                <div class="mb-2 input-50">
+                <label class="form-label" for="companyClientaddress">address:</label><br>
+                <input type= "text" class="form-control" id = "address" name = "address" value = "${companyclient.address}"><br>
+                </div>
                 
-                <label for="companyClientcity">city:</label><br>
-                <textarea id="companyClientcity" name="companyClientcity">${companyClient.companyClientcity}</textarea><br>
+                <div class="mb-2 input-50">
+                <label class="form-label" for="companyClientcity">city:</label><br>
+                <input type = "text" class="form-control" id = "city" name = "city" value = "${companyclient.city}"><br>
+                </div>
                 
-                <input type="submit" value="Update">
+               <input type="submit" value="Update" class="btn form-btn">
             </form>
                 
                 

@@ -288,6 +288,10 @@ a[data-toggle="collapse"] {
 	min-height: calc(100vh - 60px);
 	max-height: calc(100vh - 60px);
     overflow:hidden;
+    background:url("/images/hr-2.jpg");
+    background-repeat:none;
+    background-size:cover;
+    background-position:center;
 }
 #content.home img{
 	

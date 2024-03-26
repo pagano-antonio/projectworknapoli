@@ -1,32 +1,57 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Update work experience</title>
 </head>
 <body>
     <jsp:include page="../header.jsp" />
 	<div class="wrapper">
 		<jsp:include page="../sidebar.jsp" />
 		<div id="content">
+		<h1>${workExpFound.candidate.name} ${workExpFound.candidate.surname}</h1>
 			<form action="${pageContext.request.contextPath}/workExpCtr/update" method="get">
 			  <input type="hidden" id="idWorkExperience" name="idWorkExperience" value="${workExpFound.getIdWorkExperience()}"><br>
-			  <label for="candidate.idCandidate">Id candidate:</label><br>
-			  <input type="number" id="candidate.idCandidate" name="candidate.idCandidate" value="${workExpFound.getCandidate().getIdCandidate()}"><br>
-			  <label for="title">title:</label><br>
-			  <input type="text" id="title" name="title" value="${workExpFound.getTitle()}"><br>
-			  <label for="description">description:</label><br>
-			  <input type="text" id="description" name="description" value="${workExpFound.getDescription()}"><br>
-			  <label for="startDate">start date:</label><br>
-			  <input type="date" id="startDate" name="startDate" value="${workExpFound.getStartDate()}"><br>
-			  <label for="endDate">end date:</label><br>
-			  <input type="date" id="endDate" name="endDate" value="${workExpFound.getEndDate()}"><br>
-			  <label for="company">company:</label><br>
-			  <input type="text" id="company" name="company" value="${workExpFound.getCompany()}"><br>
-			  <label for="city">city:</label><br>
-			  <input type="text" id="city" name="city" value="${workExpFound.getCity()}"><br>
+			  <input type="hidden" id="candidate.idCandidate" name="candidate.idCandidate" value="${workExpFound.candidate.idCandidate}"><br>
+ 
+			   <!-- Title -->
+                <div class="input-100 mb-2">
+                    <label class="form-label" for="title">Title:</label>
+                    <input type="text" name="title" required class="form-control" value="${workExpFound.getTitle()}">
+                </div>
+			   <!-- description -->
+                <div class="input-100 mb-2">
+                    <label class="form-label" for="title">description:</label>
+                    <input type="text" name="description" required class="form-control" value="${workExpFound.getDescription()}">
+                </div>
+			   
+			                 <!-- Start Date -->
+                <div class="mb-2 input-50">
+                    <label class="form-label" for="startDate">Start Date:</label>
+                    <input type="date" name="startDate" class="form-control" required value="${workExpFound.getStartDate()}">
+                </div>
+
+                <!-- End Date -->
+                <div class="mb-2 input-50">
+                    <label class="form-label" for="endDate">End Date:</label>
+                    <input type="date" name="endDate" class="form-control" required value="${workExpFound.getEndDate()}">
+               </div>
+               
+			  <!-- work exp company -->
+                <div class="mb-2 input-50">
+                    <label class="form-label" for="company">Azienda:</label>
+                    <input type="text" name="company" required class="form-control" value="${workExpFound.getCompany()}">
+                </div>
+                
+               	<!-- work exp city -->
+                <div class="mb-2 input-50">
+                    <label class="form-label" for="city">Città:</label>
+                    <input type="text" name="city" required class="form-control" value="${workExpFound.getCity()}">
+                </div>
+               
 			  <input type="submit" value="Submit">
 			</form>
 	</div>

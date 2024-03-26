@@ -5,39 +5,27 @@
 <head>
 <meta charset="UTF-8">
 <title>Recruiter Gestional Tool</title>
-<script>
-function displayElapsedTime() {
-    var timestamp = document.getElementById("time").value;
-    var currentTime = new Date().getTime();
-    var elapsedTimeInSeconds = Math.floor((currentTime - timestamp) / 1000);
-    var hours = Math.floor(elapsedTimeInSeconds / 3600);
-    var remainingSeconds = elapsedTimeInSeconds % 3600;
-    var minutes = Math.floor(remainingSeconds / 60);
-    var seconds = remainingSeconds % 60;
-    var formattedHours = ("0" + hours).slice(-2);
-    var formattedMinutes = ("0" + minutes).slice(-2);
-    var formattedSeconds = ("0" + seconds).slice(-2);
-    var message = "Session time: " + formattedHours + ":" + formattedMinutes + ":" + formattedSeconds;
-    document.getElementById("elapsedTime").innerHTML = message;
-}
-document.addEventListener('DOMContentLoaded', function() {
-    displayElapsedTime();
-    setInterval(displayElapsedTime, 1000);
-});
-
-</script>
 </head>
 <body>
-    <jsp:include page="header.jsp" />
+    <jsp:include page="../header.jsp" />
 	<div class="wrapper">
-		<jsp:include page="sidebar.jsp" />
-		<div id="content" class="home">
-		<input type="hidden" id="time" name="time" value="${sessionScope.timestamp}"/>
-		<div id="elapsedTime"></div>
-		
-		<img style="display:none" src="/images/hr-2.jpg"/>
-		
-		</div>
+		<jsp:include page="../sidebar.jsp" />
+		<div id="content">
+		<h2>Search Contract Type</h2>
+			<form action="${pageContext.request.contextPath}/ContractTypeCtr/SearchContractType" method="post">
+			  
+			  <div class="input-100 mb-2">
+			  <label class="form-label" for="title">Title:</label>
+			  <input class="form-control" type="text" id="title" name="title">
+			  </div>
+			  
+			  <div class="input-100 mb-2">
+			  <label class="form-label" for="description">Description:</label>
+			  <textarea rows="4" maxlength="50" class="form-control"  id="description" name="description"></textarea>
+			  </div>
+			  <input class="btn form-btn" type="submit" value="Search Contract Type">
+			</form>
+	</div>
 	</div>
 	<div class="my-toast ${toastTitle}">
     <div class="my-toast-content">

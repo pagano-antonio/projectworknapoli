@@ -66,7 +66,9 @@ public class WorkExperienceCtr {
 		
 		model.addAttribute("toastMessage", "work experience added!");
 		model.addAttribute("showToast", true);
-        return "candidate/candidateListResults";
+		boolean reload = true;
+		model.addAttribute("reload", reload);
+        return "workExperience/addWorkExp";
         
     }
 	
@@ -93,6 +95,7 @@ public class WorkExperienceCtr {
 	
 	@GetMapping("/tofindById")
     public String tofindById() {
+		
 		return "workExperience/researchById";
     }
 	
