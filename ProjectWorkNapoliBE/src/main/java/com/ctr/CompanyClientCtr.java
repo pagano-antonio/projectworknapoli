@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,13 +19,39 @@ import com.dao.CompanyClientRepository;
 import com.model.Candidate;
 import com.model.CandidateSkill;
 import com.model.CompanyClient;
+import com.model.JobInterview;
 
-@RestController
+@Controller
 @RequestMapping("CompanyClientCtr")
 public class CompanyClientCtr {
     
     @Autowired
     private CompanyClientRepository companyClientRepository;
+    
+    @GetMapping("allCompanyClients")
+	public String allJobInterviews(Model model) {
+		List<CompanyClient> companyClients = companyClientRepository.findAll();
+
+		if (companyClients.size() == 0) {
+			model.addAttribute("toastTitle", "Warning");
+			model.addAttribute("toastMessage", "No company clients found! Add one first!");
+			return "JobInterview/addJobInterview";
+		} else {
+			model.addAttribute("companyclient", companyClients);
+			model.addAttribute("toastTitle", "Success");
+
+			if (companyClients.size() == 1) {
+				model.addAttribute("toastMessage", companyClients.size() + " Company client found!");
+
+			} else {
+				model.addAttribute("toastMessage", companyClients.size() + "company clients found!");
+			}
+			model.addAttribute("showToast", true);
+			return "CompanyClient/allCompanyClients";
+		}
+
+	}
+    //////////////////////////////////////////////////////////////////////////////////
 
     @GetMapping("preFindById")
     public String preFindById () {
@@ -40,15 +67,50 @@ public class CompanyClientCtr {
 
     ///////////////////////////////////////////////////////////////
     
+    @GetMapping("preFindByCriteria")
+    public String preFindByCriteria () {
+    	return "CompanyClient/findByCriteria";
+    }
+    
+
+    @GetMapping("findByCriteria")
+    public String searchContractType(Model model, CompanyClient cc) {
+    	List<CompanyClient> companyclients = companyClientRepository.findByCriteria(cc.getName(), cc.getAddress());
+    	 model.addAttribute("showToast", true);
+    	if (companyclients.size()>0) {
+        	model.addAttribute("companyclient", companyclients);
+        	model.addAttribute("toastTitle", "Success");
+        	model.addAttribute("toastMessage", companyclients.size()+ " Company client found!");
+   	    
+        	return "CompanyClient/allCompanyClients";
+        	
+        }else {
+        	model.addAttribute("toastTitle", "Warning");
+        	model.addAttribute("toastMessage", "No company client found!");
+   	    
+        	return "CompanyClient/findByCriteria";
+        }
+    	
+    	
+    }
+    
+    //////////////////////////////////////////////////////////////
+    
+    
     @GetMapping("preAddCompanyClient")
     public String preAddCompanyClient () {
     	return "CompanyClient/addCompanyClient";
     }
     
-    @PostMapping("addCompanyClient")
+    @GetMapping("addCompanyClient")
     public String addCompanyClient(Model model, CompanyClient cc) {
     	companyClientRepository.save(cc);
-        return "";
+    	List<CompanyClient> companyclients = companyClientRepository.findAll();
+		 model.addAttribute("companyclient", companyclients);
+		 model.addAttribute("toastTitle", "Success");
+	     model.addAttribute("toastMessage", "Company client added!");
+	     model.addAttribute("showToast", true);
+	return "CompanyClient/allCompanyClients";
     }
 
 ///////////////////////////////////////////////////////////////
@@ -68,8 +130,12 @@ public class CompanyClientCtr {
 	@GetMapping("updateCompanyClient")
 	public String updateCompanyClient(Model model, CompanyClient cc) {
 		companyClientRepository.save(cc);
-		
-	return "";
+		List<CompanyClient> companyclients = companyClientRepository.findAll();
+		 model.addAttribute("companyclient", companyclients);
+		 model.addAttribute("toastTitle", "Success");
+	     model.addAttribute("toastMessage", "Company client updated!");
+	     model.addAttribute("showToast", true);
+	return "CompanyClient/allCompanyClients";
 	}
 	
 	///////////////////////////////////////////////////////////////////////
@@ -82,7 +148,13 @@ public class CompanyClientCtr {
 	@GetMapping("deleteCompanyClient")
 	public String deleteCandidateSkill (Model model, Integer idCompanyClient) {
 		companyClientRepository.deleteById(idCompanyClient);
-	
-	return "";
+		List<CompanyClient> companyclients = companyClientRepository.findAll();
+		 model.addAttribute("companyclient", companyclients);
+		 model.addAttribute("toastTitle", "Success");
+	     model.addAttribute("toastMessage", "Company client deleted!");
+	     model.addAttribute("showToast", true);
+	return "CompanyClient/allCompanyClients";
 	}
+	
+	
 }
