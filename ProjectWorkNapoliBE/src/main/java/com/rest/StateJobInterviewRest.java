@@ -1,5 +1,7 @@
 package com.rest;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +22,15 @@ public class StateJobInterviewRest {
 
 	@Autowired
 	private StateJobInterviewRepository stateJobIntRep;
+
+	@GetMapping("getStateJobInterviews")
+	public List<StateJobInterview> getStateJobInterviews() {
+
+		List<StateJobInterview> res = stateJobIntRep.findAll();
+
+		return res;
+
+	}
 
 	@GetMapping("findById/{id}")
 	@ResponseBody

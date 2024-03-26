@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Add education</title>
 </head>
 <body>
 	<jsp:include page="../header.jsp" />
@@ -39,20 +39,20 @@
 					</select>
 				</div>
 				<div class="mb-2 input-50">
-					<label class="form-label">SCHOOL NAME</label><br> <br> <input
+					<label class="form-label">SCHOOL NAME</label><input
 						required class="form-control" type="text" id="schoolName"
-						name="schoolName"><br>
+						name="schoolName">
 				</div>
 				<div class="mb-2 input-50">
-					<label class="form-label">PLACE</label><br> <br> <input
+					<label class="form-label">PLACE</label><input
 						required class="form-control" type="text" id="place" name="place"><br>
 				</div>
 				<div class="mb-2 input-50">
-					<label class="form-label">DATE</label><br> <br> <input
+					<label class="form-label">DATE</label><input
 						required class="form-control" type="date" id="date" name="date"><br>
 				</div>
 				<div class="mb-2 input-50">
-					<label class="form-label">FINAL GRADE</label><br> <br> <input
+					<label class="form-label">FINAL GRADE</label><input
 						required class="form-control" type="text" id="finalGrade"
 						name="finalGrade"><br>
 				</div>

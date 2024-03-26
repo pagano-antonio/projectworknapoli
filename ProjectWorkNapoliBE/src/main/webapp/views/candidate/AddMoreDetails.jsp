@@ -23,11 +23,11 @@
 			    <table class="table table-striped table-sm align-middle table-responsive">
 			        <thead>
 			            <tr>
-			                <th>Titolo</th>
-			                <th>Istituto</th>
-			                <th>Città</th>
-			                <th>Data</th>
-			                <th>Voto</th>
+			                <th>Title</th>
+			                <th>School name</th>
+			                <th>City</th>
+			                <th>Date</th>
+			                <th >Final grade</th>
 			            </tr>
 			        </thead>
 			        <tbody>
@@ -41,7 +41,7 @@
 			                        <fmt:formatNumber value="${education.date.monthValue}" pattern="00"/>-
 			                        <fmt:formatNumber value="${education.date.year}" pattern="0000"/>
 			                    </td>
-			                    <td class="align-middle">${education.finalGrade}</td>
+			                    <td class="align-middle" style="text-align:center">${education.finalGrade}</td>
 			            </c:forEach>
 			        </tbody>
 			    </table>
@@ -64,7 +64,7 @@
 			
                 <!-- Select degree type  -->
                 <div class="mb-2 input-100">
-                    <label class="form-label" for="idDegreeType">Seleziona titolo di studio:</label>
+                    <label class="form-label" for="idDegreeType">Select degree type:</label>
                     <select name="idDegreeType" class="multiselect">
                     <c:forEach var="type" items="${degreeType}">
                             <option value="${type.idEducationDegreeType}">${type.description}</option>
@@ -74,31 +74,31 @@
                 
                <!-- school name -->
                 <div class="mb-2 input-50">
-                    <label class="form-label" for="schoolName">Istituto:</label>
+                    <label class="form-label" for="schoolName">School name:</label>
                     <input type="text" name="schoolName" required class="form-control">
                 </div>
                 
                 <!-- education place -->
                 <div class="mb-2 input-50">
-                    <label class="form-label" for="place">Città:</label>
+                    <label class="form-label" for="place">City:</label>
                     <input type="text" name="place" required class="form-control">
                 </div>
                 
                 <!-- date -->
                 <div class="mb-2 input-50">
-                    <label class="form-label" for="date">Data conseguimento:</label>
+                    <label class="form-label" for="date">Date:</label>
                     <input type="date" name="date" class="form-control" required>
                </div>
                
                 <!-- final Grade -->
                 <div class="mb-2 input-50">
-                    <label class="form-label" for="finalGrade">Voto:</label>
+                    <label class="form-label" for="finalGrade">Final grade:</label>
                     <input type="number" name="finalGrade" class="form-control" required>
                </div>
                
                 <!-- Submit Button -->
                 <input type="hidden" name="idCandidate" required class="form-control" value="${candidate.idCandidate}">
-            	<input type="submit" value="Aggiungi un altro titolo di studio">
+            	<input type="submit" class="btn form-btn" value="Add another education">
             	</form>
                
 				<h2>Esperienze lavorative</h2><br>
@@ -108,12 +108,12 @@
 				    <table class="table table-striped table-sm align-middle table-responsive">
 				        <thead>
 				            <tr>
-				                <th>Titolo</th>
-				                <th>Descrizione</th>
-				                <th>Data di inizio</th>
-				                <th>Data di fine</th>
-				                <th>Azienda</th>
-				                <th>Città</th>
+				                <th>Title</th>
+				                <th>Description</th>
+				                <th>Start date</th>
+				                <th>End date</th>
+				                <th>Company</th>
+				                <th>City</th>
 				            </tr>
 				        </thead>
 				        <tbody>
@@ -132,7 +132,7 @@
 				                        <fmt:formatNumber value="${job.endDate.year}" pattern="0000"/>
 				                    </td>
 				                    <td class="align-middle">${job.company}</td>
-				                    <td class="align-middle">${job.city}</td>
+				                    <td class="align-middle" style="text-align:center">${job.city}</td>
 				            </c:forEach>
 				        </tbody>
 				    </table>
@@ -154,43 +154,43 @@
 				<form action="${pageContext.request.contextPath}/workExpCtr/addWorkExpToCandidate" method="post">
 				<!-- work exp title -->
                 <div class="input-100 mb-2">
-                    <label class="form-label" for="title">Titolo:</label>
+                    <label class="form-label" for="title">Title:</label>
                     <input type="text" name="title" required class="form-control">
                 </div>
                 
                  <!-- work exp Description -->
                 <div class="input-100 mb-2">
-                    <label class="form-label" for="description">Descrizione:</label>
+                    <label class="form-label" for="description">Description:</label>
                     <textarea rows="4" cols="50" name="description" class="form-control"></textarea>
                 </div>
                 
                 <!-- Start Date -->
                 <div class="mb-2 input-50">
-                    <label class="form-label" for="startDate">Data di inizio:</label>
+                    <label class="form-label" for="startDate">Start date:</label>
                     <input type="date" name="startDate" class="form-control" required>
                 </div>
 
                 <!-- End Date -->
                 <div class="mb-2 input-50">
-                    <label class="form-label" for="endDate">Data di fine:</label>
+                    <label class="form-label" for="endDate">End date:</label>
                     <input type="date" name="endDate" class="form-control" required>
                </div>
                
                	<!-- work exp company -->
                 <div class="mb-2 input-50">
-                    <label class="form-label" for="company">Azienda:</label>
+                    <label class="form-label" for="company">Company:</label>
                     <input type="text" name="company" required class="form-control">
                 </div>
                 
                	<!-- work exp city -->
                 <div class="mb-2 input-50">
-                    <label class="form-label" for="city">Città:</label>
+                    <label class="form-label" for="city">City:</label>
                     <input type="text" name="city" required class="form-control">
                 </div>
                
                 <!-- Submit Button -->
                 <input type="hidden" name="idCandidate" required class="form-control" value="${candidate.idCandidate}">
-            	<input type="submit" value="Aggiungi un'altra esperienza lavorativa">
+            	<input type="submit" class="btn form-btn" value="Add another work experience">
 			
 			</form>
 			

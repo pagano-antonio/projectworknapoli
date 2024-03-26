@@ -2,6 +2,8 @@ package com.model;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -41,6 +43,7 @@ public class CandidateCommercialData implements Serializable {
 	// bi-directional many-to-one association to Candidate
 	@ManyToOne
 	@JoinColumn(name = "idCandidate")
+	@JsonIgnore
 	private Candidate candidate;
 
 	public CandidateCommercialData() {
