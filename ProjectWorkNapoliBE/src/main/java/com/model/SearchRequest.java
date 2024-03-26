@@ -9,6 +9,7 @@ public class SearchRequest {
 	private Integer degree;
 	private Integer jobinterview;
 	private LocalDate dateAfter;
+	private String company;
 
 	public Candidate getCandidate() {
 		return candidate;
@@ -48,6 +49,14 @@ public class SearchRequest {
 
 	public void setDateAfter(LocalDate dateAfter) {
 		this.dateAfter = dateAfter;
+	}
+
+	public String getCompany() {
+		return company;
+	}
+
+	public void setCompany(String company) {
+		this.company = company;
 	}
 
 }
