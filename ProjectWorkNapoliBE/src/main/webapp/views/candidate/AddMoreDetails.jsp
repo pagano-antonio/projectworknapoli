@@ -6,12 +6,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<<<<<<< HEAD
-<title>add education and work experience</title>
-=======
+
 <title>Recruiter Gestional Tool</title>
 
->>>>>>> 7be377c40ec69defb6b5da44599c62c07b02256d
 </head>
 <body>
     <jsp:include page="../header.jsp" />
@@ -21,7 +18,7 @@
 		
 			<h1>${candidate.name} ${candidate.surname}</h1><br>
 		
-			<h2>Titoli di studio</h2><br>
+			<h2>Education</h2><br>
 			
 			<c:if test="${reload}">
 			 	<!-- tabella educazione -->
@@ -106,7 +103,9 @@
             	<input type="submit" class="btn form-btn" value="Add another education">
             	</form>
                
-				<h2>Esperienze lavorative</h2><br>
+               
+				<h2>Work experience</h2><br>
+				
 				
 				<c:if test="${reloadW}">
 					<!-- tabella work exp -->

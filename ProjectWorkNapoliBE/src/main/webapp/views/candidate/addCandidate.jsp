@@ -15,43 +15,43 @@
 		<jsp:include page="../sidebar.jsp" />
 		<div id="content">
 		
-			<h2>Aggiungi candidato</h2>
+			<h2>Add candidate</h2>
 		
 			<form action="addCandidate" method="post">
 			    
 			    <!-- candidate name -->
                 <div class="mb-2 input-50">
-                    <label class="form-label" for="name">Nome:</label>
+                    <label class="form-label" for="name">Name:</label>
                     <input type="text" name="name" required class="form-control">
                 </div>
                 
                 <!-- candidate surname -->
                 <div class="mb-2 input-50">
-                    <label class="form-label" for="surname">Cognome:</label>
+                    <label class="form-label" for="surname">Surname:</label>
                     <input type="text" name="surname" required class="form-control">
                 </div>
                 
                 <!-- birthday -->
                 <div class="mb-2 input-25">
-                    <label class="form-label" for="birthday">Data di nascita:</label>
+                    <label class="form-label" for="birthday">Birthday:</label>
                     <input type="date" name="birthday" class="form-control" required>
                </div>
                
                <!-- birthPlace -->
                 <div class="mb-2 input-25">
-                    <label class="form-label" for="birthPlace">Luogo di nascita:</label>
+                    <label class="form-label" for="birthPlace">Birth Place:</label>
                     <input type="text" name="birthPlace" class="form-control" required>
                </div>
                
                	<!-- candidate address -->
                 <div class="mb-2 input-50">
-                    <label class="form-label" for="address">Indirizzo:</label>
+                    <label class="form-label" for="address">Address:</label>
                     <input type="text" name="address" required class="form-control">
                 </div>
                 
                 <!-- city -->
                 <div class="mb-2 input-50">
-                    <label class="form-label" for="city">Città:</label>
+                    <label class="form-label" for="city">City:</label>
                     <input type="text" name="city" required class="form-control">
                 </div>
                 
@@ -63,7 +63,7 @@
                 
                 <!-- phone -->
                 <div class="mb-2 input-100">
-                    <label class="form-label" for="phone">Numero di telefono:</label>
+                    <label class="form-label" for="phone">Phone:</label>
                     <input type="text" name="phone" required class="form-control">
                 </div>
                                 
