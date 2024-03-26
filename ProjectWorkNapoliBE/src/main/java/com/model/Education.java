@@ -104,4 +104,11 @@ public class Education implements Serializable {
 		this.educationDegreeType = educationDegreeType;
 	}
 
+	@Override
+	public String toString() {
+		return "Education [idEducation=" + idEducation + ", date=" + date + ", finalGrade=" + finalGrade + ", place="
+				+ place + ", schoolName=" + schoolName + ", candidate=" + candidate + ", educationDegreeType="
+				+ educationDegreeType + "]";
+	}
+
 }

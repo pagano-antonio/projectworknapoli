@@ -138,6 +138,8 @@ public class CandidateCtr {
 		model.addAttribute("degreeType", degreeType);
 	
 		model.addAttribute("candidate", candidate);
+		model.addAttribute("toastMessage", "new candidate added!");
+		model.addAttribute("showToast", true);
 		
 		return "candidate/AddMoreDetails";
 	}

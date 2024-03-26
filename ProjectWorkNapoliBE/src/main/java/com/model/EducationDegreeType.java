@@ -72,4 +72,10 @@ public class EducationDegreeType implements Serializable {
 		return education;
 	}
 
+	@Override
+	public String toString() {
+		return "EducationDegreeType [idEducationDegreeType=" + idEducationDegreeType + ", description=" + description
+				;
+	}
+
 }

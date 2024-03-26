@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -58,10 +59,12 @@ public class EducationCtr {
 
 	@PostMapping("/addEducationToCandidate")
 	public String addEducationToCandidate(Model model, @RequestParam("idCandidate") int idCandidate,
-			Education education) {
+			Education education, @RequestParam("idDegreeType") int idDegreeType) {
 		Candidate candidate = candidateRep.findById(idCandidate).get();
+		EducationDegreeType e = educationDegreeTypeRep.findById(idDegreeType).get();
+		education.setEducationDegreeType(e);
 		education.setCandidate(candidate);
-		educationRep.save(education);
+		educationRep.saveAndFlush(education);
 		List<EducationDegreeType> degreeType = educationDegreeTypeRep.findAll();
 		model.addAttribute("degreeType", degreeType);
 		model.addAttribute("candidate", candidate);
@@ -72,6 +75,8 @@ public class EducationCtr {
 
 		model.addAttribute("educationsOfCandidate", educationsOfCandidate);
 		model.addAttribute("workExpOfCandidate", workExpOfCandidate);
+		model.addAttribute("toastMessage", educationsOfCandidate.size() + " educations added!");
+		model.addAttribute("showToast", true);
 
 		return "candidate/AddMoreDetails";
 

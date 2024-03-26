@@ -37,6 +37,7 @@ public class WorkExperienceCtr {
 	@GetMapping("/indexWorkExp")
     public String home(Model model) {
 		
+
         return "workExperience/indexWorkExp";
         
     }
@@ -47,6 +48,10 @@ public class WorkExperienceCtr {
 	@GetMapping("/toAdd")
     public String toAddWorkExperience(Model model, HttpServletRequest request) {
 		
+		List<Candidate> candidates = candidateRep.findAll();
+		
+		model.addAttribute("candidates", candidates);
+		
 		return "workExperience/addWorkExp";
         
     }
@@ -55,7 +60,13 @@ public class WorkExperienceCtr {
     public String addWorkExperience(Model model, WorkExperience w) {
 
 		workExperienceRep.save(w);
-        return "workExperience/ok";
+		List<Candidate> candidates = candidateRep.findAll();
+		
+		model.addAttribute("candidates", candidates);
+		
+		model.addAttribute("toastMessage", "work experience added!");
+		model.addAttribute("showToast", true);
+        return "candidate/candidateListResults";
         
     }
 	
@@ -71,6 +82,8 @@ public class WorkExperienceCtr {
 		model.addAttribute("workExpOfCandidate", workExpOfCandidate);
 		List<EducationDegreeType> degreeType = educationDegreeTypeRep.findAll();
 		model.addAttribute("degreeType", degreeType);
+		model.addAttribute("toastMessage", workExpOfCandidate.size() + " work experiences added!");
+		model.addAttribute("showToast", true);
 			
 		return "candidate/AddMoreDetails";
 	
