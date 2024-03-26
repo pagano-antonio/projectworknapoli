@@ -32,7 +32,7 @@ public class CandidateRest {
 				request.getCandidate().getBirthday(), request.getCandidate().getCity(),
 				request.getCandidate().getAddress(), request.getCandidate().getEmail(),
 				request.getCandidate().getPhone(), request.getSelectedSkills(), request.getDegree(),
-				request.getJobinterview(), request.getDateAfter());
+				request.getJobinterview(), request.getDateAfter(), request.getCompany());
 
 		System.out.println("risultati candidati: " + candidates.size());
 		return candidates;
