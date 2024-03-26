@@ -4,6 +4,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Recruiter Gestional Tool</title>
+
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Pacifico&display=swap"
+    rel="stylesheet">
 <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
     rel="stylesheet"
@@ -26,13 +31,24 @@
 
     <nav id="header">
         <div class="header-collapse" class="flex">
-            <h3>
+            <h3 class="main-header">
                 <button id="sidebarCollapse">
                     <i class="fas fa-align-justify"></i>
                 </button>
 
                 <a class="header-collapse-title"
-                    href="${pageContext.request.contextPath}/gestionaleCandidati">Recruiter Gestional Tool</a>
+                    href="${pageContext.request.contextPath}/gestionaleCandidati">
+                    
+                     <h1 style="margin:0!important">
+            <div class="main-title-p">Recruitment</div>
+            <div class="sub-container">
+                <div class="line"></div>
+                <div class="sub">Gestional Tool</div>
+                <div class="line"></div>
+            </div>
+        </h1>
+                    
+                    </a>
             </h3>
         </div>
        <div class="avatarAndLogoutContainer">
