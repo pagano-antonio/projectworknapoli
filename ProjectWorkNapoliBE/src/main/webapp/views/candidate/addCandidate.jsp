@@ -5,12 +5,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<<<<<<< HEAD
-<title>Add candidate</title>
-=======
+
 <title>Recruiter Gestional Tool</title>
 
->>>>>>> 7be377c40ec69defb6b5da44599c62c07b02256d
 </head>
 <body>
     <jsp:include page="../header.jsp" />
