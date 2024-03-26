@@ -3,6 +3,8 @@ package com.model;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -37,6 +39,7 @@ public class Education implements Serializable {
 
 	// bi-directional many-to-one association to Candidate
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name = "idCandidate")
 	private Candidate candidate;
 

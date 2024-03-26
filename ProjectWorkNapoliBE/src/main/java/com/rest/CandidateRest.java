@@ -1,5 +1,7 @@
 package com.rest;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.dao.CandidateRepository;
 import com.model.Candidate;
+import com.model.SearchRequest;
 
 @RestController
 @RequestMapping("CandidateRest")
@@ -21,6 +24,26 @@ public class CandidateRest {
 
 	@Autowired
 	private CandidateRepository candidateRep;
+
+	@PostMapping("/searchCandidate")
+	public List<Candidate> searchCandidate(@RequestBody SearchRequest request) {
+		List<Candidate> candidates = candidateRep.findByCriteria(request.getCandidate().getName(),
+				request.getCandidate().getSurname(), request.getCandidate().getBirthPlace(),
+				request.getCandidate().getBirthday(), request.getCandidate().getCity(),
+				request.getCandidate().getAddress(), request.getCandidate().getEmail(),
+				request.getCandidate().getPhone(), request.getSelectedSkills(), request.getDegree(),
+				request.getJobinterview(), request.getDateAfter());
+
+		System.out.println("risultati candidati: " + candidates.size());
+		return candidates;
+	}
+
+	@GetMapping("/getCandidates")
+	public List<Candidate> getCandidates() {
+		List<Candidate> candidates = candidateRep.findAll();
+
+		return candidates;
+	}
 
 	@GetMapping("findById/{idCandidate}")
 	public Candidate findById(@PathVariable("idCandidate") Integer idCandidate) {
