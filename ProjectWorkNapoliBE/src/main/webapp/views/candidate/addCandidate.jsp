@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Aggiungi candidato</title>
+<title>Add candidate</title>
 </head>
 <body>
     <jsp:include page="../header.jsp" />
