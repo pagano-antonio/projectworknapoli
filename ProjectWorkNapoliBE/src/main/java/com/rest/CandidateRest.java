@@ -86,9 +86,9 @@ public class CandidateRest {
 	}
 
 	@DeleteMapping("deleteCandidate/{idCandidate}")
-	public String deleteCandidate(@PathVariable("idCandidate") Integer idCandidate) {
+	public int deleteCandidate(@PathVariable("idCandidate") Integer idCandidate) {
 		candidateRep.deleteById(idCandidate);
-		return "Ok, eliminata";
+		return 200;
 	}
 
 	@PostMapping("/updateCandidateDTO")
