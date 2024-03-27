@@ -22,4 +22,8 @@ public interface JobInterviewRepository extends JpaRepository<JobInterview, Inte
 			@Param("idCandidate") int idCandidate, @Param("date") Date date,
 			@Param("idStateJobInterview") int idStateJobInterview, @Param("notes") String notes,
 			@Param("outcome") int outcome, @Param("idEmployee") int idEmployee);
+
+	@Query("SELECT j.stateJobInterview.title AS stateDescription, COUNT(j) AS numOfJobInterviews "
+			+ "FROM JobInterview j " + "GROUP BY j.stateJobInterview.title")
+	List<Object[]> countJobInterviewsByState();
 }

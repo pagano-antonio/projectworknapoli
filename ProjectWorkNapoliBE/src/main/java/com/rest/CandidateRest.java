@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dao.CandidateRepository;
+import com.dto.CandidateDTO;
 import com.model.Candidate;
 import com.model.SearchRequest;
 
@@ -25,7 +26,6 @@ public class CandidateRest {
 	@Autowired
 	private CandidateRepository candidateRep;
 
-	
 	@PostMapping("/searchCandidate")
 	public List<Candidate> searchCandidate(@RequestBody SearchRequest request) {
 		List<Candidate> candidates = candidateRep.findByCriteria(request.getCandidate().getName(),
@@ -68,6 +68,12 @@ public class CandidateRest {
 	@DeleteMapping("deleteCandidate/{idCandidate}")
 	public String deleteCandidate(@PathVariable("idCandidate") Integer idCandidate) {
 		candidateRep.deleteById(idCandidate);
+		return "Ok, eliminata";
+	}
+
+	@PostMapping("/updateCandidateDTO")
+	public String updateCandidateDTO(@RequestBody CandidateDTO c) {
+		System.out.println(c);
 		return "Ok, eliminata";
 	}
 }

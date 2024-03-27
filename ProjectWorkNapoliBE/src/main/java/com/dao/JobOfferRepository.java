@@ -30,4 +30,8 @@ public interface JobOfferRepository extends JpaRepository<JobOffer, Integer> {
 			@Param("minRal") Integer minRal, @Param("maxRal") Integer maxRal,
 			@Param("skillIds") List<Integer> skillIds);
 
+	@Query("SELECT ROUND(AVG((j.minRal + j.maxRal) / 2), -3), COUNT(j.idJobOffer) FROM JobOffer j GROUP BY ROUND((j.minRal + j.maxRal) / 2, -3) ORDER BY ROUND((j.minRal + j.maxRal) / 2, -3)")
+
+	List<Object[]> countJobOffersByRalGroup();
+
 }

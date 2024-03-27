@@ -1,5 +1,7 @@
 package com.rest;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -12,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dao.CandidateCommercialDataRepository;
+import com.dao.CandidateRepository;
+import com.model.Candidate;
 import com.model.CandidateCommercialData;
 
 @CrossOrigin
@@ -21,10 +25,17 @@ public class CandidateCommercialDataRest {
 
 	@Autowired
 	private CandidateCommercialDataRepository candidateCommercialDataRep;
+	@Autowired
+	private CandidateRepository candidateRep;
 
 	@PostMapping("addCommercialData")
-	public int addCommercialData(@RequestBody CandidateCommercialData ccd) {
-		candidateCommercialDataRep.save(ccd);
+	public int addCommercialData(@RequestBody List<CandidateCommercialData> ccd) {
+		Candidate c = candidateRep.findById(ccd.get(0).getIdCandidateCD()).get();
+		for (CandidateCommercialData cc : ccd) {
+			cc.setCandidate(c);
+		}
+
+		candidateCommercialDataRep.saveAll(ccd);
 		return 200;
 	}
 

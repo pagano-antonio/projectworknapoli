@@ -1,6 +1,7 @@
 package com.ctr;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -9,9 +10,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.dao.CandidateRepository;
+import com.dao.CompanyClientRepository;
+import com.dao.EducationRepository;
 import com.dao.IdEmployeeRepository;
+import com.dao.JobInterviewRepository;
+import com.dao.JobOfferRepository;
 import com.dao.LoginRepository;
+import com.google.gson.Gson;
+import com.model.Candidate;
+import com.model.CompanyClient;
 import com.model.Employee;
+import com.model.JobInterview;
+import com.model.JobOffer;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -25,6 +36,21 @@ public class LoginCtr {
 
 	@Autowired
 	private LoginRepository loginRepository;
+
+	@Autowired
+	public CandidateRepository candidateRep;
+
+	@Autowired
+	private JobInterviewRepository JobInterviewRep;
+
+	@Autowired
+	private JobOfferRepository jobOfferRep;
+
+	@Autowired
+	public CompanyClientRepository companyRep;
+
+	@Autowired
+	public EducationRepository educationRep;
 
 	@GetMapping("/login")
 	public String goToLogin(Model model) {
@@ -59,6 +85,43 @@ public class LoginCtr {
 			}
 			request.getSession().setAttribute("timestamp", new Date().getTime());
 			model.addAttribute("toastMessage", "Have a nice session!");
+
+			List<Candidate> c = candidateRep.findAll();
+			List<JobOffer> j = jobOfferRep.findAll();
+			List<JobInterview> i = JobInterviewRep.findAll();
+			List<CompanyClient> cc = companyRep.findAll();
+			List<Object[]> cities = candidateRep.countCandidatesByCity();
+			List<Object[]> degrees = educationRep.countCandidatesByEducationDegreeType();
+
+			List<Object[]> states = JobInterviewRep.countJobInterviewsByState();
+
+			List<Object[]> compOff = companyRep.countJobOffersByCompany();
+			List<Object[]> ages = candidateRep.countCandidatesByAgeGroup();
+			List<Object[]> salary = jobOfferRep.countJobOffersByRalGroup();
+
+			model.addAttribute("candidatesNumber", c.size());
+			model.addAttribute("jobsNumber", j.size());
+			model.addAttribute("jobInterviewNumber", i.size());
+			model.addAttribute("companiesNumber", cc.size());
+
+			Gson gson = new Gson();
+			String citiesJson = gson.toJson(cities);
+			model.addAttribute("cities", citiesJson);
+
+			String degreesJson = gson.toJson(degrees);
+			model.addAttribute("degrees", degreesJson);
+
+			String statesJson = gson.toJson(states);
+			model.addAttribute("states", statesJson);
+
+			String compOfferJson = gson.toJson(compOff);
+			model.addAttribute("compOffer", compOfferJson);
+
+			String agesJson = gson.toJson(ages);
+			model.addAttribute("ages", agesJson);
+
+			String salaryson = gson.toJson(salary);
+			model.addAttribute("salary", salaryson);
 			return "home";
 		} else {
 			model.addAttribute("toastTitle", "Warning");
