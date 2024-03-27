@@ -11,6 +11,10 @@ import { CandidateCommercialData } from '../../model/CommercialData';
   providedIn: 'root'
 })
 export class CandidateService {
+  updateCandidate(candidate: Candidate) {
+    return this.http.post<any>(`http://${this.server}:${this.port}/CandidateRest/updateCandidateDTO`, candidate);
+
+  }
   server: string = "localhost";
   port: string = "8080";
 
@@ -35,7 +39,7 @@ export class CandidateService {
     return this.http.post<any>(`http://${this.server}:${this.port}/WorkExperienceRest/addWorkExperience`, works);
 
   }
-  addCommercialData(commercialData: CandidateCommercialData) {
+  addCommercialData(commercialData: CandidateCommercialData[]) {
     return this.http.post<any>(`http://${this.server}:${this.port}/CandidateCommercialDataRest/addCommercialData`, commercialData);
   }
 

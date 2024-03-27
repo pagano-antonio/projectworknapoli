@@ -27,6 +27,11 @@ import { CandidateCommercialData } from '../../model/CommercialData';
   providers: [MessageService]
 })
 export class AddCandidateComponent implements OnInit {
+  removeCommercial(index: number) {
+    if (index >= 0 && index < this.commercialData.length) {
+      this.commercialData.splice(index, 1);
+    }
+  }
   errorMessage: string = '';
   candidate: Candidate = new Candidate(); // Inizializza un nuovo candidato vuoto
   stepIndex: number = 0;
@@ -36,7 +41,7 @@ export class AddCandidateComponent implements OnInit {
   education: Education[] = [new Education()];
   workExperience: WorkExperience[] = [new WorkExperience()];
   educationDegreeType: EducationDegreeType[] = [];
-  commercialData: CandidateCommercialData = new CandidateCommercialData();
+  commercialData: CandidateCommercialData[] = [new CandidateCommercialData()];
 
   constructor(private candidateService: CandidateService, private skillService: SkillService, private degreeService: EducationDegreeTypeService, private messageService: MessageService) {
   }
@@ -65,6 +70,15 @@ export class AddCandidateComponent implements OnInit {
         console.log(error);
       }
     })
+  }
+  moreCommercial() {
+    const lastCommercial = this.commercialData[this.commercialData.length - 1];
+    if (lastCommercial && lastCommercial.businessCost != null && lastCommercial.currentRal != null &&
+      lastCommercial.monthRefund != null && lastCommercial.proposedRal != null && lastCommercial.subsidyFlag != null) {
+      this.commercialData.push(new CandidateCommercialData());
+    } else {
+      console.error("L'ultima istanza di Commercial non è completa.");
+    }
   }
   moreEducation() {
     const lastEducation = this.education[this.education.length - 1];
@@ -132,7 +146,7 @@ export class AddCandidateComponent implements OnInit {
         if (this.workExperience.length > 0 && this.workExperience[0].title != null) {
           this.addWorkExperience();
         }
-        if (Object.keys(this.commercialData).length > 0 && this.commercialData.subsidyFlag != undefined) {
+        if (Object.keys(this.commercialData).length > 0 && this.commercialData[0].subsidyFlag != undefined) {
           this.addCommercialData();
         }
       },
@@ -203,8 +217,13 @@ export class AddCandidateComponent implements OnInit {
   }
 
   addCommercialData() {
-    this.commercialData.candidate = this.candidate;
-    this.candidateService.addCommercialData(this.commercialData).subscribe({
+    const c = this.commercialData.map(ca => {
+      ca.candidate = this.candidate;
+      ca.idCandidateCD = this.candidate.idCandidate;
+      return ca;
+    });
+    console.log(c);
+    this.candidateService.addCommercialData(c).subscribe({
       next: (status: number) => {
         if (status != 200) {
           this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error occurred while adding candidate\'s commercial data' });
@@ -245,15 +264,23 @@ export class AddCandidateComponent implements OnInit {
   }
 
   allCommercialKeysFilled(): boolean {
-    if ((Object.keys(this.commercialData).length == 0) || (Object.keys(this.commercialData).length == 1 && this.commercialData.subsidyFlag == undefined)) {
+    let check = false;
+    if (this.commercialData.length == 1 && Object.keys(this.commercialData[0]).length == 1 && this.commercialData[0].subsidyFlag == undefined) {
       return false;
     }
-    return !(
-      (this.commercialData.businessCost !== undefined && this.commercialData.businessCost !== null) &&
-      (this.commercialData.currentRal !== undefined && this.commercialData.currentRal !== null) &&
-      (this.commercialData.monthRefund !== undefined && this.commercialData.monthRefund !== null) &&
-      (this.commercialData.proposedRal !== undefined && this.commercialData.proposedRal !== null) &&
-      (this.commercialData.subsidyFlag !== undefined && this.commercialData.subsidyFlag !== null))
+    this.commercialData.forEach(c => {
+      if (!(c.businessCost !== undefined && c.businessCost !== null &&
+        c.currentRal !== undefined && c.currentRal !== null &&
+        c.monthRefund !== undefined && c.monthRefund !== null &&
+        c.proposedRal !== undefined && c.proposedRal !== null &&
+        c.subsidyFlag !== undefined && c.subsidyFlag !== null)) {
+        check = true;
+        return;
+      }
+    })
+    return check;
+
+
 
   }
 
