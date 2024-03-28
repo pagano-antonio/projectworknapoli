@@ -1,5 +1,6 @@
 package com.rest;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,12 +49,23 @@ public class CandidateRest {
 
 	@PostMapping("/searchCandidate")
 	public List<Candidate> searchCandidate(@RequestBody SearchRequest request) {
+		LocalDate birthdayPlusOneDay = null;
+		if (request.getCandidate().getBirthday() != null) {
+			birthdayPlusOneDay = request.getCandidate().getBirthday().plusDays(1);
+			System.out.println(birthdayPlusOneDay);
+		}
+
+		LocalDate afterPlusOneDay = null;
+		if (request.getCandidate().getBirthday() != null) {
+			afterPlusOneDay = request.getDateAfter().plusDays(1);
+			System.out.println(afterPlusOneDay);
+		}
+
 		List<Candidate> candidates = candidateRep.findByCriteria(request.getCandidate().getName(),
-				request.getCandidate().getSurname(), request.getCandidate().getBirthPlace(),
-				request.getCandidate().getBirthday(), request.getCandidate().getCity(),
-				request.getCandidate().getAddress(), request.getCandidate().getEmail(),
-				request.getCandidate().getPhone(), request.getSelectedSkills(), request.getDegree(),
-				request.getJobinterview(), request.getDateAfter(), request.getCompany());
+				request.getCandidate().getSurname(), request.getCandidate().getBirthPlace(), birthdayPlusOneDay,
+				request.getCandidate().getCity(), request.getCandidate().getAddress(),
+				request.getCandidate().getEmail(), request.getCandidate().getPhone(), request.getSelectedSkills(),
+				request.getDegree(), request.getJobinterview(), afterPlusOneDay, request.getCompany());
 
 		System.out.println("risultati candidati: " + candidates.size());
 		return candidates;
