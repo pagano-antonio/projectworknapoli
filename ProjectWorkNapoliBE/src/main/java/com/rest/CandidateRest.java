@@ -59,6 +59,7 @@ public class CandidateRest {
 		if (request.getDateAfter() != null) {
 			afterPlusOneDay = request.getDateAfter().plusDays(1);
 			System.out.println(afterPlusOneDay);
+
 		}
 
 		List<Candidate> candidates = candidateRep.findByCriteria(request.getCandidate().getName(),
