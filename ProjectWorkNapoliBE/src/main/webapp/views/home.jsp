@@ -583,7 +583,7 @@ salary.forEach(function(salary) {
      var salaries = salary.map(item => item[0]);
      var salariesV = salary.map(item => item[1]);
 
-     // Crea il grafico utilizzando Chart.js
+     
      var ctx = document.getElementById('salaryChart').getContext('2d');
      var myChart = new Chart(ctx, {
          type: 'pie',
