@@ -60,7 +60,11 @@ public interface CandidateRepository extends JpaRepository<Candidate, Integer> {
 			@Param("stateJobInterview") Integer stateJobInterview, @Param("dateAfter") LocalDate dateAfter,
 			@Param("company") String company);
 
-	@Query("SELECT FLOOR(DATEDIFF(CURRENT_DATE(), c.birthday) / 365.25 / 10) * 10 AS ageGroup, COUNT(c) "
-			+ "FROM Candidate c " + "GROUP BY ageGroup")
+	@Query("SELECT " + "CASE WHEN FLOOR(DATEDIFF(CURRENT_DATE(), c.birthday) / 365.25) BETWEEN 18 AND 29 THEN '18-29' "
+			+ "WHEN FLOOR(DATEDIFF(CURRENT_DATE(), c.birthday) / 365.25) BETWEEN 30 AND 39 THEN '30-39' "
+			+ "WHEN FLOOR(DATEDIFF(CURRENT_DATE(), c.birthday) / 365.25) BETWEEN 40 AND 49 THEN '40-49' "
+			+ "WHEN FLOOR(DATEDIFF(CURRENT_DATE(), c.birthday) / 365.25) BETWEEN 50 AND 59 THEN '50-59' "
+			+ "ELSE '60+' END AS ageGroup, " + "COUNT(c.idCandidate) " + "FROM Candidate c " + "GROUP BY ageGroup")
 	List<Object[]> countCandidatesByAgeGroup();
+
 }

@@ -348,9 +348,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
         labels.push(cityName + ": " + numOfCandidates); // Aggiungi etichetta nel formato desiderato
         data.push(numOfCandidates);   
-        var color = colors[index % colors.length];
-        backgroundColor.push(color+'85'); 
-        borderColor.push(color); 
+        var randomNumber;
+        var randomColor;
+        do {
+            randomNumber = Math.floor(Math.random() * colors.length);
+            randomColor = colors[randomNumber];
+        } while (backgroundColor.includes(randomColor+'95'));
+
+        backgroundColor.push(randomColor+'95');
+        borderColor.push("#fff");
     });
 	var ctx = document.getElementById('cities').getContext('2d');
 
@@ -362,7 +368,7 @@ document.addEventListener('DOMContentLoaded', function() {
             labels: labels,
             datasets: [
                 {
-                    label: "# of Candidates",
+                    label: "",
                     data: data,
                     backgroundColor: backgroundColor,
                     borderColor: borderColor,
@@ -387,10 +393,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
         degreeLabels.push(degreeName + ": " + numOfDegree); 
         degreeData.push(numOfDegree); 
-        var randomIndex = Math.floor(Math.random() * colors.length);
-        var color = colors[randomIndex];
-        degreebackgroundColor.push(color+'85'); 
-        degreeborderColor.push(color); 
+        
+        var randomNumber;
+        var randomColor;
+        do {
+            randomNumber = Math.floor(Math.random() * colors.length);
+            randomColor = colors[randomNumber];
+        } while (degreebackgroundColor.includes(randomColor+'95'));
+
+        degreebackgroundColor.push(randomColor+'95');
+        degreeborderColor.push("#fff");
     });
 
     var ctx = document.getElementById('degree').getContext('2d');
@@ -485,11 +497,19 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         var ages = ${ages}; // Recupera i dati dal modello
-     // Ordina i dati in base alle fasce d'età
-     ages.sort((a, b) => a[0] - b[0]);
+    
+      function compareAges(age1, age2) {
+           var age1Range = age1[0] === "60+" ? Infinity : age1[0].split("-").map(Number);
+            var age2Range = age2[0] === "60+" ? Infinity : age2[0].split("-").map(Number);
 
-     // Raggruppa le fasce d'età come richiesto
-     var ageLabels = [];
+            var age1Average = Array.isArray(age1Range) ? (age1Range[0] + age1Range[1]) / 2 : age1Range;
+            var age2Average = Array.isArray(age2Range) ? (age2Range[0] + age2Range[1]) / 2 : age2Range;
+
+            return age1Average - age2Average;
+        }
+
+        ages.sort(compareAges);
+ var ageLabels = [];
      var ageData = [];
      var ageBackgroundColor = [];
      var ageBorderColor = [];
@@ -499,23 +519,20 @@ document.addEventListener('DOMContentLoaded', function() {
          var ageRange = age[0];
          var numOfCandidates = age[1];
 
-         if (ageRange >= 10 && ageRange <= 29) {
-             currentGroup.push(numOfCandidates);
-         } else {
-             if (currentGroup.length > 0) {
-                 var groupLabel = currentGroup[0] + "-" + (ageRange - 1); // Creiamo l'etichetta del gruppo
-                 ageData.push(currentGroup.reduce((a, b) => a + b, 0));
-                 ageLabels.push(groupLabel);
-                 currentGroup = [];
-             }
+         
              ageData.push(numOfCandidates);
-             ageLabels.push(ageRange + "-" + (ageRange + 9)); // Creiamo l'etichetta per l'intervallo di 10 anni
-         }
+             ageLabels.push(ageRange); // Creiamo l'etichetta per l'intervallo di 10 anni
+             
+             var randomNumber;
+             var randomColor;
+             do {
+                 randomNumber = Math.floor(Math.random() * colors.length);
+                 randomColor = colors[randomNumber];
+             } while (ageBackgroundColor.includes(randomColor+'95'));
 
-         // Usa i colori dalla lista colors per i settori del pie chart
-         var color = colors[index % colors.length];
-         ageBackgroundColor.push(color + '85'); // Imposta l'opacità dell'85%
-         ageBorderColor.push(color); // Utilizza lo stesso colore per i bordi
+             ageBackgroundColor.push(randomColor+'95');
+             ageBorderColor.push("#fff");
+         
      });
 
      // Se ci sono ancora valori nel gruppo corrente, aggiungili
@@ -550,16 +567,18 @@ var salaryborderColors = [];
 
 // Itera su ogni salario e assegna un colore di sfondo e un colore di bordo casualmente
 salary.forEach(function(salary) {
-    // Seleziona un colore casuale dall'array colors
-    var randomIndex = Math.floor(Math.random() * colors.length);
-    var color = colors[randomIndex];
-    
-    // Imposta il colore di sfondo con opacità al 80%
-    var backgroundColor = color + '80';
-    salarybackgroundColors.push(backgroundColor);
+	
+	 var randomNumber;
+     var randomColor;
+     do {
+         randomNumber = Math.floor(Math.random() * colors.length);
+         randomColor = colors[randomNumber];
+     } while (ageBackgroundColor.includes(randomColor+'95'));
 
-    // Imposta il colore del bordo senza opacità
-    salaryborderColors.push(color);
+     salarybackgroundColors.push(randomColor+'95');
+     salaryborderColors.push("#fff");
+     
+    
 });
      var salaries = salary.map(item => item[0]);
      var salariesV = salary.map(item => item[1]);
