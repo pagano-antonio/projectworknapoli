@@ -16,7 +16,7 @@
 		<jsp:include page="../sidebar.jsp" />
 		<div id="content">
 		
-			<h1>${candidate.name} ${candidate.surname}</h1><br>
+			<h2>${candidate.name} ${candidate.surname}</h2><br>
 		
 			<h2>Education</h2><br>
 			
@@ -103,7 +103,7 @@
             	<input type="submit" class="btn form-btn" value="Add another education">
             	</form>
                
-               
+               <br><br><br>
 				<h2>Work experience</h2><br>
 				
 				
