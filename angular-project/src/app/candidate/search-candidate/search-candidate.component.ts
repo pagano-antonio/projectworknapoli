@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Candidate } from '../../model/Candidate';
 import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
-import { CommonModule } from '@angular/common';
+import { CommonModule, formatDate } from '@angular/common';
 import { CalendarModule } from 'primeng/calendar';
 import { CandidateService } from '../../services/candidate/candidate.service';
 import { MultiSelectModule } from 'primeng/multiselect';
@@ -68,7 +68,6 @@ export class SearchCandidateComponent implements OnInit {
     })
   }
   searchCandidate(): void {
-    console.log(this.candidate);
     this.candidateService.searchCandidate(this.candidate, this.selectedSkills, this.degree, this.jobinterview, this.dateAfter)
       .subscribe(
         (found: Candidate[]) => {
