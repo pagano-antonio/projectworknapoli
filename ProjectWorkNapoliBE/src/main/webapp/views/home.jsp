@@ -62,8 +62,8 @@ document.addEventListener('DOMContentLoaded', function() {
 			</div>
 			
 			<div class="quadratone"> 
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>microphone</title><path d="M12,2A3,3 0 0,1 15,5V11A3,3 0 0,1 12,14A3,3 0 0,1 9,11V5A3,3 0 0,1 12,2M19,11C19,14.53 16.39,17.44 13,17.93V21H11V17.93C7.61,17.44 5,14.53 5,11H7A5,5 0 0,0 12,16A5,5 0 0,0 17,11H19Z"></path></svg>
-			<span class="number">${jobInterviewNumber}</span> <span>Companies</span>
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>domain</title><path d="M18,15H16V17H18M18,11H16V13H18M20,19H12V17H14V15H12V13H14V11H12V9H20M10,7H8V5H10M10,11H8V9H10M10,15H8V13H10M10,19H8V17H10M6,7H4V5H6M6,11H4V9H6M6,15H4V13H6M6,19H4V17H6M12,7V3H2V21H22V7H12Z"></path></svg>
+			<span class="number">${companiesNumber}</span> <span>Companies</span>
 			</div>
 			
 			</div>
