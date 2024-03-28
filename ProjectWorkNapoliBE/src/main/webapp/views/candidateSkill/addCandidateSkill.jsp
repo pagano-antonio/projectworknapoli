@@ -31,7 +31,7 @@
 			    
 			    <div class="mb-2 input-50">
                     <label class="form-label" for="skill.idSkill">Select Skills:</label>
-                    <select  name="skill.idSkill" class="form-control multiselect">
+                    <select  name="skill.idSkill" class="form-control multiselect" multiple="multiple">
 	                  <option value="">Select Skill</option>
 	                    <c:forEach var="skill" items="${skills}">
 	                            <option value="${skill.idSkill}">${skill.title}</option>
