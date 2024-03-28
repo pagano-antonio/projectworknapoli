@@ -74,42 +74,42 @@ document.addEventListener('DOMContentLoaded', function() {
 			
 			
 			<div class="only-chart">
-			<h4>Candidates Grouped by Cities</h4>
+			<h4>CANDIDATES GROUPED BY CITIES</h4>
 			<div class="only-chart-inside">
 			<canvas id="cities" ></canvas>
 			</div>
 			</div>
 			
 			<div class="only-chart">
-			<h4>Candidates Grouped by Degree</h4>
+			<h4>CANDIDATES GROUPED BY DEGREE</h4>
 			<div class="only-chart-inside">
 			<canvas id="degree" ></canvas>
 			</div>
 			</div>
 			
 		<div class="only-chart">
-			<h4>Candidates Grouped by Age</h4>
+			<h4>CANDIDATES GROUPED BY AGE</h4>
 			<div class="only-chart-inside">
 			<canvas id="ageChart" style="padding-bottom:5px;max-width:300px!important;max-height:300px!important;"></canvas>
 			</div>
 			</div>
 			
 			<div class="only-chart">
-			<h4>Average Salary of Job Offers</h4>
+			<h4>AVERAGE SALARY OF JOB OFFERS</h4>
 			<div class="only-chart-inside">
 			<canvas id="salaryChart" style="padding-bottom:5px;max-width:300px!important;max-height:300px!important;"></canvas>
 			</div>
 			</div>
 			
 			<div class="only-chart">
-			<h4>Grouping of Job Offers by Companies</h4>
+			<h4>GROUPING OF JOB OFFERS BY COMPANIES</h4>
 			<div class="only-chart-inside">
 			<canvas id="jobOffersChart"  width="300" height="300"></canvas>
 			</div>
 			</div>	
 			
 			<div class="only-chart">
-			<h4>Grouping of Job Interviews by States</h4>
+			<h4>GROUPING OF JOB INTERVIEWS BY STATES</h4>
 			<div class="only-chart-inside">
 			<canvas id="barChart" width="300" height="300"></canvas>
 			</div>

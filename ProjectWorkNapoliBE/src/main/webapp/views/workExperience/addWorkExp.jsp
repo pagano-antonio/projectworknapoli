@@ -29,6 +29,8 @@
 	<input type="hidden" id="modelAttr" name="modelAttr" value="${showToast}"/>
 			</c:if>
 
+	<h2>Add Work Experience</h2>
+
 			<form action="${pageContext.request.contextPath}/workExpCtr/addWorkExp" method="get">
 			
 			    <!-- Select Candidate-->
