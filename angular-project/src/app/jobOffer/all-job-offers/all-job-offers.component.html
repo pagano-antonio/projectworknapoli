@@ -1,0 +1,41 @@
+<div class="grid align-items-center flex-wrap">
+    <h2 class="title">Job Offers</h2>
+    <p-table [value]="jobOffers" dataKey="idJobOffer" [tableStyle]="{ 'min-width': '60rem' }">
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="idJobOffer">Id <p-sortIcon field="idJobOffer"></p-sortIcon></th>
+                <th pSortableColumn="title">Title <p-sortIcon field="title"></p-sortIcon></th>
+                <th pSortableColumn="description">Description <p-sortIcon field="description"></p-sortIcon></th>
+                <th pSortableColumn="companyName">Company Client <p-sortIcon field="companyName"></p-sortIcon></th>
+                <th pSortableColumn="startDate">Start Date <p-sortIcon field="startDate"></p-sortIcon></th>
+                <th pSortableColumn="endDate">End Date <p-sortIcon field="endDate"></p-sortIcon></th>
+                <th pSortableColumn="minRal">Min Ral <p-sortIcon field="minRal"></p-sortIcon></th>
+                <th pSortableColumn="maxRal">Max Ral <p-sortIcon field="maxRal"></p-sortIcon></th>
+                <th pSortableColumn="contractTypeTitle">Contract Type <p-sortIcon
+                        field="contractTypeTitle"></p-sortIcon></th>
+                <th>Actions</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-jobOffer>
+            <tr>
+                <td>{{ jobOffer.idJobOffer }}</td>
+                <td>{{ jobOffer.title }}</td>
+                <td>{{ jobOffer.description }}</td>
+                <td>{{ jobOffer.companyName }}</td>
+                <td>{{ jobOffer.startDate }}</td>
+                <td>{{ jobOffer.endDate }}</td>
+                <td>{{ jobOffer.minRal }}</td>
+                <td>{{ jobOffer.maxRal }}</td>
+                <td>{{ jobOffer.contractTypeTitle }}</td>
+                <td>
+                    <div style="min-width:max-content">
+                        <p-button [text]="true" class="mx-1" size="small" label="Update" (click)="update(jobOffer)" />
+                        <p-button [text]="true" size="small" class="mx-1" label="Delete"
+                            (click)="delete(jobOffer.idJobOffer)" />
+                    </div>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+    <p-toast></p-toast>
+</div>

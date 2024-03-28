@@ -1,6 +1,9 @@
 package com.rest;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,12 +18,22 @@ import com.dao.JobOfferSkillRepository;
 import com.model.JobOfferSkill;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/JobOfferSkill")
 public class JobOfferSkillRest {
-	
+
 	@Autowired
 	private JobOfferSkillRepository JobOfferSkillRep;
-	
+
+	@PostMapping("/addJobOfferSkill")
+	public int addJobOfferSkill(@RequestBody List<JobOfferSkill> jobOfferSkills) {
+		System.out.println("add jb offer");
+
+		JobOfferSkillRep.saveAllAndFlush(jobOfferSkills);
+
+		return 200;
+	}
+
 	@GetMapping("findById/{id}")
 	@ResponseBody
 	public JobOfferSkill findById(@PathVariable("id") int id) {

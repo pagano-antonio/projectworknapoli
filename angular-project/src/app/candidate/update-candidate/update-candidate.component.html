@@ -206,11 +206,19 @@
                     </div>
                 </div>
 
+                <div class="flex py-2 col-12 justify-content-end align-items-end">
+                    <p-button size="small" [text]="true" (click)="moreCommercial()">More Commercial Data</p-button>
+                </div>
+                <div class="flex py-4">
+                    <p-button label="Prev" size="small" (onClick)="prevCallback.emit()" />
+                </div>
+
             </ng-template>
         </p-stepperPanel>
     </p-stepper>
     <div class="flex py-4">
-        <p-button label="Update" (onClick)="updateCandidate()" />
+        <p-button label="Update" (onClick)="updateCandidate()"
+            [disabled]="(candidate.name == null || candidate.name == '' || candidate.surname == null || candidate.surname == '' || candidate.birthday == null ||  candidate.birthPlace == '' || candidate.birthPlace == null || candidate.address == '' || candidate.address == null || candidate.city == '' || candidate.city == null || candidate.email == '' || candidate.email == null || candidate.phone == '' || candidate.phone == null) || allEducationKeysFilled() || allWorkKeysFilled() || allCommercialKeysFilled()" />
     </div>
 
 </div>

@@ -16,11 +16,18 @@ export class SidebarComponent implements OnInit {
 
   candidateLinks!: MenuItem[];
 
+  jobOfferLinks!: MenuItem[];
+
   ngOnInit() {
     this.candidateLinks = [
       { label: 'All candidates', routerLink: ['/allCandidates'] },
       { label: 'Add candidate', routerLink: ['/addCandidate'] },
       { label: 'Search candidate', routerLink: ['/searchCandidate'] }
+    ];
+    this.jobOfferLinks = [
+      { label: 'All Job Offers', routerLink: ['/allJobOffers'] },
+      { label: 'Add Job Offer', routerLink: ['/addJobOffer'] },
+      { label: 'Search Job Offer', routerLink: ['/searchCandidate'] }
     ];
 
   }

@@ -68,7 +68,7 @@ export class SearchCandidateComponent implements OnInit {
     })
   }
   searchCandidate(): void {
-    console.log(this.dateAfter);
+    console.log(this.candidate);
     this.candidateService.searchCandidate(this.candidate, this.selectedSkills, this.degree, this.jobinterview, this.dateAfter)
       .subscribe(
         (found: Candidate[]) => {
