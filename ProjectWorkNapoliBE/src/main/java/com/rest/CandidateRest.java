@@ -56,7 +56,7 @@ public class CandidateRest {
 		}
 
 		LocalDate afterPlusOneDay = null;
-		if (request.getCandidate().getBirthday() != null) {
+		if (request.getDateAfter() != null) {
 			afterPlusOneDay = request.getDateAfter().plusDays(1);
 			System.out.println(afterPlusOneDay);
 		}
