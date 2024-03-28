@@ -52,8 +52,23 @@ export class CandidatesListComponent implements OnInit {
     });
   }
 
-  delete(arg0: any) {
-    throw new Error('Method not implemented.');
+  delete(idCandidate: number) {
+    this.candidateService.deleteCandidate(idCandidate).subscribe({
+      next: (res: number) => {
+        if (res == 200) {
+          const index = this.candidates.findIndex(candidate => candidate.idCandidate === idCandidate);
+          if (index !== -1) {
+            this.candidates.splice(index, 1);
+          }
+          this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Candidate deleted!' });
+
+        }
+      },
+      error: (error: any) => {
+        console.log(error);
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error occurred while deleting candidate: ' + error.name + ": " + error.statusText });
+      }
+    });
   }
   update(c: Candidate) {
     this.router.navigate(['updateCandidate'], {

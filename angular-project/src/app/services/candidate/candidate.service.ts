@@ -11,10 +11,13 @@ import { CandidateCommercialData } from '../../model/CommercialData';
   providedIn: 'root'
 })
 export class CandidateService {
+
+
   server: string = "localhost";
   port: string = "8080";
 
   constructor(private http: HttpClient) { }
+
   getCandidates(): Observable<Candidate[]> {
     return this.http.get<Candidate[]>(`http://${this.server}:${this.port}/CandidateRest/getCandidates`);
 
@@ -35,8 +38,17 @@ export class CandidateService {
     return this.http.post<any>(`http://${this.server}:${this.port}/WorkExperienceRest/addWorkExperience`, works);
 
   }
-  addCommercialData(commercialData: CandidateCommercialData) {
+  addCommercialData(commercialData: CandidateCommercialData[]) {
     return this.http.post<any>(`http://${this.server}:${this.port}/CandidateCommercialDataRest/addCommercialData`, commercialData);
+  }
+
+  deleteCandidate(idCandidate: number) {
+    return this.http.delete<any>(`http://${this.server}:${this.port}/CandidateRest/deleteCandidate/${idCandidate}`);
+  }
+
+  updateCandidate(candidate: Candidate) {
+    return this.http.post<any>(`http://${this.server}:${this.port}/CandidateRest/updateCandidateDTO`, candidate);
+
   }
 
   searchCandidate(candidate: Candidate, selectedSkills: number[] | null, degree: number | null, jobinterview: number | null, dateAfter: Date | null): Observable<Candidate[]> {
