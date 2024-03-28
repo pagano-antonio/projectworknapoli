@@ -12,6 +12,9 @@ import com.model.Candidate;
 
 public interface CandidateRepository extends JpaRepository<Candidate, Integer> {
 
+	@Query("SELECT c.city, COUNT(c) AS num_candidates FROM Candidate c GROUP BY c.city")
+	List<Object[]> countCandidatesByCity();
+
 	@Query(value = "SELECT DISTINCT c.* FROM candidate c INNER JOIN job_interview j ON j.idCandidate = c.idCandidate "
 			+ "WHERE j.outcome = ?1", nativeQuery = true)
 	List<Candidate> findCandidateByOutcome(Integer outcome);
@@ -57,4 +60,7 @@ public interface CandidateRepository extends JpaRepository<Candidate, Integer> {
 			@Param("stateJobInterview") Integer stateJobInterview, @Param("dateAfter") LocalDate dateAfter,
 			@Param("company") String company);
 
+	@Query("SELECT FLOOR(DATEDIFF(CURRENT_DATE(), c.birthday) / 365.25 / 10) * 10 AS ageGroup, COUNT(c) "
+			+ "FROM Candidate c " + "GROUP BY ageGroup")
+	List<Object[]> countCandidatesByAgeGroup();
 }

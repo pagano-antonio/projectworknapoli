@@ -9,6 +9,7 @@ export class CandidateCommercialData {
     public proposedRal!: number;
     public subsidyFlag!: boolean;
     public candidate!: Candidate;
+    public idCandidateCD!: number;
 
     constructor() { }
 }

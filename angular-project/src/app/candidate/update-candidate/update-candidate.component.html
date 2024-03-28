@@ -1,4 +1,5 @@
 <div class="grid align-items-center flex-wrap">
+    <p-toast />
     <h2 class="title">Candidate Edit Form</h2>
     <p-stepper class="candidateStepper" orientation="vertical" [(activeStep)]="stepIndex"
         [ngClass]="{'steps-disabled': isCandidateAdded}" class="pr-5">
@@ -60,10 +61,9 @@
                 <div
                     class="col-12 mt-4 mb-1 px-4 pt-5 form border-2 border-dashed surface-border border-round surface-ground">
                     <div class="field">
-                        {{candidate}}
                         <label for="skills">Select Skills</label>
-                        <p-multiSelect name="skills" [options]="skills" [(ngModel)]="candidate.candidateSkills"
-                            placeholder="" optionLabel="title" [showClear]="true"></p-multiSelect>
+                        <p-multiSelect name="skills" [options]="skills" [(ngModel)]="selectedSkills" placeholder=""
+                            optionLabel="title" [showClear]="true"></p-multiSelect>
                     </div>
                 </div>
                 <div class="flex py-4">
@@ -71,7 +71,7 @@
                 </div>
             </ng-template>
         </p-stepperPanel>
-        <!--  <p-stepperPanel header="Education (optional)">
+        <p-stepperPanel header="Education (optional)">
             <ng-template pTemplate="content" let-prevCallback="prevCallback" let-nextCallback="nextCallback"
                 let-index="index">
                 <div class="col-12 mt-4 mb-1 px-4 pt-5 form border-2 border-dashed surface-border border-round surface-ground"
@@ -107,17 +107,18 @@
                     </div>
                 </div>
                 <div class="flex py-2 col-12 justify-content-end align-items-end">
-                    <p-button [text]="true" size="small" (click)="moreEducation()">More education</p-button>
+                    <p-button [text]="true" size="small" (click)="moreEducation()">Add education</p-button>
                 </div>
                 <div class="flex py-4">
                     <p-button label="Next" size="small" (onClick)="nextCallback.emit()" />
                 </div>
             </ng-template>
         </p-stepperPanel>
+
         <p-stepperPanel header="Work Experience (optional)">
             <ng-template pTemplate="content" let-nextCallback="nextCallback" let-index="index">
                 <div class="col-12 mt-4 mb-1 px-4 pt-5 form border-2 border-dashed surface-border border-round surface-ground"
-                    *ngFor="let w of workExperience; let i = index">
+                    *ngFor="let w of candidate.workExperiences; let i = index">
 
                     <p-button icon="pi pi-times" [rounded]="true" [text]="true" (click)="removeWorkExperience(i)"
                         class="delete" severity="danger "></p-button>
@@ -164,49 +165,52 @@
                 </div>
             </ng-template>
         </p-stepperPanel>
+
         <p-stepperPanel header="Commercial Data (optional)">
             <ng-template pTemplate="content" let-prevCallback="prevCallback" let-index="index">
-                <div
-                    class="col-12 mt-4 mb-1 px-4 pt-5 form border-2 border-dashed surface-border border-round surface-ground">
+                <div class="col-12 mt-4 mb-1 px-4 pt-5 form border-2 border-dashed surface-border border-round surface-ground"
+                    *ngFor="let c of candidate.commercialData; let i = index">
+
+                    <p-button icon="pi pi-times" [rounded]="true" [text]="true" (click)="removeCommercialData(i)"
+                        class="delete" severity="danger "></p-button>
+
                     <div class="field half-width">
                         <label for="businessCost">Business Cost</label>
-                        <input id="businessCost" type="number" [(ngModel)]="commercialData.businessCost"
+                        <input id="businessCost" type="number" [(ngModel)]="c.businessCost"
                             class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
                     </div>
                     <div class="field half-width">
                         <label for="currentRal">Current Ral</label>
-                        <input id="currentRal" type="number" [(ngModel)]="commercialData.currentRal"
+                        <input id="currentRal" type="number" [(ngModel)]="c.currentRal"
                             class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
                     </div>
                     <div class="field half-width">
                         <label for="monthRefund">Month Refund</label>
-                        <input id="monthRefund" type="number" [(ngModel)]="commercialData.monthRefund"
+                        <input id="monthRefund" type="number" [(ngModel)]="c.monthRefund"
                             class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
                     </div>
                     <div class="field half-width">
                         <label for="notes">Notes</label>
-                        <input id="notes" type="text" [(ngModel)]="commercialData.notes"
+                        <input id="notes" type="text" [(ngModel)]="c.notes"
                             class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
                     </div>
                     <div class="field half-width">
                         <label for="proposedRal">Proposed Ral</label>
-                        <input id="proposedRal" type="number" [(ngModel)]="commercialData.proposedRal"
+                        <input id="proposedRal" type="number" [(ngModel)]="c.proposedRal"
                             class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
                     </div>
                     <div class="field half-width">
-                        <label for="subsidyFlag">Subsidy Flag {{commercialData.subsidyFlag}}</label>
+                        <label for="subsidyFlag">Subsidy Flag</label>
                         <p-dropdown optionValue="val" [options]="[{val:0, label:'No'}, {val:1, label:'Yes'}]"
-                            [(ngModel)]="commercialData.subsidyFlag" optionLabel="label"
-                            [showClear]="true"></p-dropdown>
+                            [(ngModel)]="c.subsidyFlag" optionLabel="label" [showClear]="true"></p-dropdown>
                     </div>
                 </div>
 
             </ng-template>
-        </p-stepperPanel> -->
+        </p-stepperPanel>
     </p-stepper>
     <div class="flex py-4">
-        <!--    <p-button label="Save" (onClick)="addCandidate()"
-            [disabled]="(candidate.name == null || candidate.name == '' || candidate.surname == null || candidate.surname == '' || candidate.birthday == null ||  candidate.birthPlace == '' || candidate.birthPlace == null || candidate.address == '' || candidate.address == null || candidate.city == '' || candidate.city == null || candidate.email == '' || candidate.email == null || candidate.phone == '' || candidate.phone == null) || allEducationKeysFilled() || allWorkKeysFilled() || allCommercialKeysFilled()" /> -->
+        <p-button label="Update" (onClick)="updateCandidate()" />
     </div>
 
 </div>

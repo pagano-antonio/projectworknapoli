@@ -12,14 +12,14 @@
 	<div class="wrapper">
 		<jsp:include page="../sidebar.jsp" />
 		<div id="content">
-			<h2>ADD EDUCATION</h2>
+			<h2>Add Education</h2>
 			<form
 				action="${pageContext.request.contextPath}/EducationCtr/addEducation">
 
 
 				<div class="mb-2 input-50">
-					<label class="form-label" for="candidates">CANDIDATE</label> <select
-						name="candidate.idCandidate" class="form-control">
+					<label class="form-label" for="candidates">CANDIDATE</label> 
+					<select name="candidate.idCandidate" class="form-control multiselect">
 						<option value="">Select candidate</option>
 						<c:forEach var="candidate" items="${candidates}">
 							<option value="${candidate.idCandidate}">${candidate.name}

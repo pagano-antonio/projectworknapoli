@@ -103,7 +103,7 @@ nav .avatar span {
     HEADER
 ----------------------------------------------------- */
 #header {
-	 box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 	display: flex;
     height: 60px;
     background: #3F50B5;
@@ -322,17 +322,95 @@ a[data-toggle="collapse"] {
 
 }
 #content.home {
+	flex-direction: column;
 	display:flex;
-	justify-content:flex-end;
-	padding: 0px;
+	padding: 20px;
 	position:relative;
 	min-height: calc(100vh - 60px);
 	max-height: calc(100vh - 60px);
-    overflow:hidden;
-    background:url("/images/hr-2.jpg");
-    background-repeat:none;
-    background-size:cover;
-    background-position:center;
+    
+}
+.charts-container {
+	display:flex;
+	align-items:flex-start;
+	flex-wrap:wrap;
+	margin-top:10px;
+	justify-content: space-between;
+}
+
+.chart-container-vertical {
+	width:50%;
+}
+.only-chart,
+.c {
+	margin-top:20px;
+	background:#d5e8f780;
+	border-radius:6px;
+	width:calc(50% - 10px);
+	display:block;
+	
+}
+
+.only-chart-inside {
+	padding-top:20px;
+	padding-bottom:5px;
+	display:flex;
+	height:100%;
+	flex:1;
+	justify-content:center;
+	align-items:center;
+	
+}
+
+
+.only-chart h4 {
+	border-radius:6px;
+	color:#3E50B5;
+	padding: 10px 15px;
+	border-bottom:1px solid #d5e8f7;
+	background: #d5e8f795;
+}
+#degree,
+#cities {
+	max-height:300px!important;
+	width:auto!important;
+}
+.chart canvas {
+	width:250px!important;
+	height:250px!important;
+}
+.quadratoni {
+	margin-top:30px;
+	display:flex;
+	align-items:center;
+	gap:10px;
+}
+.quadratone {
+	width:100%;
+	height:70px;
+	background:#147DC4;
+	color:white;
+	display:flex;
+	align-items:center;
+	border-radius:6px;
+	padding:10px 20px;
+}
+.quadratone svg {
+	width:30px;
+	height:30px;
+}
+.quadratone svg path{
+	fill:white;
+}
+.quadratone span {
+	margin-left:5px;
+	min-width:max-content;
+	font-size:14px;
+	text-transform:uppercase;
+}
+.quadratone span.number {
+	font-size:22px;
+	font-weight:600;
 }
 #content.home img{
 	
@@ -343,13 +421,17 @@ a[data-toggle="collapse"] {
     width: 100%;
 }
 #elapsedTime {
-	position:absolute;
-	right:10px;
-	top:10px;
+	
 	font-size:10px;
-	color:white;
-	z-index:10;
+	color:black;
+
 }
+.wrapper-home {
+	displaY:flex;
+	justify-content:space-between;
+	align-items:center;
+}
+
 .home-title {
 	width:max-content;
 	position:absolute;

@@ -12,6 +12,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 /**
  * The persistent class for the candidate_commercial_data database table.
@@ -39,6 +40,9 @@ public class CandidateCommercialData implements Serializable {
 	private int proposedRal;
 
 	private byte subsidyFlag;
+
+	@Transient
+	private int idCandidateCD;
 
 	// bi-directional many-to-one association to Candidate
 	@ManyToOne
@@ -111,6 +115,20 @@ public class CandidateCommercialData implements Serializable {
 
 	public void setCandidate(Candidate candidate) {
 		this.candidate = candidate;
+	}
+
+	@Override
+	public String toString() {
+		return "CandidateCommercialData [idCandidateCommercial=" + idCandidateCommercial + ", candidate=" + candidate
+				+ "]";
+	}
+
+	public int getIdCandidateCD() {
+		return idCandidateCD;
+	}
+
+	public void setIdCandidateCD(int idCandidateCD) {
+		this.idCandidateCD = idCandidateCD;
 	}
 
 }
