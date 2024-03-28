@@ -1,0 +1,59 @@
+<div class="grid align-items-center flex-wrap">
+    <p-toast></p-toast>
+    <h2 class="title">Job Offer Form</h2>
+    <div class="col-12 mt-4 mb-1 px-4 pt-5 form border-2 border-dashed surface-border border-round surface-ground">
+        <div class="field half-width">
+            <label for="title">Title</label>
+            <input id="title" type="text" [(ngModel)]="jobOffer.title"
+                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+        </div>
+        <div class="field half-width">
+            <label for="description">Description</label>
+            <input id="description" type="text" [(ngModel)]="jobOffer.description"
+                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+        </div>
+        <div class="field half-width">
+            <label for="startDate">Start Date</label>
+            <p-calendar id="startDate" type="date" [(ngModel)]="jobOffer.startDate" [iconDisplay]="'input'"
+                [showIcon]="true" class="w-full"></p-calendar>
+
+        </div>
+        <div class="field half-width">
+            <label for="endDate">End Date</label>
+            <p-calendar id="endDate" type="date" [(ngModel)]="jobOffer.endDate" [iconDisplay]="'input'"
+                [showIcon]="true" class="w-full"></p-calendar>
+
+        </div>
+        <div class="field half-width">
+            <label for="minRal">Min Ral</label>
+            <input id="minRal" type="number" [(ngModel)]="jobOffer.minRal"
+                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+        </div>
+        <div class="field half-width">
+            <label for="maxRal">Max Ral</label>
+            <input id="maxRal" type="number" [(ngModel)]="jobOffer.maxRal"
+                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+        </div>
+        <div class="field half-width">
+            <label for="companyClient">Select Company Client</label>
+            <p-dropdown [options]="companies" [(ngModel)]="jobOffer.companyClient" optionLabel="name"
+                [showClear]="true"></p-dropdown>
+        </div>
+
+        <div class="field half-width">
+            <label for="contractType">Select Contract Type</label>
+            <p-dropdown [options]="contracts" [(ngModel)]="jobOffer.contractType" optionLabel="title"
+                [showClear]="true"></p-dropdown>
+        </div>
+
+        <div class="field">
+            <label for="skills">Select Skills</label>
+            <p-multiSelect name="skills" [options]="skills" [(ngModel)]="selectedSkills" placeholder=""
+                optionLabel="title" [showClear]="true"></p-multiSelect>
+        </div>
+
+        <div class="field">
+            <p-button label="Save Job Offer" (click)="save()" />
+        </div>
+    </div>
+</div>

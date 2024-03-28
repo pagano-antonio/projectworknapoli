@@ -17,6 +17,7 @@ import { Education } from '../../model/Education';
 import { EducationDegreeType } from '../../model/EducationDegreeType';
 import { EducationDegreeTypeService } from '../../services/educationDegreeType/education-degree-type.service';
 import { WorkExperience } from '../../model/WorkExperience';
+import { CandidateCommercialData } from '../../model/CommercialData';
 @Component({
   selector: 'app-update-candidate',
   standalone: true,
@@ -51,11 +52,26 @@ export class UpdateCandidateComponent implements OnInit {
       this.candidate.workExperiences.splice(index, 1);
     }
   }
+  moreCommercial() {
+    if (!this.allCommercialKeysFilled()) {
+      this.candidate.commercialData.push(new CandidateCommercialData());
+    } else {
+      console.log("I campi di commercial data non sono completi");
+    }
+  }
   moreWork() {
-    this.candidate.workExperiences.push(new WorkExperience());
+    if (!this.allWorkKeysFilled()) {
+      this.candidate.workExperiences.push(new WorkExperience());
+    } else {
+      console.log("I campi di workexp non sono completi");
+    }
   }
   moreEducation() {
-    this.candidate.educations.push(new Education());
+    if (!this.allEducationKeysFilled()) {
+      this.candidate.educations.push(new Education());
+    } else {
+      console.log("I campi di educations non sono completi");
+    }
   }
   removeEducation(index: number) {
     if (index >= 0 && index < this.candidate.educations.length) {
@@ -135,9 +151,9 @@ export class UpdateCandidateComponent implements OnInit {
       if (keys.length > 0) {
         if (
           (education.date !== undefined && education.date !== null) &&
-          (education.finalGrade !== undefined && education.finalGrade !== null) &&
-          (education.place !== undefined && education.place !== null) &&
-          (education.schoolName !== undefined && education.schoolName !== null) &&
+          (education.finalGrade !== undefined && education.finalGrade !== null && education.finalGrade !== '') &&
+          (education.place !== undefined && education.place !== null && education.place !== '') &&
+          (education.schoolName !== undefined && education.schoolName !== null && education.schoolName !== '') &&
           (education.educationDegreeType !== undefined && education.educationDegreeType !== null)
         ) {
           check = false;
@@ -159,10 +175,10 @@ export class UpdateCandidateComponent implements OnInit {
       return false;
     }
     this.candidate.commercialData.forEach(c => {
-      if (!(c.businessCost !== undefined && c.businessCost !== null &&
-        c.currentRal !== undefined && c.currentRal !== null &&
-        c.monthRefund !== undefined && c.monthRefund !== null &&
-        c.proposedRal !== undefined && c.proposedRal !== null &&
+      if (!(c.businessCost !== undefined && c.businessCost !== null && c.businessCost >= 0 &&
+        c.currentRal !== undefined && c.currentRal !== null && c.currentRal >= 0 &&
+        c.monthRefund !== undefined && c.monthRefund !== null && c.monthRefund >= 0 &&
+        c.proposedRal !== undefined && c.proposedRal !== null && c.proposedRal >= 0 &&
         c.subsidyFlag !== undefined && c.subsidyFlag !== null)) {
         check = true;
         return;
@@ -181,10 +197,10 @@ export class UpdateCandidateComponent implements OnInit {
     }
     for (const work of this.candidate.workExperiences) {
       if (
-        (work.title !== undefined && work.title !== null) &&
-        (work.city !== undefined && work.city !== null) &&
-        (work.description !== undefined && work.description !== null) &&
-        (work.company !== undefined && work.company !== null) &&
+        (work.title !== undefined && work.title !== null && work.title !== '') &&
+        (work.city !== undefined && work.city !== null && work.city !== '') &&
+        (work.description !== undefined && work.description !== null && work.description !== '') &&
+        (work.company !== undefined && work.company !== null && work.company !== '') &&
         (work.startDate !== undefined && work.startDate !== null) &&
         (work.endDate !== undefined && work.endDate !== null)
       ) {

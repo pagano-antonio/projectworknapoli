@@ -11,9 +11,9 @@
         </h1>
     </div>
 </header>
-<div class="page-wrapper w-100">
+<div class="page-wrapper w-100" [ngClass]="{ 'wrapperLogin': !showLayout() }">
     <app-sidebar id="sidebar" [ngClass]="{ 'hidden-sidebar': sidebar }" *ngIf="showLayout()" />
-    <div id="content">
+    <div id="content" [ngClass]="{ 'loginPage': !showLayout() }">
         <router-outlet />
     </div>
 
